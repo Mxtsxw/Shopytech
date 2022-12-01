@@ -1,4 +1,6 @@
 <?php
+require_once('views/View.php');
+
 class Router
 {
     private $_ctrl;
@@ -10,7 +12,7 @@ class Router
         {
             //chargement automatique des classes
             spl_autoload_register(function($class){
-                require_once('models/'.$class.'.php')
+                require_once('models/'.$class.'.php');
             });
 
             $url='';
@@ -25,7 +27,7 @@ class Router
                 //on récup le premier paramètre de l'url
                 $controller = ucfirst(strtolower ($url [0])); //première lettre maj le reste min
                 $controllerClass = "Controller".$controller; //par exemple ControllerAccueil
-                $controllerFile = "controllers/".$controllerClass".php"; //dans le dossier controllers
+                $controllerFile = "controllers/".$controllerClass.".php"; //dans le dossier controllers
 
                 //vérification si le fichier existe
                 if (file_exists($controllerFile))
@@ -34,7 +36,7 @@ class Router
                     $this->_ctrl= new $controllerClass ($url);
                 }
                 else
-                    throw new Exception('Page introuvable')
+                    {throw new Exception('Page introuvable');}
             }
             else 
             {
@@ -49,7 +51,8 @@ class Router
         catch (Exception $e)
         {
             $errorMSG = $e->getMessage();
-            require_once('views/viewError.php');
+            $this->_view = new View('Error');
+            $this->_view->generate(array('errorMsg' => $errorMSG));
         }
     }
 }

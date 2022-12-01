@@ -7,10 +7,9 @@ abstract class Model
     //instancie la connexion à la BDD
     private static function setBdd() //si la connexion n'existe pas alors on feras appel à cette fonction là
     {
-        self::$_bdd = new PDO('mysql:host=localhost; dbname=miniblog;charset=utf8',
+        self::$_bdd = new PDO('mysql:host=localhost; dbname=web4shop;charset=utf8', //dbname est le nom de la base de donnée, le changer si nécessaire
         'root','root'); //identifiant et mdp 
-        //miniblog est le nom de la base de donnée, le changer si nécessaire
-        self::$_bdd->setAttribute(PDO::ATTR_ERRMode, PDO::ERRMODE_WARNING);
+        self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         //on précise les erreurs
     }
 
@@ -18,9 +17,9 @@ abstract class Model
     protected function getBdd()
     {
         //vérification et maj de la connexion
-        if (self::$bdd == null)
+        if (self::$_bdd == null)
             self::setBdd();
-        return self::$bdd;
+        return self::$_bdd;
     }
 
     //Méthode pour récupérer toutes les données d'une table

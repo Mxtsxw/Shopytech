@@ -1,4 +1,5 @@
 <?php
+require_once('views/view.php');
 class ControllerAccueil
 {
     private $articleManager; //ce seras un nv instance de la classe ArticleManager
@@ -18,8 +19,10 @@ class ControllerAccueil
     private function articles()
     {
         $this->_articleManager = new ArticleManager;
-        $articles = $this-> _articleManager->getArticles();
+        $articles = $this-> _articleManager->getArticle();
 
-        require_once('views/viewAccueil.php')
+        //require_once('views/viewAccueil.php');
+        $this->_view = new View('Accueil');
+        $this->_view->generate(array('article' => $articles));
     }
 }
