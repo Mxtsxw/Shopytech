@@ -86,7 +86,7 @@ class Article
     }
     public function description()
     {
-        return $this->_descritpion;
+        return $this->_description;
     }
     public function catId()
     {
@@ -100,5 +100,8 @@ class Article
     {
         return $this->_price;
     }
-
+    public function image()
+    {
+        return $this->_image;
+    }
 }

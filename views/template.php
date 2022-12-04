@@ -23,7 +23,7 @@
         </header>
 
         <!-- GENERATED CONTENT -->
-        <main>
+        <main class="container mt-4">
             <?=$content?>
         </main>
         
