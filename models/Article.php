@@ -3,9 +3,12 @@ class Article
 {
     //les attributs de l'article
     private $_id;
-    private $_title;
-    private $_content;
-    private $_date;
+    private $_catId;
+    private $_name;
+    private $_description;
+    private $_image;
+    private $_price;
+    private $_quantity;
 
     //constructeur
     private function __construct(array $data)
@@ -25,6 +28,25 @@ class Article
     }
 
     //setters
+    public function setQuantity($quantity)
+    {
+        $quantity=(int) $quantity; //quantity peut tomber à 0
+        $this ->_quantity = $quantity;
+    }
+
+    public function setImage($image)
+    {
+        if(is_string($image)) //image est un string dans la bd
+        $this ->_image = $image;
+    }
+
+    public function setPrice($price)
+    {
+        $price=(float) $price;
+        if ($price > 0) //le prix est forcément supérieur à 0, rien n'est gratuit ! 
+        $this ->_price = $price;
+    }
+
     public function setId($id)
     {
         $id=(int) $id;
@@ -33,21 +55,24 @@ class Article
         $this ->_id = $id;
     }
 
-    public function setTitle($title)
+    public function setName($name)
     {
-        if(is_string($title)) //title est un string
-        $this->_title = $title;
+        if(is_string($name)) //name est un string
+        $this->_name = $name;
     }
 
-    public function setContent($content)
+    public function setDescription($description)
     {
-        if(is_string($content)) //content est un string
-        $this->_content =  $content;
+        if(is_string($description)) //description est un string
+        $this->_description =  $description;
     }
 
-    private function setDate($date)
+    public function setCatId($catId)
     {
-        $this->_date = $date;
+        $catId=(int) $catId;
+
+        if ($catId > 0) //l'attribut est un int et doit être sup à 0
+        $this ->_catId = $catId;
     }
 
     //getters
@@ -55,17 +80,25 @@ class Article
     {
         return $this->_id;
     }
-    public function title()
+    public function name()
     {
-        return $this->_title;
+        return $this->_name;
     }
-    public function content()
+    public function description()
     {
-        return $this->_content;
+        return $this->_descritpion;
     }
-    public function date()
+    public function catId()
     {
-        return $this->_date;
+        return $this->_catId;
+    }
+    public function quantity()
+    {
+        return $this->_quantity;
+    }
+    public function price()
+    {
+        return $this->_price;
     }
 
 }

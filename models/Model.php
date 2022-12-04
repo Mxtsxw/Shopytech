@@ -5,9 +5,11 @@ abstract class Model
     private static $_bdd; //var de connexion base de donnée
 
     //instancie la connexion à la BDD
-    private static function setBdd() //si la connexion n'existe pas alors on feras appel à cette fonction là
+    private static function setBdd() //si la connexion n'existe pas alors on fera appel à cette fonction là
     {
-        self::$_bdd = new PDO('mysql:host=localhost; dbname=web4shop;charset=utf8', //dbname est le nom de la base de donnée, le changer si nécessaire
+        //dbname est le nom de la base de donnée, le changer si nécessaire
+        //dbname = connexion base de donnée, on veut products pour l'instant
+        self::$_bdd = new PDO('mysql:host=localhost; dbname=web4shop/products;charset=utf8', 
         'root','root'); //identifiant et mdp 
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         //on précise les erreurs
@@ -26,7 +28,7 @@ abstract class Model
     protected function getAll($table, $obj)
     {
         $var = [];
-        $req = $this->getBdd()->prepare('SELCT * FROM ' .$table. ' ORDER BY id desc');
+        $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' ORDER BY id');
         $req ->execute();
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {

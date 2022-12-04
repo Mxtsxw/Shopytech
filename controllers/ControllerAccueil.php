@@ -13,16 +13,15 @@ class ControllerAccueil
             throw new Exception('Page introuvable');
         }
         else
-        $this->articles();
+        $this->products();
     }
     
-    private function articles()
+    private function products()
     {
         $this->_articleManager = new ArticleManager;
-        $articles = $this-> _articleManager->getArticle();
+        $products = $this-> _articleManager->getArticle();
 
-        //require_once('views/viewAccueil.php');
         $this->_view = new View('Accueil');
-        $this->_view->generate(array('article' => $articles));
+        $this->_view->generate(array('article' => $products));
     }
 }
