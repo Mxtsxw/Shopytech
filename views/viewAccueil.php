@@ -5,7 +5,12 @@
     <?php foreach($articles as $article) : ?>
     <div class="col">
         <div class="card h-100">
-            <img src="./static/img/<?= $article->image()?>" class="card-img-top" alt="Fissure in Sandstone"/>
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="./static/img/<?= $article->image()?>" class="img-fluid"/>
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
             <div class="card-body">
                 <h5 class="card-title"><?= $article->name()?></h5>
                 <p class="card-text"><?= $article->description()?></p>

@@ -23,14 +23,12 @@
         </header>
 
         <!-- GENERATED CONTENT -->
-        <main class="container mt-4">
+        <main class="container my-4">
             <?=$content?>
         </main>
         
         <!-- FOOTER -->
-        <footer>
-            <p>Le footer</p>
-        </footer>      
+        <?php require("footer.php"); ?>   
 
         <!-- MDB -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
