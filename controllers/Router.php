@@ -15,13 +15,13 @@ class Router
                 require_once('models/'.$class.'.php');
             });
 
-            $url='';
+            $url = "";
 
             // Le controller est inclus selon l'action de l'utilisateur
-            if (isset($GET['url']))
+            if (isset($_GET['url']))
             {
                 // Récupère tous les paramètes URL de manière séparée
-                $url = explode('/', filter_var($GET['url'], FILTER_SANITIZE_URL));
+                $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
 
                 // On récupère le premier paramètre de l'URL
                 $controller = ucfirst(strtolower($url[0]));                 // première lettre majuscule le reste minuscule eg. ControllerAccueil
