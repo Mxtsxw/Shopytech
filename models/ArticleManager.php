@@ -1,11 +1,11 @@
 <?php
-//ArticleManager même nom que le fichier pour l'autoload
+// ArticleManager même nom que le fichier pour l'autoload
 class ArticleManager extends Model
 {
-    public function getArticle() //récupère tous nos articles
+    // Récupère tous les articles présent dans la BDD
+    public function getArticles() 
     {
-        $this->getBdd();
-        //products est la table, Article est un objet
+        // Products est la table, Article est un objet
         return $this->getAll('products','Article'); 
     }
 }

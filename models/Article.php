@@ -1,7 +1,7 @@
 <?php
 class Article
 {
-    //les attributs de l'article
+    // Les attributs de l'article
     private $_id;
     private $_catId;
     private $_name;
@@ -10,14 +10,14 @@ class Article
     private $_price;
     private $_quantity;
 
-    //constructeur
-    private function __construct(array $data)
+    // Constructeur
+    public function __construct(array $data)
     {
         $this->hydrate($data);
     }
 
-    //hydratation
-    public function hydrate (array $data)
+    // hydratation → vérificiationd des champs et attributions des variables
+    public function hydrate(array $data)
     {
         foreach($data as $key => $value)
         {
