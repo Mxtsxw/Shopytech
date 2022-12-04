@@ -14,6 +14,7 @@
             <div class="card-body">
                 <h5 class="card-title"><?= $article->name()?></h5>
                 <p class="card-text"><?= $article->description()?></p>
+                <p class="card-text"><?php echo number_format($article->price(), 2, ',', ' ');?>€</p>
                 <a href="#" class="btn btn-primary">Acheter</a>
             </div>
         </div>
