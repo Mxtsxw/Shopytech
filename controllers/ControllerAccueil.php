@@ -2,7 +2,7 @@
 require_once('views/view.php');
 class ControllerAccueil
 {
-    private $_articleManager; //ce seras un nv instance de la classe ArticleManager
+    private $_productsManager; //ce seras un nv instance de la classe ProductsManager
     private $_view;
 
     public function __construct($url)
@@ -19,18 +19,18 @@ class ControllerAccueil
 
             // Paramètre la vue pour l'accueil
             $this->_view = new View('Accueil');
-            // Envoie à la vue les données [articles] pour la génération de la page d'accueil
-            $this->_view->generate(array('articles' => $products));
+            // Envoie à la vue les données [products] pour la génération de la page d'accueil
+            $this->_view->generate(array('products' => $products));
         }
     }
     
     // Retourn les produits
     private function products()
     {
-        $this->_articleManager = new ArticleManager();
+        $this->_productsManager = new ProductsManager();
 
         // Récupère la liste des articles
-        $products = $this->_articleManager->getArticles();
+        $products = $this->_productsManager->getProducts();
 
         return $products;
     }
