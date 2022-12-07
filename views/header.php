@@ -18,15 +18,18 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <!-- Left links -->
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Je sais pas </a>
+      <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+      <li class="nav-item">
+          <a class="nav-link active" href="#">Tous nos produits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Je sais pas 2</a>
+          <a class="nav-link" href="#">Biscuits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Je sais pas 3</a>
+          <a class="nav-link" href="#">Boissons</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Fruits secs</a>
         </li>
       </ul>
       <!-- Left links -->

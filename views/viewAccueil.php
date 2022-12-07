@@ -4,7 +4,7 @@
 
     <?php foreach($articles as $article) : ?>
     <div class="col">
-        <div class="card h-100">
+        <div class="card h-100" style="">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img src="./static/img/<?= $article->image()?>" class="img-fluid"/>
                 <a href="#!">

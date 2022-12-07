@@ -8,7 +8,7 @@ class ControllerAccueil
     public function __construct($url)
     {
         // Un seul paramètre autorisé pour la page d'accueil
-        if (isset($url) && count(array($url))>1) // -- INFO : Source d'erreur à vérfiier
+        if (isset($url) && count(array($url))>1) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
