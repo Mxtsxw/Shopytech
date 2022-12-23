@@ -10,8 +10,7 @@
       data-mdb-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
 
@@ -20,16 +19,13 @@
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
       <li class="nav-item">
-          <a class="nav-link active" href="#">Tous nos produits</a>
+          <a class="nav-link" href="#">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Biscuits</a>
+          <a class="nav-link" href="#">Catalogue</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Boissons</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Fruits secs</a>
+          <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
       <!-- Left links -->
@@ -54,7 +50,7 @@
           aria-expanded="false"
         >
           <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          <span class="badge rounded-pill badge-notification bg-danger">667</span>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"

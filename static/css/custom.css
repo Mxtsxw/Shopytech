@@ -1,7 +1,20 @@
+
+html, body{
+    height: 100%;
+}
+
 body{
     background-color: #fbfbfb;
 }
 
-img {
-    height: 250px;
+.card-img-showcase {
+    object-fit: cover;
+    height: 10rem;
+}
+
+.description{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
