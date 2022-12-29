@@ -38,7 +38,6 @@ class Router
                 {
                     throw new Exception('Page introuvable');
                 }
-
             }
             else 
             {
@@ -46,8 +45,6 @@ class Router
                 require_once('controllers/ControllerAccueil.php');
                 $this->_ctrl = new ControllerAccueil($url);
             }
-            echo "URL variable : ";
-            var_dump($url);
         }
         // Gestion des erreurs
         catch (Exception $e)
@@ -56,23 +53,6 @@ class Router
             $this->_view = new View('Error');
             $this->_view->generate(array('errorMsg' => $errorMSG));
             $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
-            echo "URL variable : ";
-            var_dump($url);
-        }
-        finally{
-            $current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-            echo "FULL URL : " . $current_url . "<br>";
-            echo "URL SET : " . isset($_GET['url']) . "<br>";
-            echo "URL : " . $_GET['url'] . "<br>";
-            echo "ID : " . $_GET['id'] . "<br>";
-            echo "ROOT : " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
-            echo "<br>";
-            echo "--";
-            echo "<br>";
-            echo "-- path : " . "<br>";
-            echo dirname($_SERVER["PHP_SELF"]);
-            echo "<br>";
-            echo ROOT;
         }
     }
 }
@@ -85,15 +65,3 @@ class Router
 # - /Admin      →   Tableau de bord administrateur
 # - /Cart       →   Panier
 # - /Category   →   Page affichage des produits par catégorie
-
-
-// Problèmes rencontrées :
-
-// Problème de compréhension - comment la réécriture d'URL fonctionne et la gestion des controlleurs par la suite
-
-// Problème : Gérer les urls
-
-// Problème - Lien de fichier avec chemin relatif ne fonctionne pas → sauf que le fichier root n'est pas celui du projet
-// Solution - Rédéfinir la racine dans .htaccess du site et redéfinir le chemin relatif en chemin absolu
-
-// Problème - Récupérer un produit précis à afficher pour Products
