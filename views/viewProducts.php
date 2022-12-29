@@ -14,8 +14,9 @@
                             <span><?php echo number_format($product->price(), 2, ',', ' ');?>€</span>
                         </div>
                         <p class="lead"><?= $product->description()?></p>
+                        <p class="text-secondary"> Stock : <?= $product->quantity()?></p>
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min=0 style="max-width: 4rem" />
+                            <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min=0 max="<?= $product->quantity()?>" style="max-width: 4rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Ajouter au panier
