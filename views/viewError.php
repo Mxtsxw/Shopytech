@@ -9,6 +9,6 @@
                 <?= $errorMsg ?>
 
                 </p>
-                <a href="/" class="btn btn-primary">Go Home</a>
+                <a href="<?= ROOT ?>" class="btn btn-primary">Go Home</a>
             </div>
 </div>
