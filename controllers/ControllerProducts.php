@@ -17,11 +17,14 @@ class ControllerProducts
         }
         else
         {
-            $id = $_GET['id'];  # ID passé en Query String
-            try{
+            $id = $_GET['id'];  # ID passé en Query String  
+
+            try
+            {
                 $product = $this->product($id);
             }
-            catch(Exception $e){
+            catch(Exception $e)
+            {
                 throw new Exception($e->getMessage());
             }
 

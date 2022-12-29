@@ -69,8 +69,10 @@ class Router
             echo "<br>";
             echo "--";
             echo "<br>";
-            
+            echo "-- path : " . "<br>";
+            echo dirname($_SERVER["PHP_SELF"]);
             echo "<br>";
+            echo ROOT;
         }
     }
 }
