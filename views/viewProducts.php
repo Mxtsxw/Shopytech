@@ -14,14 +14,20 @@
                             <span><?php echo number_format($product->price(), 2, ',', ' ');?>€</span>
                         </div>
                         <p class="lead"><?= $product->description()?></p>
+
+                        <!-- Vérification des stocks -->
+                        <?php if ($product->quantity() > 0): ?>
                         <p class="text-secondary"> Stock : <?= $product->quantity()?></p>
-                        <div class="d-flex">
+                            <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min=0 max="<?= $product->quantity()?>" style="max-width: 4rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Ajouter au panier
                             </button>
                         </div>
+                        <?php else: ?>
+                            <p class="text-danger">Ce produit n'est plus en stock</p>
+                        <?php endif; ?>
                      </div>
                 </div>
             </div>
