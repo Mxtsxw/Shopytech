@@ -47,7 +47,7 @@
       <div class="dropdown">
         <a
           class="link-secondary me-3 dropdown-toggle hidden-arrow"
-          href="#"
+          href="./Logins"
           id="navbarDropdownMenuLink"
           role="button"
           data-mdb-toggle="dropdown"
@@ -61,13 +61,13 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">Some news</a>
+            <a class="dropdown-item" href="#">Tous nos produits</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Another news</a>
+            <a class="dropdown-item" href="#">Biscuits</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Fruits secs</a>
           </li>
         </ul>
       </div>
