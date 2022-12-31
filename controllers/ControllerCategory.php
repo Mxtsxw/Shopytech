@@ -1,14 +1,13 @@
 <?php
 require_once('views/view.php');
-class ControllerAccueil
+class ControllerCategory
 {
     private $_productsManager; //ce seras un nv instance de la classe ProductsManager
     private $_view;
 
     public function __construct($url)
     {
-        // Un seul paramètre autorisé pour la page d'accueil
-        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
+        if (isset($url) && count(array($url))>2) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
@@ -17,9 +16,9 @@ class ControllerAccueil
             // Récupère les informations nécessaires
             $products = $this->products();
 
-            // Paramètre la vue pour l'accueil
-            $this->_view = new View('Accueil');
-            // Envoie à la vue les données [products] pour la génération de la page d'accueil
+            // Paramètre la vue pour les categories
+            $this->_view = new View('Category');
+            // Envoie à la vue les données [products] pour la génération de la page pour les categories
             $this->_view->generate(array('products' => $products));
         }
     }
@@ -35,3 +34,4 @@ class ControllerAccueil
         return $products;
     }
 }
+

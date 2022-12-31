@@ -20,7 +20,6 @@
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
-
       <!-- Google -->
       <a
         class="btn text-white btn-floating m-1"
@@ -29,7 +28,6 @@
         role="button"
         ><i class="fab fa-google"></i
       ></a>
-
       <!-- Instagram -->
       <a
         class="btn text-white btn-floating m-1"
@@ -47,11 +45,12 @@
         role="button"
         ><i class="fab fa-linkedin-in"></i
       ></a>
+
       <!-- Github -->
       <a
         class="btn text-white btn-floating m-1"
         style="background-color: #333333;"
-        href="https://github.com/Matsew-uwu/Shopytech"
+        href="https://github.com/Matsew-uwu/Shopytech/"
         role="button"
         ><i class="fab fa-github"></i
       ></a>

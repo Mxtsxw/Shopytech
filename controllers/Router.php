@@ -15,19 +15,18 @@ class Router
                 require_once('models/'.$class.'.php');
             });
 
-            $url = "";
+            $url = array();
 
             // Le controller est inclus selon l'action de l'utilisateur
             if (isset($_GET['url']))
             {
                 // Récupère tous les paramètes URL de manière séparée
                 $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
-
                 // On récupère le premier paramètre de l'URL
                 $controller = ucfirst(strtolower($url[0]));                 // première lettre majuscule le reste minuscule eg. ControllerAccueil
                 $controllerClass = "Controller".$controller;                // récupère le nom du controlleur
                 $controllerFile = "controllers/".$controllerClass.".php";   // récupère le fichier correspondant
-                
+
                 // Vérification de l'existence du fichier
                 if (file_exists($controllerFile))
                 {
@@ -53,6 +52,16 @@ class Router
             $errorMSG = $e->getMessage();
             $this->_view = new View('Error');
             $this->_view->generate(array('errorMsg' => $errorMSG));
+            $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
         }
     }
 }
+
+# Liste des routes
+# - /Accueil    →   Page d'accueil
+# - /Products   →   Page d'achat d'un produit
+# - /Login      →   Page de connexion
+# - /Register   →   Page d'inscription
+# - /Admin      →   Tableau de bord administrateur
+# - /Cart       →   Panier
+# - /Category   →   Page affichage des produits par catégorie
