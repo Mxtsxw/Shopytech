@@ -19,7 +19,7 @@
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
       <li class="nav-item">
-          <a class="nav-link" href="#">Accueil</a>
+          <a class="nav-link" href="<?= ROOT?>/">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Catalogue</a>
@@ -35,11 +35,14 @@
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- Icon -->
-      <a class="link-secondary me-3" href="#">
+      <a class="link-secondary me-3" href="<?= ROOT ?>/cart">
         <i class="fas fa-shopping-cart"></i>
+      <?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+        <span class="badge rounded-pill badge-notification bg-danger"><?= count($_SESSION['cart']) ?></span>
+      <?php endif; ?>
       </a>
 
-      <!-- Notifications -->
+      <!-- User -->
       <div class="dropdown">
         <a
           class="link-secondary me-3 dropdown-toggle hidden-arrow"
@@ -49,8 +52,7 @@
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">667</span>
+          <i class="fas fa-user-alt"></i>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"
