@@ -1,6 +1,9 @@
 <?php
+session_start();
+
 // Check if page is request with post
 if (isset($_POST['submit'])) {
+
     // Vérifie que les variables existent
     if (isset($_POST['productId']) && isset($_POST['productQuantity']))
     {
@@ -16,6 +19,6 @@ if (isset($_POST['submit'])) {
 }
 
 // Redirect to the cart page
-header('Location: ' . ROOT . '/cart');
+header('Location: ../cart');
 exit();
 ?>

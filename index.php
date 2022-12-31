@@ -1,9 +1,7 @@
 <?php
 session_start();    // Démarre la session
 
-// Constante de l'application
-define('URL', str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
-define('ROOT', dirname($_SERVER["PHP_SELF"]));
+require_once('./config.php');
 
 // Inclusion du fichier Router.php
 require_once('./controllers/Router.php');
