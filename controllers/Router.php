@@ -45,8 +45,6 @@ class Router
                 require_once('controllers/ControllerAccueil.php');
                 $this->_ctrl = new ControllerAccueil($url);
             }
-            var_dump($_SESSION['cart']);
-            echo ($_SESSION['userToken']);
         }
         // Gestion des erreurs
         catch (Exception $e)
