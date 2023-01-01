@@ -16,14 +16,14 @@
         <!-- MDB -->
         <link rel="stylesheet" href="<?= ROOT ?>/static/css/mdb.min.css" />
     </head>
-    <body class="h-100">
+    <body class="h-100 d-flex flex-column">
         
         <!-- HEADER -->
         <header>
             <?php require("header.php"); ?>
         </header>
         <!-- GENERATED CONTENT -->
-        <main class="container my-4">
+        <main class="container my-4 h-100">
             <?=$content?>
         </main>
         

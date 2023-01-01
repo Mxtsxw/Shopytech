@@ -21,9 +21,17 @@
                         <p class="card-text">
                         <?= $item->getProduct()->description() ?>
                         </p>
-                        <p class="card-text">
-                        <small class="text-muted"><?= $item->getQuantity() ?></small>
-                        </p>
+                        <form action="/" class="row row-cols-lg-auto g-3 align-items-center">
+                        <div class="col-12">
+                            <div class="input-group">
+                            <label for="qte">Quantité : <?= $item->getProduct()->quantity() ?></label>
+                            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
+                                Modifier
+                            </button>
+                            </div>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                     </div>
                 </div>

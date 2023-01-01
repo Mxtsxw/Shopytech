@@ -65,3 +65,4 @@ class Router
 # - /Admin      →   Tableau de bord administrateur
 # - /Cart       →   Panier
 # - /Category   →   Page affichage des produits par catégorie
+# - /Admin      →   Tableau de bord administrateur
