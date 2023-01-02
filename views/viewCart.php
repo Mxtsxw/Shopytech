@@ -12,7 +12,7 @@
                     <img
                         src="<?= ROOT ?>/static/img/<?= $item->getProduct()->image() ?>"
                         alt="Image"
-                        class="img-fluid rounded-start"
+                        class="img-fluid rounded-start fit-cover h-100"
                     />
                     </div>
                     <div class="col-md-8">
@@ -21,13 +21,16 @@
                         <p class="card-text">
                         <?= $item->getProduct()->description() ?>
                         </p>
-                        <form action="/" class="row row-cols-lg-auto g-3 align-items-center">
+                        <form action="<?=ROOT?>/handlers/cartHandler.php" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+                            <input type="hidden" name="productId" value="<?= $item->getProduct()->id()?>">
                         <div class="col-12">
-                            <div class="input-group">
+                            <div class="input-group gap-5">
                             <label for="qte">Quantité : <?= $item->getProduct()->quantity() ?></label>
-                            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
-                                Modifier
+                            <button type="submit" name="delete" class="btn btn-danger rounded" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
+                                <i class="fas fa-trash-alt"></i>
                             </button>
+                            <!-- Delete button icon styled with mdbootstrap -->
+                            
                             </div>
                             </div>
                         </div>

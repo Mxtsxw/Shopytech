@@ -15,10 +15,14 @@ class ControllerCart
         {
             $this->_productsManager = new ProductsManager();
             $items = array();
-            foreach ($_SESSION['cart'] as $id => $quantity)
+            
+            if (isset($_SESSION['cart'])) 
             {
-                $product = $this->_productsManager->getProductById($id);
-                array_push($items, new CartItem($product->id(), $quantity, $product));
+                foreach ($_SESSION['cart'] as $id => $quantity)
+                {
+                    $product = $this->_productsManager->getProductById($id);
+                    array_push($items, new CartItem($product->id(), $quantity, $product));
+                }
             }
 
             // Paramètre la vue pour les categories

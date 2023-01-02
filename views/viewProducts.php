@@ -21,7 +21,7 @@
                 <form action="<?=ROOT?>/handlers/cartHandler.php" method="POST" class="d-flex">
                     <input type="hidden" name="productId" value="<?= $product->id()?>">
                     <input class="form-control text-center me-3" type="number" name="productQuantity" value="1" min=1 max="<?= $product->quantity()?>" style="max-width: 4rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="submit" name="submit">
+                    <button class="btn btn-outline-dark flex-shrink-0" type="submit" name="add">
                         <i class="bi-cart-fill me-1"></i>
                         Ajouter au panier
                     </button>
