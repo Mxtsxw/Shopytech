@@ -1,8 +1,18 @@
 <div>
     <?php if (empty($items)): ?>
     <div class="d-flex align-items-center justify-content-center">
-        <div class="text-center">
-            Vous n'avez aucun produit dans votre panier
+        <div class="text-center mt-5">
+            <i class="fas fa-shopping-cart fa-5x"></i>
+            <p class="lead mt-3">
+            Votre panier est vide.
+            </p>
+            <hr>
+            <p>
+            Vous n'avez pas encore ajouté de d'article dans votre panier. Parcourez le site pour trouver des produits extroardinaires !
+            </p>
+            <div>
+                <a href="<?= ROOT ?>" class="btn btn-primary mt-5">Découvrir nos produits</a>
+            </div>
         </div>
     <?php else: ?>
         <?php foreach ($items as $item): ?>
@@ -28,9 +38,7 @@
                             <label for="qte">Quantité : <?= $item->getProduct()->quantity() ?></label>
                             <button type="submit" name="delete" class="btn btn-danger rounded" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
                                 <i class="fas fa-trash-alt"></i>
-                            </button>
-                            <!-- Delete button icon styled with mdbootstrap -->
-                            
+                            </button>                            
                             </div>
                             </div>
                         </div>
