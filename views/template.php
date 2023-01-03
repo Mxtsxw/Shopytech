@@ -23,7 +23,7 @@
             <?php require("header.php"); ?>
         </header>
         <!-- GENERATED CONTENT -->
-        <main class="container my-4 h-100">
+        <main class="container my-4 flex-grow-1">
             <?=$content?>
         </main>
         

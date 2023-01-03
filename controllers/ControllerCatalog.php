@@ -1,8 +1,9 @@
 <?php
 require_once('views/view.php');
-class ControllerCategory
+class ControllerCatalog
 {
-    private $_productsManager; //ce seras un nv instance de la classe ProductsManager
+    private $_productsManager; 
+    private $_categoriesManager;
     private $_view;
 
     public function __construct($url)
@@ -14,12 +15,12 @@ class ControllerCategory
         else
         {
             // Récupère les informations nécessaires
-            $products = $this->products();
+            $categories= $this->categories();
 
             // Paramètre la vue pour les categories
-            $this->_view = new View('Category');
+            $this->_view = new View('Catalog');
             // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array('products' => $products));
+            $this->_view->generate(array('categories' => $categories));
         }
     }
     
@@ -32,6 +33,16 @@ class ControllerCategory
         $products = $this->_productsManager->getProducts();
 
         return $products;
+    }
+
+    private function categories()
+    {
+        $this->_categoriesManager = new CategoriesManager();
+
+        // Récupère la liste des articles
+        $categories = $this->_categoriesManager->getCategories();
+
+        return $categories;
     }
 }
 

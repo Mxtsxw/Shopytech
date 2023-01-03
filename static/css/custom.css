@@ -26,3 +26,7 @@ body{
 .fit-cover{
     object-fit: cover;
 }
+
+.cart-summary{
+    background-color: #323232;
+}
