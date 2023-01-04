@@ -46,7 +46,7 @@
       <div class="dropdown">
         <a
           class="link-secondary me-3 dropdown-toggle hidden-arrow"
-          href="./Logins"
+          href="<?=ROOT?>/login"
           id="navbarDropdownMenuLink"
           role="button"
           data-mdb-toggle="dropdown"

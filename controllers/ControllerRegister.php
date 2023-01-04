@@ -1,6 +1,6 @@
 <?php
 require_once('views/view.php');
-class ControllerLogin
+class ControllerRegister
 {
     private $_view;
 
@@ -14,7 +14,7 @@ class ControllerLogin
         else
         {
             // Paramètre la vue pour la connexion
-            $this->_view = new View('Login');
+            $this->_view = new View('Register');
             $this->_view->generate(array());
         }
     }

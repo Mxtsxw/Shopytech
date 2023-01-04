@@ -11,9 +11,6 @@ img {
     height: 250px;
 }
 
-
-
-
 .card-img-showcase {
     object-fit: cover;
     height: 10rem;
@@ -39,6 +36,8 @@ img {
 .icon-link:hover{
     color: rgb(76, 76, 76);
 }
+
+/* Custom form */
 
 .custom-form form .form-control {
     background: transparent;
