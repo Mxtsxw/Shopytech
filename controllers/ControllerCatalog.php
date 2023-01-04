@@ -12,6 +12,12 @@ class ControllerCatalog
         {
             throw new Exception('Page introuvable');
         }
+        elseif (isset($_REQUEST['varco']) && $_REQUEST['varco'] == 'burger')
+        {
+            // Easter egg
+            $this->_view = new View('Playground');
+            $this->_view->generate(array("key" => "burger"));
+        }
         else
         {
             // Récupère les produits selon l'url
