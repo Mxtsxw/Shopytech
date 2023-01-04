@@ -8,20 +8,21 @@ class ControllerCatalog
 
     public function __construct($url)
     {
-        if (isset($url) && count($url)>2) // -- INFO : Source d'erreur à vérifier
+        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
         else
         {
             // Récupère les produits selon l'url
-            if (count($url)==1)
+            if (!(isset($_GET['category'])))
             {
                 $products = $this->products();
             } 
             else 
             {
-                $products = $this->productsByCategoryName($url[1]);
+                $catName = htmlspecialchars(urldecode($_GET['category']));
+                $products = $this->productsByCategoryName($catName);
             }
 
             $categories= $this->categories();

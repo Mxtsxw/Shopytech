@@ -27,7 +27,7 @@
                     </button>
                 </form>
                 <?php else: ?>
-                    <p class="text-danger">Ce produit n'est plus en stock</p>
+                    <p class="text-danger">Ce produit n'est plus disponible.</p>
                 <?php endif; ?>
             </div>
         </div>

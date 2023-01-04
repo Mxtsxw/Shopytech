@@ -73,7 +73,7 @@ class ProductsManager extends Model
         $req ->execute();
 
         if ($req->rowCount() == 0) {
-            throw new Exception("Unknown category");                // lève une exception
+            throw new Exception("Unknown category" . " " . $name);                // lève une exception
         }
 
         // Ajout des objets résultant de la requête dans la liste

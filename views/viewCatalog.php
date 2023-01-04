@@ -7,7 +7,7 @@
         <div class="card-header">Catégories</div>
         <ul class="list-group list-group-flush">
             <?php foreach($categories as $category) : ?>
-                <li class="list-group-item"><a href="<?= ROOT ?>/catalog/<?= $category->name()?>"><?= $category->name()?></a></li>
+                <li class="list-group-item"><a href="<?= ROOT ?>/catalog?category=<?= $category->name()?>"><?= $category->name()?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -18,7 +18,7 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-2">
-                <img src="<?= ROOT ?>/static/img/<?= $product->image()?>" class="card-img fit-cover" alt="Product Image">
+                <img src="<?= ROOT ?>/static/img/<?= $product->image()?>" class="card-img fit-cover h-100" alt="Product Image">
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
