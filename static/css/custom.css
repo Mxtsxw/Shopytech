@@ -7,6 +7,13 @@ body{
     background-color: #fbfbfb;
 }
 
+img {
+    height: 250px;
+}
+
+
+
+
 .card-img-showcase {
     object-fit: cover;
     height: 10rem;
@@ -18,8 +25,6 @@ body{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-
-
 
 /* Custom classes */
 
@@ -34,3 +39,15 @@ body{
 .icon-link:hover{
     color: rgb(76, 76, 76);
 }
+
+.custom-form form .form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #dfe7f1;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+    text-indent: 0px;
+    height: 40px;
+  }
