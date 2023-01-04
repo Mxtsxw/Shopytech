@@ -15,7 +15,7 @@ class ControllerCatalog
         else
         {
             // Récupère les produits selon l'url
-            if (!(isset($_GET['category'])))
+            if (!(isset($_GET['category'])) || empty($_GET['category']))
             {
                 $products = $this->products();
             } 
@@ -30,7 +30,11 @@ class ControllerCatalog
             // Paramètre la vue pour les categories
             $this->_view = new View('Catalog');
             // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array('categories' => $categories, 'products' => $products));
+            $this->_view->generate(array(
+                'categories' => $categories, 
+                'products' => $products,
+                'activeCategory' => $catName ?? 'Tous nos produits'
+            ));
         }
     }
     
