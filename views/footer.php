@@ -3,30 +3,21 @@
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
     <section class="mb-4">
-      
+
       <!-- Twitter -->
       <a
         class="btn text-white btn-floating m-1"
         style="background-color: #55acee;"
-        href="#!"
+        href="https://twitter.com/audphilippe?t=IYnphgq49fx2NLDw8RAL_A&s=09"
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
-
-      <!-- Instagram -->
-      <a
-        class="btn text-white btn-floating m-1"
-        style="background-color: #ac2bac;"
-        href="#!"
-        role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
+      
       <!-- Linkedin -->
       <a
         class="btn text-white btn-floating m-1"
         style="background-color: #0082ca;"
-        href="#!"
+        href="https://www.linkedin.com/in/philippe-audier-54830b97/"
         role="button"
         ><i class="fab fa-linkedin-in"></i
       ></a>

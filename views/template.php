@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="<?= ROOT ?>/static/css/custom.css">
+        <link rel="icon" src="<?= ROOT ?>/static/img/LogoPage.png">
 
         <title><?=$t?></title>
 
