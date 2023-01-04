@@ -8,19 +8,28 @@ class ControllerCatalog
 
     public function __construct($url)
     {
-        if (isset($url) && count(array($url))>2) // -- INFO : Source d'erreur à vérifier
+        if (isset($url) && count($url)>2) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
         else
         {
-            // Récupère les informations nécessaires
+            // Récupère les produits selon l'url
+            if (count($url)==1)
+            {
+                $products = $this->products();
+            } 
+            else 
+            {
+                $products = $this->productsByCategoryName($url[1]);
+            }
+
             $categories= $this->categories();
 
             // Paramètre la vue pour les categories
             $this->_view = new View('Catalog');
             // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array('categories' => $categories));
+            $this->_view->generate(array('categories' => $categories, 'products' => $products));
         }
     }
     
@@ -31,6 +40,17 @@ class ControllerCatalog
 
         // Récupère la liste des articles
         $products = $this->_productsManager->getProducts();
+
+        return $products;
+    }
+
+    // Retourne les produits en fonction du nom
+    private function productsByCategoryName($name)
+    {
+        $this->_productsManager = new ProductsManager();
+
+        // Récupère la liste des articles 
+        $products = $this->_productsManager->getProductsByCategoryName($name);
 
         return $products;
     }

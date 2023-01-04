@@ -7,7 +7,7 @@ class ControllerCart
 
     public function __construct($url)
     {
-        if (isset($url) && count(array($url))>1) // -- INFO : Source d'erreur à vérifier
+        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
