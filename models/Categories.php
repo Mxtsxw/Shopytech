@@ -42,6 +42,6 @@ class Categories
     }
     public function name()
     {
-        return $this->_userName;
+        return $this->_name;
     }
 }
