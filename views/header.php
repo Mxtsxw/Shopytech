@@ -22,7 +22,7 @@
           <a class="nav-link" href="<?= ROOT?>/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Catalogue</a>
+          <a class="nav-link" href="<?=ROOT?>/catalog">Catalogue</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
