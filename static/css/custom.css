@@ -30,3 +30,7 @@ body{
 .cart-summary{
     background-color: #323232;
 }
+
+.icon-link:hover{
+    color: rgb(76, 76, 76);
+}

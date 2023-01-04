@@ -25,7 +25,7 @@
           <a class="nav-link" href="<?=ROOT?>/catalog">Catalogue</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#footer">Contact</a>
         </li>
       </ul>
       <!-- Left links -->
@@ -36,7 +36,7 @@
     <div class="d-flex align-items-center">
       <!-- Icon -->
       <a class="link-secondary me-3" href="<?= ROOT ?>/cart">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-shopping-cart icon-link"></i>
       <?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
         <span class="badge rounded-pill badge-notification bg-danger"><?= count($_SESSION['cart']) ?></span>
       <?php endif; ?>
@@ -52,7 +52,7 @@
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fas fa-user-alt"></i>
+          <i class="fas fa-user-alt icon-link"></i>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"

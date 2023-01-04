@@ -17,7 +17,7 @@
     </div>
     <?php else: ?>
         <div>
-            <h2 class="my-2">Panier</h2>
+            <h2 class="my-2">Votre panier</h2>
         <?php foreach ($items as $item): ?>
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -80,7 +80,7 @@
         </ul>
 
         <a href="<?= ROOT ?>/payment" class="btn btn-primary btn-lg btn-block">
-         Procéder au Paiement
+         Procéder à la commande
         </a>
       </div>
     </div>
