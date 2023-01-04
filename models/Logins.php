@@ -4,7 +4,7 @@ class Logins
     // Les attributs de l'article
     private $_id;
     private $_customerId;
-    private $_userName;
+    private $_username;
     private $_password;
 
     // Constructeur
@@ -24,10 +24,10 @@ class Logins
     }
 
     //setters
-    public function setUserName($userName)
+    public function setUserName($username)
     {
-        if(is_string($userName)) //userName est un string
-        $this ->_userName = $userName;
+        if(is_string($username)) //username est un string
+        $this ->_username = $username;
     }
 
     public function setId($id)
@@ -59,9 +59,9 @@ class Logins
     {
         return $this->_customerId;
     }
-    public function userName()
+    public function username()
     {
-        return $this->_userName;
+        return $this->_username;
     }
     public function password()
     {

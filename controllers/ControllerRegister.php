@@ -11,6 +11,11 @@ class ControllerRegister
         {
             throw new Exception('Page introuvable');
         }
+        elseif (isset($_SESSION['username']))
+        {
+            // Redirection vers la page d'accueil
+            header('Location: '. ROOT .'/index.php');
+        }
         else
         {
             // Paramètre la vue pour la connexion

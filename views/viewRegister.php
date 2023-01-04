@@ -25,7 +25,9 @@
       <!-- Submit button -->
       <button type="submit" class="btn btn-primary btn-block mt-4" id="submit">Créer un compte</button>
       
-      <p class="text-center mt-3">Vous avez déjà un compte ? <a href="<?=ROOT?>/register" class="link-info">cliquez ici</a></p>
+      <p class="text-center mt-3">Vous avez déjà un compte ?
+        <a href="<?=ROOT?>/login" class="link-info">cliquez ici</a>
+      </p>
     </form>
   </div>
 </div>

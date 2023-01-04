@@ -1,58 +1,42 @@
-<?php
+<?php 
 session_start();
-if(isset($_POST['username']) && isset($_POST['password'])&& isset($_POST['varCo']))
-{
- // connexion à la base de données
-$bdd_username = 'root';
-$bdd_password = '';
-$bdd_name = 'web4shop';
-$bdd_host = 'localhost';
-$bdd = mysqli_connect($bdd_host, $bdd_username, $bdd_password,$bdd_name)
-or die('could not connect to database');
- 
-// on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
-// pour éliminer toute attaque de type injection SQL et XSS
-$username = mysqli_real_escape_string($bdd,htmlspecialchars($_POST['username'])); 
-$password = mysqli_real_escape_string($bdd,htmlspecialchars($_POST['password']));
-$varCo=$_POST['varCo'];
 
-if($varCo==0) //connexion
+// Importation des modules nécessaires
+require_once('../models/Model.php');
+require_once('../models/Logins.php');
+require_once('../models/LoginsManager.php');
+
+// Vérification que les variables existent
+if (!(isset($_POST['username']) && isset($_POST['password'])))
 {
-    if($username !== "" && $password !== "")
-    {
-    $requete = "SELECT count(*) FROM logins where 
-    username = '".$username."' and password = '".$password."' ";
-    $exec_requete = mysqli_query($bdd,$requete);
-    $reponse = mysqli_fetch_array($exec_requete);
-    $count = $reponse['count(*)'];
-    if($count!=0) // nom d'utilisateur et mot de passe correctes
-    {
-    $_SESSION['username'] = $username;
-    header('Location: index.php');
-    }
-    else if (isset($_POST['erreur'])) //si il y a eu des erreurs
-    {
-        $erreur= $_POST['erreur'];
-        if ($erreur==1)
-        {
-        header('Location: ./logins?erreur=1'); // utilisateur ou mot de passe incorrect
-        }
-        }
-        else
-        {
-        header('Location: ./logins?erreur=2'); // utilisateur ou mot de passe vide
-        }
-    }
-    }
-    else
-    {
-    header('Location:  ./logins');
-    }
+    // Redirection vers la page de connexion avec un message d'erreur
+    $_SESSION['error_message'] = "Utilisateur ou mot de passe incorrect";
+    header('Location: ../login');
 }
-else  //inscription
+
+// Connexion à la base de données
+$loginsManager = new loginsManager();
+
+// Récupération des données du formulaire
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+if ($loginsManager->checkLogin($username, $password))
 {
-    header('Location:  ./logins');
+    $user = $loginsManager->getLogin($username, $password);
+
+    // Création des variables de session
+    $_SESSION['username'] = $user->username();
+    $_SESSION['customerId'] = $user->customerId();
+    $_SESSION['connected'] = true;
+
+    // Redirection vers la page d'accueil
+    header('Location: ../');
 }
-    
-mysqli_close($bdd); // fermer la connexion
-?>
+else
+{
+    // Redirection vers la page de connexion avec un message d'erreur
+    $_SESSION['error_message'] = "Utilisateur ou mot de passe incorrect";
+    header('Location: ../login');
+}
+
