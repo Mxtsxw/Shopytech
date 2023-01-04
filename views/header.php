@@ -25,7 +25,7 @@
           <a class="nav-link" href="#">Catalogue</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#contacter">Contact</a>
         </li>
       </ul>
       <!-- Left links -->
@@ -53,6 +53,7 @@
           aria-expanded="false"
         >
           <i class="fas fa-user-alt"></i>
+          <?= $_SESSION["username"]; ?>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"

@@ -19,7 +19,7 @@ class ProductsManager extends Model
         // Ajout des objets résultant de la requête dans la liste
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
-            $objects[] = new $Products($data);
+            $objects[] = new Products($data);
         }
         $req->closeCursor();
 
