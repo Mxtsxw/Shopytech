@@ -19,7 +19,7 @@
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
       <li class="nav-item">
-          <a class="nav-link" href="<?= ROOT?>/">Accueil</a>
+          <a class="nav-link <?= $activeTab=="Accueil" ? "active" : "" ?>" href="<?= ROOT?>/">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=ROOT?>/catalog">Catalogue</a>
@@ -29,7 +29,7 @@
         </li>
       </ul>
       <!-- Left links -->
-    </div>
+    </div> 
     <!-- Collapsible wrapper -->
 
     <!-- Right elements -->

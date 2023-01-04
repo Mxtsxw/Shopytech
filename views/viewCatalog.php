@@ -6,9 +6,9 @@
     <div class="card bg-light mb-3" style="max-width: 18rem;">
         <div class="card-header">Catégories</div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="<?= ROOT ?>/catalog?category">Tous nos produits</a></li>
-            <?php foreach($categories as $category) : ?>
-                <li class="list-group-item"><a href="<?= ROOT ?>/catalog?category=<?= $category->name()?>"><?= $category->name()?></a></li>
+            <li class="list-group-item <?= $activeCategory=="Tous nos produits" ? "active" : "" ?>"><a href="<?= ROOT ?>/catalog">Tous nos produits</a></li>
+            <?php foreach($categories as $category) : ?>                
+                <li class="list-group-item <?= $activeCategory==$category->name() ? "active" : "" ?>"><a href="<?= ROOT ?>/catalog?category=<?= $category->name()?>"><?= ucfirst($category->name())?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -30,7 +30,7 @@
                         <h5 class="card-title"><?=$product->name()?></h5>
                         <p class="card-text"><?=$product->description()?></p>
                         <div class="d-flex gap-4">
-                            <p class="card-text m-0"><small class="text-muted"><?php echo number_format($product->price(), 2, ',', ' ');?>€</small></p>
+                            <p class="card-text m-0"><small class="text-muted"><?=number_format($product->price(), 2, ',', ' ');?>€</small></p>
                             <a href="<?=ROOT?>/products?id=<?= $product->id()?>" class="btn btn-primary h-100 stretched-link">Voir le produit
                             </a>
                         </div>

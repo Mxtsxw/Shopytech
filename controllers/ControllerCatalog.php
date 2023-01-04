@@ -33,7 +33,7 @@ class ControllerCatalog
             $this->_view->generate(array(
                 'categories' => $categories, 
                 'products' => $products,
-                'activeCategory' => $catName ?? 'Tous nos produits'
+                'activeCategory' => $catName ?? 'Tous nos produits',
             ));
         }
     }
