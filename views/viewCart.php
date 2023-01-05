@@ -39,7 +39,10 @@
                                 <div class="col-12">
                                 <span>Prix : <?php echo number_format($item->getProduct()->price(), 2, ',', ' ');?>€</span>
                                     <div class="input-group gap-5">
-                                        <label for="qte">Quantité : <?= $item->getQuantity() ?></label>
+                                        <label for="qte">Quantité : 
+                                          <span id="quantity-display"><?= $item->getQuantity() ?></span>
+                                        </label>
+
                                         <button type="submit" name="delete" class="btn btn-danger rounded" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>                            
@@ -55,6 +58,8 @@
     <?php endif; ?>
 
     <div class="col-md-4 mb-4">
+    <a href="<?= ROOT?>/catalog" class="text-end">Retourner aux produits</a>
+
     <div class="card mb-4">
       <div class="card-header py-3">
         <h5 class="mb-0">Résumé</h5>

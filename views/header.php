@@ -15,7 +15,7 @@
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
       <li class="nav-item">
@@ -55,20 +55,19 @@
           <i class="fas fa-user-alt icon-link"></i>
           <?= $_SESSION["username"] ?? NULL ?>
         </a>
-        <ul
+        <?php if (isset($_SESSION['username'])) : ?>
+          <ul
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">Tous nos produits</a>
+            <a class="dropdown-item" href="#">Profil</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Biscuits</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Fruits secs</a>
+            <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>
           </li>
         </ul>
+        <?php endif; ?>
       </div>
       <!-- Avatar -->
       <div class="dropdown">

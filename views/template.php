@@ -32,7 +32,7 @@
         <?php require("footer.php"); ?>   
 
         <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script type="text/javascript" src="<?=ROOT?>/static/js/mdb.min.js"></script>
         <!-- Custom scripts -->
         <script type="text/javascript"></script>
     </body>
