@@ -43,10 +43,11 @@
       </a>
 
       <!-- User -->
+      <?php if (isset($_SESSION['username'])) : ?>
       <div class="dropdown">
         <a
           class="link-secondary me-3 dropdown-toggle hidden-arrow"
-          href="<?=ROOT?>/login"
+          href="#"
           id="navbarDropdownMenuLink"
           role="button"
           data-mdb-toggle="dropdown"
@@ -55,7 +56,6 @@
           <i class="fas fa-user-alt icon-link"></i>
           <?= $_SESSION["username"] ?? NULL ?>
         </a>
-        <?php if (isset($_SESSION['username'])) : ?>
           <ul
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
@@ -67,34 +67,20 @@
             <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>
           </li>
         </ul>
-        <?php endif; ?>
       </div>
-      <!-- Avatar -->
-      <div class="dropdown">
+      <?php else : ?>
+        <div class="dropdown">
         <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
+          class="link-secondary me-3 hidden-arrow"
+          href="<?=ROOT?>/login"
           role="button"
-          data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
+          <i class="fas fa-user-alt icon-link"></i>
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
       </div>
+      <?php endif; ?>
+      
     </div>
     <!-- Right elements -->
   </div>
