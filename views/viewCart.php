@@ -80,7 +80,7 @@
           </li>
         </ul>
 
-        <a href="<?= ROOT ?>/payment" class="btn btn-primary btn-lg btn-block <?php echo empty($items) ? "disabled" : "" ?>">
+        <a href="<?= ROOT ?>/validation" class="btn btn-primary btn-lg btn-block <?php echo empty($items) ? "disabled" : "" ?>">
          Procéder à la commande
         </a>
       </div>

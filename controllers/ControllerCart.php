@@ -23,6 +23,8 @@ class ControllerCart
                     $product = $this->_productsManager->getProductById($id);
                     array_push($items, new CartItem($product->id(), $quantity, $product));
                 }
+            } else {
+                $_SESSION['cart'] = array();
             }
 
             // Paramètre la vue pour les categories

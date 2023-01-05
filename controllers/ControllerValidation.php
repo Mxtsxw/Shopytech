@@ -14,9 +14,9 @@ class ControllerValidation
         else
         {
             // Paramètre la vue pour les categories
-            $this->_view = new View('Order');
+            $this->_view = new View('OrderDetail');
             $this->_view->generate(array(
-                "total" => cartAmount()
+                "total" => $this->cartAmount()
             ));
         }
     }
