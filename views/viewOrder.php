@@ -72,59 +72,6 @@
             <input type="checkbox" class="form-check-input" id="save-info" wfd-id="id9">
             <label class="form-check-label" for="save-info">Créer un compte</label>
           </div>
-
-          <hr class="my-4">
-
-          <h4 class="mb-3">Paiement</h4>
-
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="" wfd-id="id10">
-              <label class="form-check-label" for="credit">Credit card</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="" wfd-id="id12">
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Nom de la carte</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required="" wfd-id="id13">
-              <small class="text-muted">Nom complet</small>
-              <div class="invalid-feedback">
-                Veillez indiquer le nom de la carte
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Numéro de carte</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required="" wfd-id="id14">
-              <div class="invalid-feedback">
-                Le numéro de carte est requis
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Date d'expiration</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required="" wfd-id="id15">
-              <div class="invalid-feedback">
-                Veuillez indiquer la date d'expiration
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required="" wfd-id="id16">
-              <div class="invalid-feedback">
-                Veuillez indiquer le code de sécurité
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4">
-
           <button class="w-100 btn btn-primary btn-lg" type="submit">Procéder au paiement</button>
         </form>
       </div>

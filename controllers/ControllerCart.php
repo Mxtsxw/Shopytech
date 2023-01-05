@@ -28,7 +28,24 @@ class ControllerCart
             // Paramètre la vue pour les categories
             $this->_view = new View('Cart');
             // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array('items' => $items));
+            $this->_view->generate(array(
+                'items' => $items,
+                'total' => $this->cartAmount()
+            ));
         }
+    }
+
+    private function cartAmount()
+    {
+        $this->_productsManager = new ProductsManager();
+
+        $total = 0;
+
+        foreach ($_SESSION['cart'] as $id => $quantity) {
+            $product = $this->_productsManager->getProductById($id);
+            $total += $product->price() * $quantity;
+        }
+        
+        return $total;
     }
 }

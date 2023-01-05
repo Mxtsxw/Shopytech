@@ -5,9 +5,9 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
-                <img class="card-img-top mb-5 mb-md-0" src="<?= ROOT ?>/static/img/<?= $product->image()?>" class="card-img-top" alt="<?= $product->name()?>">
-                </div>
-                <div class="col-md-6">
+                <img class="card-img-top mb-5 mb-md-0 fit-cover h-100" src="<?= ROOT ?>/static/img/<?= $product->image()?>" class="card-img-top" alt="<?= $product->name()?>">
+            </div>
+            <div class="col-md-6">
                 <div class="small mb-1">Catégorie</div>
                 <h1 class="display-5 fw-bolder"><?= $product->name()?></h1>
                 <div class="fs-5 mb-5">

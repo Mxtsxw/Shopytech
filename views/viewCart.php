@@ -37,8 +37,9 @@
                             <form action="<?=ROOT?>/handlers/cartHandler.php" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
                                 <input type="hidden" name="productId" value="<?= $item->getProduct()->id()?>">
                                 <div class="col-12">
+                                <span>Prix : <?php echo number_format($item->getProduct()->price(), 2, ',', ' ');?>€</span>
                                     <div class="input-group gap-5">
-                                        <label for="qte">Quantité : <?= $item->getProduct()->quantity() ?></label>
+                                        <label for="qte">Quantité : <?= $item->getQuantity() ?></label>
                                         <button type="submit" name="delete" class="btn btn-danger rounded" data-mdb-toggle="modal" data-mdb-target="#modal<?= $item->getProduct()->id() ?>">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>                            
@@ -62,7 +63,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
             Produits
-            <span>$53.98</span>
+            <span><?=number_format($total, 2, ',', ' ')?>€</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center px-0">
             Livraison
@@ -75,11 +76,11 @@
                 <p class="mb-0">(TVA incluse)</p>
               </strong>
             </div>
-            <span><strong>$53.98</strong></span>
+            <span><strong><?=number_format($total, 2, ',', ' ')?>€</strong></span>
           </li>
         </ul>
 
-        <a href="<?= ROOT ?>/payment" class="btn btn-primary btn-lg btn-block">
+        <a href="<?= ROOT ?>/payment" class="btn btn-primary btn-lg btn-block <?php echo empty($items) ? "disabled" : "" ?>">
          Procéder à la commande
         </a>
       </div>
