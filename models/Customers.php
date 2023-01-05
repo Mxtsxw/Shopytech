@@ -3,8 +3,8 @@ class Customers
 {
     // Les attributs de l'article
     private $_id;
-    private $_foreName;
-    private $_surName;
+    private $_forename;
+    private $_surname;
     private $_add1;
     private $_add2;
     private $_add3; //WTF? pk ya 3 adresses et ya que la 3ème qui est utilisée? autres compléments adresses? mais pk 3?
@@ -30,15 +30,15 @@ class Customers
     }
 
     //setters
-    public function setSurName($surName)
+    public function setSurname($surname)
     {
-        if(is_string($surName)) //userName est un string
-        $this ->_surName = $surName;
+        if(is_string($surname)) //username est un string
+        $this ->_surname = $surname;
     }
-    public function setForeName($foreName)
+    public function setForename($forename)
     {
-        if(is_string($foreName)) //userName est un string
-        $this ->_foreName = $foreName;
+        if(is_string($forename)) //username est un string
+        $this ->_forename = $forename;
     }
 
     public function setId($id)
@@ -103,13 +103,13 @@ class Customers
     {
         return $this->_postcode;
     }
-    public function surName()
+    public function surname()
     {
-        return $this->_surName;
+        return $this->_surname;
     }
-    public function foreName()
+    public function forename()
     {
-        return $this->_foreName;
+        return $this->_forename;
     }
     public function phone()
     {

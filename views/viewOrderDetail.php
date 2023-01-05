@@ -3,69 +3,67 @@
     <div class="card mb-4">
       <div class="card-header py-3">
         <h5 class="mb-0">Détail de la commande</h5>
-      </div>
-      <div class="card-body">
-      <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-6">
-          <label for="validationCustom01" class="form-label">Prénom</label>
-          <input type="text" class="form-control" id="validationCustom01" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="col-md-6">
-          <label for="validationCustom02" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="validationCustom02" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <label for="validationCustom01" class="form-label">Email</label>
-          <input type="email" class="form-control" id="validationCustom01" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">Ville</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
-          <div class="invalid-feedback">
-            Please provide a valid city.
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">Région</label>
-          <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">Choose...</option>
-            <option>...</option>
-          </select>
-          <div class="invalid-feedback">
-            Please select a valid state.
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Code postal</label>
-          <input type="text" class="form-control" id="validationCustom05" required>
-          <div class="invalid-feedback">
-            Please provide a valid zip.
-          </div>
-        </div>
-        <div class="col-12">
     </div>
-    
+      <div class="card-body">
+        
+        <form class="row g-3 needs-validation" action="<?=ROOT?>/handlers/orderInformationHandler.php" method="POST" novalidate>
+
+          <div class="col-md-6">
+            <label for="input-firstname" class="form-label">Prénom</label>
+            <input type="text" name="firstname" class="form-control" id="input-firstname" value="" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="input-lastname" class="form-label">Nom</label>
+            <input type="text" name="lastname" class="form-control" id="input-lastname" value="" required>
+          </div>
+
+          <div class="col-md-12">
+            <label for="input-email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="input-email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <div class="valid-feedback">
+              Email non valide
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="input-add1" class="form-label">Adresse</label>
+            <input type="text" name="add1" class="form-control" id="input-add1" value="" required>
+            <div class="invalid-feedback">
+              Veuillez indiquer une adresse
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="input-add2" class="form-label">Complément d'adresse <span class="muted">(facultatif)</span></label>
+            <input type="text"name="add2" class="form-control" id="input-add2" value="">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="input-city" class="form-label">Ville</label>
+            <input type="text" name="city" class="form-control" id="input-city" required>
+          </div>
+          
+          <div class="col-md-3">
+            <label for="input-zip" class="form-label">Code postal</label>
+            <input type="text" name="zip" class="form-control" id="input-zip" pattern="(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?" required>
+          </div>
+
+          <div class="col-md-3">
+            <label for="input-phone" class="form-label">Téléphone</label>
+            <input type="tel" name="phone" class="form-control" id="input-phone" required>
+          </div>
+          
           <hr class="my-4">
     
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address" wfd-id="id8" checked>
+            <input type="checkbox" name="same-adress" class="form-check-input" id="same-address" wfd-id="id8" checked>
             <label class="form-check-label" for="same-address">Utiliser l'adresse de livraison pour la facture</label>
           </div>
           
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info" wfd-id="id9">
-            <label class="form-check-label" for="save-info">Créer un compte</label>
+            <input type="checkbox" name="create-account" class="form-check-input" id="create-account" wfd-id="id9">
+            <label class="form-check-label" for="create-account">Créer un compte</label>
           </div>
           
           <div class="form-check">
@@ -73,20 +71,25 @@
             <label class="form-check-label" for="invalidCheck">
               Accepter les conditions générales
             </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
           </div>
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Procéder au paiement</button>
+          
+          <!-- Message d'erreur -->
+          <?php if(isset($_SESSION['error_message'])): ?>
+            <p class="text-danger mt-3"><?=$_SESSION['error_message']?></p>
+            <?php unset($_SESSION['error_message']); ?>
+          <?php endif; ?>
+
         </form>
       </div>
     </div>
   </div>
 
   <!-- ---------------------- -->
+
   <div class="col-md-4 mb-4">
-  <a href="<?= ROOT?>/cart" class="text-end">Retourner en arrière</a>
+    <a href="<?= ROOT?>/cart" class="text-end">Retourner en arrière</a>
     <div class="card mb-4">
       <div class="card-header py-3">
         <h5 class="mb-0">Résumé</h5>
@@ -117,6 +120,7 @@
   </div>
 </div>
 
+<!-- ------------ -->
 
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields

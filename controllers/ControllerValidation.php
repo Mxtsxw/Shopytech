@@ -7,18 +7,29 @@ class ControllerValidation
 
     public function __construct($url)
     {
-        if (isset($url) && count($url)>1)
+        if (isset($url) && count($url)>2)
         {
             throw new Exception('Page introuvable');
         }
+        elseif (count($url)==2){
+
+            if ($url[1] == "payment") {
+                $this->_view = new View('payment');
+                
+            } elseif ($url[1] == "confirmed") {
+                $this->_view = new View('OrderConfirmed');
+            }
+            else {
+                throw new Exception('Page introuvable');
+            }
+        }
         else
         {
-            // Paramètre la vue pour les categories
             $this->_view = new View('OrderDetail');
-            $this->_view->generate(array(
-                "total" => $this->cartAmount()
-            ));
         }
+        $this->_view->generate(array(
+            "total" => $this->cartAmount()
+        ));
     }
 
     private function cartAmount()
