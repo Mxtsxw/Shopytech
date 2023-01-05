@@ -29,6 +29,9 @@
                 <?php else: ?>
                     <p class="text-danger">Ce produit n'est plus disponible.</p>
                 <?php endif; ?>
+                <?php if (isset($_SESSION['cart'][$product->id()])): ?>
+                    <p class="text-success mt-4">Ce produit est déjà dans votre panier.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

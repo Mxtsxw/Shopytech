@@ -51,7 +51,7 @@
 
           <div class="col-md-3">
             <label for="input-phone" class="form-label">Téléphone</label>
-            <input type="tel" name="phone" class="form-control" id="input-phone" required>
+            <input type="tel" name="phone" class="form-control" id="input-phone" pattern="^[0-9]{10}$" required>
           </div>
           
           <hr class="my-4">

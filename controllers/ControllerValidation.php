@@ -11,13 +11,25 @@ class ControllerValidation
         {
             throw new Exception('Page introuvable');
         }
+
+        else if (!(isset($_SESSION['cart'])) || empty($_SESSION['cart']))
+        {
+            header('Location: ' . ROOT .'/cart');
+            exit();
+        }
+
         elseif (count($url)==2){
 
             if ($url[1] == "payment") {
                 $this->_view = new View('payment');
-                
-            } elseif ($url[1] == "confirmed") {
+                $this->_view->generate(array(
+                    "total" => $this->cartAmount()
+                ));
+            } elseif ($url[1] == "confirmed" && $_SESSION['status'] == 1) {
                 $this->_view = new View('OrderConfirmed');
+                $this->_view->generate(array());
+                unset($_SESSION['cart']);
+                $_SESSION['status'] = 0;
             }
             else {
                 throw new Exception('Page introuvable');
@@ -26,10 +38,10 @@ class ControllerValidation
         else
         {
             $this->_view = new View('OrderDetail');
+            $this->_view->generate(array(
+                "total" => $this->cartAmount()
+            ));
         }
-        $this->_view->generate(array(
-            "total" => $this->cartAmount()
-        ));
     }
 
     private function cartAmount()

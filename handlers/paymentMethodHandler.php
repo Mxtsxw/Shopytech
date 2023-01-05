@@ -11,6 +11,7 @@ if(isset($_POST['paymentMethod']))
         if($_POST['method'] == 'cheque')
         {
             $method = 'cheque';
+            $_SESSION['status'] = 1;
         }
         // Méthode de paiement par Paypal
         else if($_POST['method'] == 'paypal')
