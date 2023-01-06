@@ -21,7 +21,7 @@
           <div class="col-md-12">
             <label for="input-email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" id="input-email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-            <div class="valid-feedback">
+            <div class="invalid-feedback">
               Email non valide
             </div>
           </div>

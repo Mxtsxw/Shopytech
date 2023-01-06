@@ -1,5 +1,6 @@
 <?php
 require_once('views/view.php');
+require_once('models/Customers.php');
 class ControllerProfile
 {
     private $_view;
@@ -19,7 +20,9 @@ class ControllerProfile
         {
             // Paramètre la vue pour les categories
             $this->_view = new View('profile');
-            $this->_view->generate(array());
+            $this->_view->generate(array(
+                'customer' => unserialize($_SESSION['customerObject']),
+            ));
         }
     }
     

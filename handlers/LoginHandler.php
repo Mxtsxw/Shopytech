@@ -28,17 +28,17 @@ $password = $_POST['password'];
 if ($loginsManager->checkLogin($username, $password))
 {
     $user = $loginsManager->getLogin($username, $password);
-    $userObj = $customersManager->getCustomerById($user->customerId());
-    var_dump($userObj);
+    $customerObj = $customersManager->getCustomerById($user->customerId());
 
     // Création des variables de session
     $_SESSION['username'] = $user->username();
     $_SESSION['customerId'] = $user->customerId();
     $_SESSION['connected'] = true;
+    $_SESSION['customerObject'] = serialize($customerObj);
 
     // Redirection vers la page d'accueil
-    // header('Location: ../');
-    // exit();
+    header('Location: ../');
+    exit();
 }
 else
 {
