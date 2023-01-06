@@ -67,4 +67,13 @@ class Logins
     {
         return $this->_password;
     }
+
+    //méthode pour ajouter un utilisateur
+    public function addUser($id,$customerId,$userName,$password) 
+    {
+        //mise à jour base de donnée
+        $pdo= new PDO('mysql:host=localhost; dbname=web4shop; charset=utf8', 'root','');
+        $stmt = $pdo -> prepare('INSERT INTO Logins(id, customerId, userName, mdp) VALUES (?, ?, ?, ?)');
+        $stmt->execute([$id,$customerId,$userName,$password]);
+    }
 }

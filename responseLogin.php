@@ -46,12 +46,19 @@ if($varCo==0) //connexion
     }
     else
     {
-    header('Location:  ./logins');
+    header('Location:  ./logins?erreur=1');
     }
 }
 else  //inscription
 {
-    header('Location:  ./logins');
+    //génération des id
+    $id = "SELECT mas(id) FROM logins";
+    $id=$id +1;
+    $customerId=$id;
+
+    //ajout de l'utilisateur
+    addUser($id,$customerId,$userName,$password);
+    header('Location:  ./logins?varco=100');
 }
     
 mysqli_close($bdd); // fermer la connexion

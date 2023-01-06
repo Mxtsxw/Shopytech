@@ -53,7 +53,10 @@
           aria-expanded="false"
         >
           <i class="fas fa-user-alt"></i>
-          <?= $_SESSION["username"]; ?>
+          <?php 
+          if (isset($_SESSION["username"])){
+            echo '= $_SESSION["username"]';}
+          ?>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"

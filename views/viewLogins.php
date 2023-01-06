@@ -54,10 +54,41 @@
             <p>Vous n'avez pas de compte? <a href="<?=ROOT?>/logins?varCo=<?php echo (1)?>" class="link-info">cliquez ici</a></p>
           <?php elseif ($varCo=="burger"): ?>
             <!-- easter egg -->
-            <ul>
+            <ul class="list-unstyled">
               <li><h1>Burgers? nous ne vendons pas de burger ici monsieur!</h1></li>
               <li><img src="./static/img/burger.PNG" alt="Non-burger" style="object-fit: cover; object-position: left;"></li>
               <li><p>Vous ne voulez plus de burgers? <a href="<?=ROOT?>/logins?varCo=<?php echo (0)?>" class="link-info">cliquez ici</a></p></li>
+            </ul>
+          <!-- inscription réussie -->
+          <?php elseif ($varCo=="100"): ?>
+            <ul class="list-unstyled">
+            <?php
+              if(isset($_SESSION["username"])){
+              $username = $_GET['username'];
+              echo '<li><h1>Inscription réussie</h1></li>' ;
+              echo '<li><p>Bienvenue, '.$username.'</p></li>';}
+              else{ 
+                echo '<li><h1>Erreur Inscription</h1></li>';
+                echo "<p style='color:red'>Erreur lors de la création du compte</p>";
+                echo "<li><p>Pour réessayer <a href=\"./logins?varCo=1\" class=\"link-info\">cliquez ici</a></p></li>";
+              }
+            ?>
+            </ul>
+
+          <!-- connexion réussie -->
+          <?php elseif ($varCo=="101"): ?>
+            <ul class="list-unstyled">
+            <?php
+              if(isset($_SESSION["username"])){
+              $username = $_GET['username'];
+              echo '<li><h1>Connexion réussie</h1></li>' ;
+              echo '<li><p>Bienvenue, '.$username.'</p></li>';}
+              else{ 
+                echo '<li><h1>Erreur Connexion</h1></li>';
+                echo "<p style='color:red'>oups, une erreur s'est produite lors de votre connexion</p>";
+                echo "<li><p>Pour réessayer <a href=\"./logins?varCo=0\" class=\"link-info\">cliquez ici</a></p></li>";
+              }
+            ?>
             </ul>
           <?php else: ?>
             <!-- pour les inscriptions -->
