@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once('../Models/Model.php');
+require_once('../Models/DeliveryAddresses.php');
 
 // Si toutes les variables requis sont passé en POST
 if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['add1']) && isset($_POST['add2']) && isset($_POST['city']) && isset($_POST['zip']) && isset($_POST['phone'])) {
@@ -17,6 +20,22 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                     
                     // Met en place variable de session status pour le formulaire
                     $_SESSION['status'] = 1;
+
+                    // Créer un nouvel objet DeliveryAddresses
+                    $deliveryAddress = new DeliveryAddresses([
+                        'firstname' => $_POST['firstname'],
+                        'lastname' => $_POST['lastname'],
+                        'email' => $_POST['email'],
+                        'add1' => $_POST['add1'],
+                        'add2' => $_POST['add2'],
+                        'city' => $_POST['city'],
+                        'postcode' => $_POST['zip'],
+                        'phone' => $_POST['phone']
+                    ]);
+
+                    // Met en place variable de session pour l'objet DeliveryAddresses
+                    $_SESSION['deliveryAddress'] = serialize($deliveryAddress);
+
                 }
             }
         }

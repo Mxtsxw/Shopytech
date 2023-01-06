@@ -2,46 +2,56 @@
 
 class LoginsManager extends Model
 {
+    /**
+     * Récupère tous les utilisateurs
+     * @return array
+     */
     public function getLogins() 
     {
-        // Nom de la table ; objet créé
         return $this->getAll('logins','Logins'); 
     }
 
+    /**
+     * Récupère un utilisateur par ses identifiants
+     * La méthode est censée vérifiér le chiffrement du mot de passe
+     * @param string $username
+     * @param string $password
+     * @return Logins
+     * @throws Exception
+     */
     public function getLogin($username, $password) 
     {
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM logins WHERE username = :username AND password = :password');
         $req ->execute(array(
             'username' => $username,
             'password' => $password
         ));
 
-        // Retourne le résultat
         $data = $req ->fetch(PDO::FETCH_ASSOC);
 
-        // Si le résultat est vide, on lève une exception
         if ($data == false) {
-            throw new Exception("Utilisateur ou mot de passe incorrect");   // lève une exception
+            throw new Exception("Utilisateur ou mot de passe incorrect");
         }
 
         return new Logins($data);
     }
 
-    // Vérifie si l'utilisateur existe
+    /**
+     * Vérifie si un utilisateur existe
+     * @param string $username
+     * @param string $password
+     * @return bool
+     */
     public function checkLogin($username, $password) 
     {
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM logins WHERE username = :username AND password = :password');
         $req ->execute(array(
             'username' => $username,
             'password' => $password
         ));
 
-        // Retourne le résultat
         $data = $req ->fetch(PDO::FETCH_ASSOC);
 
-        // Si le résultat est vide, on lève une exception
         if ($data == false) {
             return false;
         }

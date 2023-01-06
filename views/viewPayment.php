@@ -7,7 +7,7 @@
         <div class="card-body">
         
             <form action="<?=ROOT?>/handlers/paymentMethodHandler.php" method="POST" class="row">
-        
+                <input type="hidden" name="total" value="<?= $total ?>" >
                 <div class="col-12">
                     <label>
                         <input type="radio" name="method" value="cheque" checked class="card-input-element" />
