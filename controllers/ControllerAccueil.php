@@ -1,37 +1,49 @@
 <?php
 require_once('views/view.php');
+
 class ControllerAccueil
 {
-    private $_productsManager; //ce seras un nv instance de la classe ProductsManager
+    private $_productsManager;
     private $_view;
 
+    /**
+     * Route : Accueil
+     * URL : '/' | '/accueil' | 'index.php' 
+     * @param $url
+     * @throws Exception
+     */
     public function __construct($url)
     {
-        // Un seul paramètre autorisé pour la page d'accueil
-        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
+
+        // 1) Vérifie la validité de l'url
+        if (isset($url) && count($url)>1)
         {
             throw new Exception('Page introuvable');
         }
-        else
-        {
-            // Récupère les informations nécessaires
-            $products = $this->products();
 
-            // Paramètre la vue pour l'accueil
-            $this->_view = new View('Accueil');
-            // Envoie à la vue les données [products] pour la génération de la page d'accueil
-            $this->_view->generate(array(
-                'products' => $products,
-            ));
-        }
+        // 2) Paramètre la vue
+        $this->_view = new View('Accueil');
+
+        // 3) Initialisation des données envoyées à la vue
+        $data = array();
+
+        // 4) Récupère les informations nécessaires
+        $products = $this->products();
+
+        // 5) Charge les données
+        $data['products'] = $products;
+
+        // 6) Génère la vue
+        $this->_view->generate($data);
     }
     
-    // Retourn les produits
+    /**
+     * Récupère la liste des articles
+     */
     private function products()
     {
         $this->_productsManager = new ProductsManager();
 
-        // Récupère la liste des articles
         $products = $this->_productsManager->getProducts();
 
         return $products;
