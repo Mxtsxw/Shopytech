@@ -1,7 +1,7 @@
 <?php
 class Categories
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Categories
     private $_id;
     private $_name;
 
@@ -10,7 +10,8 @@ class Categories
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -21,27 +22,27 @@ class Categories
         }
     }
 
-    //setters
-    public function setName($name)
-    {
-        if(is_string($name)) //userName est un string
-        $this ->_name = $name;
-    }
-
+    // -- Setters --
     public function setId($id)
     {
         $id=(int) $id;
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if ($id > 0) 
+            $this ->_id = $id;
     }
 
-    //getters
+    public function setName($name)
+    {
+        $this ->_name = (string) $name;
+    }
+
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
+
     public function name()
     {
-        return $this->_userName;
+        return $this->_name;
     }
 }

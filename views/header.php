@@ -15,90 +15,71 @@
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
       <li class="nav-item">
-          <a class="nav-link" href="<?= ROOT?>/">Accueil</a>
+          <a class="nav-link <?= $activeTab=="Accueil" ? "active" : "" ?>" href="<?= ROOT?>/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Catalogue</a>
+          <a class="nav-link" href="<?=ROOT?>/catalog">Catalogue</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contacter">Contact</a>
+          <a class="nav-link" href="#footer">Contact</a>
         </li>
       </ul>
       <!-- Left links -->
-    </div>
+    </div> 
     <!-- Collapsible wrapper -->
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- Icon -->
       <a class="link-secondary me-3" href="<?= ROOT ?>/cart">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-shopping-cart icon-link"></i>
       <?php if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
         <span class="badge rounded-pill badge-notification bg-danger"><?= count($_SESSION['cart']) ?></span>
       <?php endif; ?>
       </a>
 
       <!-- User -->
+      <?php if (isset($_SESSION['username'])) : ?>
       <div class="dropdown">
         <a
           class="link-secondary me-3 dropdown-toggle hidden-arrow"
-          href="./Logins"
+          href="#"
           id="navbarDropdownMenuLink"
           role="button"
           data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fas fa-user-alt"></i>
-          <?php 
-          if (isset($_SESSION["username"])){
-            echo '= $_SESSION["username"]';}
-          ?>
+          <i class="fas fa-user-alt icon-link"></i>
+          <?= $_SESSION["username"] ?? NULL; ?>
         </a>
-        <ul
+          <ul
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">Tous nos produits</a>
+            <a class="dropdown-item" href="#">Profil</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Biscuits</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Fruits secs</a>
+            <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>
           </li>
         </ul>
       </div>
-      <!-- Avatar -->
-      <div class="dropdown">
+      <?php else : ?>
+        <div class="dropdown">
         <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
+          class="link-secondary me-3 hidden-arrow"
+          href="<?=ROOT?>/login"
           role="button"
-          data-mdb-toggle="dropdown"
           aria-expanded="false"
         >
+          <i class="fas fa-user-alt icon-link"></i>
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
       </div>
+      <?php endif; ?>
     </div>
     <!-- Right elements -->
   </div>

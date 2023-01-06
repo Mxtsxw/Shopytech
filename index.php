@@ -1,5 +1,6 @@
 <?php
 session_start();    // Démarre la session
+$_SESSION['status'] ?? $_SESSION['status'] = 0;
 
 require_once('./config.php');
 
@@ -15,3 +16,6 @@ $router->routeReq();        // Request la route correspondante
 // 3) En fonction du paramètre URL le bon controlleur est appelé (Si aucun paramètre n'est passé : Accueil)
 // 4) Le controlleur se charge d'appeller la classe View avec en paramètre le nom de la vue correspondante
 // 5) View génère la bonne vue à l'aide des fichiers view*Action*
+
+
+?>

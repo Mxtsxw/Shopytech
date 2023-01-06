@@ -1,24 +1,25 @@
 <?php
 class Customers
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Customers
     private $_id;
-    private $_foreName;
-    private $_surName;
+    private $_forename;
+    private $_surname;
     private $_add1;
     private $_add2;
-    private $_add3; //WTF? pk ya 3 adresses et ya que la 3ème qui est utilisée? autres compléments adresses? mais pk 3?
+    private $_add3;         // Correspond à la ville
     private $_postcode;
     private $_phone;
     private $_email;
-    private $_registered; //doit vouloir signifier nombre de fois que le customer s'est connecté
+    private $_registered;
 
     // Constructeur
     public function __construct(array $data)
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -29,110 +30,108 @@ class Customers
         }
     }
 
-    //setters
-    public function setSurName($surName)
-    {
-        if(is_string($surName)) //userName est un string
-        $this ->_surName = $surName;
-    }
-    public function setForeName($foreName)
-    {
-        if(is_string($foreName)) //userName est un string
-        $this ->_foreName = $foreName;
-    }
-
+    // -- Setters --
     public function setId($id)
     {
         $id=(int) $id;
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if ($id > 0) 
+            $this ->_id = $id;
     }
 
-    public function seRegistered($registered)
+    public function setForname($forename)
     {
-        $id=(int) $registered; //on vérifie juste si int
-        $this ->_registered = $registered;
+        $this ->_forename = (string) $forename;
     }
 
-    public function setPostcode($postcode)
+    public function setSurname($surname)
     {
-        $postcode=(int) $postcode;
-        if ($postcode > 0) //ATTENTION très peu de sens ici besoin de plus de sécurité (code postal)
-        $this ->_postcode = $postcode;
+        if(is_string($surname)) //username est un string
+        $this ->_surname = (string) $surname;
     }
-
-    public function setPhone($phone)
-    {
-        $phone=(int) $phone;
-        if ($phone > 0) //ATTENTION très peu de sens ici besoin de plus de sécurité (numéro de téléphone)
-        $this ->_phone = $phone;
-    }
-
+    
     public function setEmail($email)
     {
-        if(is_string($email)) //email est un string ATTENTION vérifier @? (adresse mail)
-        $this->_email =  $email;
+        $this->_email = (string) $email;
     }
 
     public function setAdd1($add1)
     {
-        if(is_string($add1))
-        $this->_add1 =  $add1;
+        $this->_add1 = (string) $add1;
     }
 
     public function setAdd2($add2)
     {
-        if(is_string($add2))
-        $this->_add2 =  $add2;
+        $this->_add2 = (string) $add2;
     }
 
     public function setAdd3($add3)
     {
-        if(is_string($add3))
-        $this->_add3 =  $add3;
+        $this->_add3 = (string) $add3;
     }
 
-    
+    public function setPostcode($postcode)
+    {
+        $this ->_postcode = (int) $postcode;
+    }
 
-    //getters
+    public function setPhone($phone)
+    {
+        $this ->_phone = $phone;
+    }
+
+    public function setRegistered($registered)
+    {
+        $this ->_registered = (int) $registered;
+    }
+
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
-    public function postcode()
+
+    public function forename()
     {
-        return $this->_postcode;
+        return $this->_forename;
     }
-    public function surName()
+
+    public function surname()
     {
-        return $this->_surName;
+        return $this->_surname;
     }
-    public function foreName()
-    {
-        return $this->_foreName;
-    }
-    public function phone()
-    {
-        return $this->_phone;
-    }
-    public function email()
-    {
-        return $this->_email;
-    }
-    public function registered()
-    {
-        return $this->_registered;
-    }
+
     public function add1()
     {
         return $this->_add1;
     }
+
     public function add2()
     {
         return $this->_add2;
     }
+
     public function add3()
     {
         return $this->_add3;
+    }
+
+    public function postcode()
+    {
+        return $this->_postcode;
+    }
+    
+    public function email()
+    {
+        return $this->_email;
+    }
+
+    public function phone()
+    {
+        return $this->_phone;
+    }
+
+    public function registered()
+    {
+        return $this->_registered;
     }
 }

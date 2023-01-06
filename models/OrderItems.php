@@ -1,7 +1,7 @@
 <?php
 class OrderItems
 {
-    // Les attributs de l'article
+    // Les attributs de la classe OrderItems
     private $_id;
     private $_orderId;
     private $_productId;
@@ -12,7 +12,8 @@ class OrderItems
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -23,44 +24,47 @@ class OrderItems
         }
     }
 
-    //setters
+    // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
         if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+            $this ->_id = (int) $id;
     }
-    public function setOrderId($orderId)
+
+    public function setOrder_id($orderId)
     {
-        $orderId=(int) $orderId;
         if ($orderId > 0)
-        $this ->_orderId = $orderId;
+            $this ->_orderId = (int) $orderId;
     }
-    public function setProductId($productId)
+
+    public function setProduct_id($productId)
     {
-        $productId=(int) $productId;
         if ($productId > 0)
-        $this ->_productId = $productId;
+            $this ->_productId = (int) $productId;
     }
+
     public function setQuantity($quantity)
     {
-        $quantity=(int) $quantity;
         if ($quantity > 0)
-        $this ->_quantity = $quantity;
+            $this ->_quantity = (int) $quantity;
     }
-    //getters
+
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
-    public function productId()
-    {
-        return $this->_productId;
-    }
+
     public function orderId()
     {
         return $this->_orderId;
     }
+
+    public function productId()
+    {
+        return $this->_productId;
+    }
+    
     public function quantity()
     {
         return $this->_quantity;

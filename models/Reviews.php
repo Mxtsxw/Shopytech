@@ -1,7 +1,7 @@
 <?php
 class Reviews
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Reviews
     private $_idProduct;
     private $_nameUser;
     private $_photoUser;
@@ -14,7 +14,8 @@ class Reviews
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -25,72 +26,66 @@ class Reviews
         }
     }
 
-    //setters
-    public function setNameUser($nameUser)
+    // -- Setters --
+    public function setId_product($idProduct)
     {
-        if(is_string($nameUser)) //nameUser est un string
-        $this ->_nameUser = $nameUser;
+        if ($idProduct > 0) 
+            $this ->_idProduct = (int) $idProduct;
     }
 
-    public function setIdProduct($idProduct)
+    public function setName_user($nameUser)
     {
-        $idProduct=(int) $idProduct;
-        if ($idProduct > 0) 
-        $this ->_idProduct = $idProduct;
+        $this ->_nameUser = (string) $nameUser;
+    }
+
+    public function setPhoto_user($photoUser)
+    {
+        $this->_photoUser = (string) $photoUser;
     }
 
     public function setStars($stars)
     {
-        $stars=(int) $stars;
-        if ($stars > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_stars = $stars;
-    }
-
-    public function setPhotoUser($photoUser)
-    {
-        if(is_string($photoUser)) //photoUser est un string
-        $this->_photoUser =  $photoUser;
+        $this ->_stars = (int) $stars;
     }
 
     public function setTitle($title)
     {
-        if(is_string($title)) //title est un string
-        $this->_title =  $title;
+        $this->_title = (string) $title;
     }
 
     public function setDescription($description)
     {
-        if(is_string($description)) //description est un string
-        $this->_description =  $description;
+        $this->_description = (string) $description;
     }
 
-    //getters
+    // -- Getters --
     public function idProduct()
     {
         return $this->_idProduct;
     }
-    public function customerId()
-    {
-        return $this->_customerId;
-    }
+
     public function nameUser()
     {
         return $this->_nameUser;
     }
-    public function description()
+    
+    public function photoUser()
     {
-        return $this->_description;
+        return $this->_photoUser;
     }
-    public function title()
-    {
-        return $this->_title;
-    }
+
     public function stars()
     {
         return $this->_stars;
     }
-    public function photoUser()
+
+    public function title()
     {
-        return $this->_photoUser;
+        return $this->_title;
+    }
+
+    public function description()
+    {
+        return $this->_description;
     }
 }

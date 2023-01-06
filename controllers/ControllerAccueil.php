@@ -20,7 +20,9 @@ class ControllerAccueil
             // Paramètre la vue pour l'accueil
             $this->_view = new View('Accueil');
             // Envoie à la vue les données [products] pour la génération de la page d'accueil
-            $this->_view->generate(array('products' => $products));
+            $this->_view->generate(array(
+                'products' => $products,
+            ));
         }
     }
     

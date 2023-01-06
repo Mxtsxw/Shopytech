@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" src="./static/img/LogoPage.png">
-        <link rel="stylesheet" href="./static/css/custom.css">
+        
+        <link rel="stylesheet" href="<?= ROOT ?>/static/css/custom.css">
+        <link rel="icon" src="<?= ROOT ?>/static/img/LogoPage.png">
 
         <title><?=$t?></title>
 
@@ -16,14 +17,14 @@
         <!-- MDB -->
         <link rel="stylesheet" href="<?= ROOT ?>/static/css/mdb.min.css" />
     </head>
-    <body class="h-100">
+    <body class="h-100 d-flex flex-column">
         
         <!-- HEADER -->
         <header>
             <?php require("header.php"); ?>
         </header>
         <!-- GENERATED CONTENT -->
-        <main class="container my-4">
+        <main class="container my-4 flex-grow-1">
             <?=$content?>
         </main>
         
@@ -31,7 +32,7 @@
         <?php require("footer.php"); ?>   
 
         <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script type="text/javascript" src="<?=ROOT?>/static/js/mdb.min.js"></script>
         <!-- Custom scripts -->
         <script type="text/javascript"></script>
     </body>

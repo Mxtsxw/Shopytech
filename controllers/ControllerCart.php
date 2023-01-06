@@ -7,7 +7,7 @@ class ControllerCart
 
     public function __construct($url)
     {
-        if (isset($url) && count(array($url))>1) // -- INFO : Source d'erreur à vérifier
+        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
         {
             throw new Exception('Page introuvable');
         }
@@ -15,16 +15,39 @@ class ControllerCart
         {
             $this->_productsManager = new ProductsManager();
             $items = array();
-            foreach ($_SESSION['cart'] as $id => $quantity)
+            
+            if (isset($_SESSION['cart'])) 
             {
-                $product = $this->_productsManager->getProductById($id);
-                array_push($items, new CartItem($product->id(), $quantity, $product));
+                foreach ($_SESSION['cart'] as $id => $quantity)
+                {
+                    $product = $this->_productsManager->getProductById($id);
+                    array_push($items, new CartItem($product->id(), $quantity, $product));
+                }
+            } else {
+                $_SESSION['cart'] = array();
             }
 
             // Paramètre la vue pour les categories
             $this->_view = new View('Cart');
             // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array('items' => $items));
+            $this->_view->generate(array(
+                'items' => $items,
+                'total' => $this->cartAmount()
+            ));
         }
+    }
+
+    private function cartAmount()
+    {
+        $this->_productsManager = new ProductsManager();
+
+        $total = 0;
+
+        foreach ($_SESSION['cart'] as $id => $quantity) {
+            $product = $this->_productsManager->getProductById($id);
+            $total += $product->price() * $quantity;
+        }
+        
+        return $total;
     }
 }

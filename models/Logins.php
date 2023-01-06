@@ -1,10 +1,10 @@
 <?php
 class Logins
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Logins
     private $_id;
     private $_customerId;
-    private $_userName;
+    private $_username;
     private $_password;
 
     // Constructeur
@@ -12,7 +12,8 @@ class Logins
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -23,46 +24,45 @@ class Logins
         }
     }
 
-    //setters
-    public function setUserName($userName)
-    {
-        if(is_string($userName)) //userName est un string
-        $this ->_userName = $userName;
-    }
-
+    // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if ($id > 0) 
+            $this ->_id = (int) $id;
     }
 
-    public function setCustomerId($customerId)
+    public function setUsername($username)
     {
-        $customerId=(int) $customerId;
-        if ($customerId > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_customerId = $customerId;
+        $this ->_username = (string) $username;
+    }
+
+    public function setCustomer_id($customerId)
+    {
+        if ($customerId > 0)
+            $this ->_customerId = (int) $customerId;
     }
 
     public function setPassword($password)
     {
-        if(is_string($password)) //password est un string
-        $this->_password =  $password;
+        $this->_password = (string) $password;
     }
 
-    //getters
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
+
     public function customerId()
     {
         return $this->_customerId;
     }
-    public function userName()
+
+    public function username()
     {
-        return $this->_userName;
+        return $this->_username;
     }
+    
     public function password()
     {
         return $this->_password;
