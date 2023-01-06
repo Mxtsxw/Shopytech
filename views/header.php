@@ -80,7 +80,6 @@
         </a>
       </div>
       <?php endif; ?>
-      
     </div>
     <!-- Right elements -->
   </div>

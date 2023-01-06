@@ -1,7 +1,7 @@
 <?php
 class Orders
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Orders
     private $_id;
     private $_customerId;
     private $_registered;
@@ -18,7 +18,8 @@ class Orders
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -29,102 +30,101 @@ class Orders
         }
     }
 
-    //setters
-    public function setCustomerId($customerId)
+    // -- Setters --
+    public function setId($id)
     {
-        $customerId=(int) $customerId;
-        if($customerId>0)
-        $this ->_customerId = $customerId;
+        if ($id > 0) 
+            $this ->_id = (int) $id;
+    }
+
+    public function setCustomer_id($customerId)
+    {
+        if($customerId > 0)
+            $this ->_customerId = (int) $customerId;
     }
 
     public function setRegistered($registered)
     {
-        $registered=(int) $registered;
-        if($registered>0)
-        $this ->_registered = $registered;
+        if($registered > 0)
+            $this ->_registered = (int) $registered;
     }
 
-    public function setTotal($total)
+    public function setDelivery_add_id($deliveryAddId)
     {
-        $total=(double) $total; //est un double
-        if($total>0)
-        $this ->_total = $total;
+        if ($deliveryAddId > 0)
+            $this ->_deliveryAddId = (int) $deliveryAddId;
+    }
+    
+    public function setPayment_type($paymentType)
+    {
+        $this->_paymentType = (string) $paymentType;
+    }
+
+    public function setDate($date)
+    { 
+        $this->_date = $date;
     }
 
     public function setStatus($status)
     {
-        $status=(int) $status;
         if ($status > 0)
-        $this ->_status = $status;
-    }
-    
-    public function setPaymentType($paymentType)
-    {
-        if(is_string($paymentType)) //payment est un string
-        $this->_paymentType =  $paymentType;
+            $this ->_status = (int) $status;
     }
 
     public function setSession($session)
     {
-        if(is_string($session)) //payment est un string
-        $this->_session =  $session;
+        $this->_session = (string) $session;
     }
 
-    public function setId($id)
+    public function setTotal($total)
     {
-        $id=(int) $id;
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if($total > 0)
+            $this ->_total =(double) $total;
     }
 
-    public function setDeliveryAddId($deliveryAddId)
-    {
-        $deliveryAddId=(int) $deliveryAddId;
-        if ($deliveryAddId > 0)
-        $this ->_deliveryAddId = $deliveryAddId;
-    }
-
-    public function setDate($date)
-    { //pas besoin de vérifications
-        $this->_date =  $date;
-    }
-
-    //getters
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
-    public function date()
-    {
-        return $this->_date;
-    }
+    
     public function customerId()
     {
         return $this->_customerId;
     }
+
     public function registered()
     {
         return $this->_registered;
     }
+
     public function deliveryAddId()
     {
         return $this->_deliveryAddId;
     }
+
     public function paymentType()
     {
         return $this->_paymentType;
     }
+
+    public function date()
+    {
+        return $this->_date;
+    }
+
     public function status()
     {
         return $this->_status;
     }
+
     public function session()
     {
         return $this->_session;
     }
+
     public function total()
     {
         return $this->_total;
     }
-    
 }

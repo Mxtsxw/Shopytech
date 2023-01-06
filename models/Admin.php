@@ -1,9 +1,9 @@
 <?php
 class Admin
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Admin
     private $_id;
-    private $_userName;
+    private $_username;
     private $_password;
 
     // Constructeur
@@ -11,7 +11,8 @@ class Admin
     {
         $this->hydrate($data);
     }
-    // hydratation → vérificiationd des champs et attributions des variables
+
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -22,35 +23,33 @@ class Admin
         }
     }
 
-    //setters
-    public function setUserName($userName)
-    {
-        if(is_string($userName)) //userName est un string
-        $this ->_userName = $userName;
-    }
-
+    // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
+        $id = (int) $id;
 
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if ($id > 0)
+            $this ->_id = $id;
+    }
+
+    public function setUsername($username)
+    {
+        $this ->_username = (string) $username;
     }
 
     public function setPassword($password)
     {
-        if(is_string($password)) //password est un string
-        $this->_password =  $password;
+        $this->_password =  (string) $password;
     }
 
-    //getters
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
-    public function userName()
+    public function username()
     {
-        return $this->_userName;
+        return $this->_username;
     }
     public function password()
     {

@@ -12,6 +12,7 @@ class CartItem
         $this->_product = $product;
     }
 
+    // -- Getters --
     public function getId()
     {
         return $this->_id;
@@ -27,6 +28,7 @@ class CartItem
         return $this->_product;
     }
 
+    // -- Setters --
     public function setQuantity($quantity)
     {
         $this->_quantity = $quantity;

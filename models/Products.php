@@ -1,7 +1,7 @@
 <?php
 class Products
 {
-    // Les attributs de l'article
+    // Les attributs de la classe Products
     private $_id;
     private $_catId;
     private $_name;
@@ -16,7 +16,7 @@ class Products
         $this->hydrate($data);
     }
 
-    // hydratation → vérificiationd des champs et attributions des variables
+    // "hydratation" → pour chaque champs passé dans le tableau $data, on vérifie si un setter existe et on l'appelle
     public function hydrate(array $data)
     {
         foreach($data as $key => $value)
@@ -27,81 +27,78 @@ class Products
         }
     }
 
-    //setters
-    public function setQuantity($quantity)
-    {
-        $quantity=(int) $quantity; //quantity peut tomber à 0
-        $this ->_quantity = $quantity;
-    }
-
-    public function setImage($image)
-    {
-        if(is_string($image)) //image est un string dans la bd
-        $this ->_image = $image;
-    }
-
-    public function setPrice($price)
-    {
-        $price=(float) $price;
-        if ($price > 0) //le prix est forcément supérieur à 0, rien n'est gratuit ! 
-        $this ->_price = $price;
-    }
-
+    // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
-
-        if ($id > 0) //l'attribut id est un int et doit être sup à 0
-        $this ->_id = $id;
+        if ($id > 0)
+            $this ->_id = (int) $id;
     }
 
     public function setName($name)
     {
-        if(is_string($name)) //name est un string
-        $this->_name = $name;
+        $this->_name = (string) $name;
+    }
+
+    public function setCat_id($catId)
+    {
+        if ($catId > 0)
+            $this ->_catId = (int) $catId;
     }
 
     public function setDescription($description)
     {
-        if(is_string($description)) //description est un string
-        $this->_description =  $description;
-    }
+        $this->_description = (string) $description;
+    }    
 
-    public function setCatId($catId)
+    public function setImage($image)
     {
-        $catId=(int) $catId;
-
-        if ($catId > 0) //l'attribut est un int et doit être sup à 0
-        $this ->_catId = $catId;
+        $this ->_image = (string) $image;
     }
 
-    //getters
+    public function setPrice($price)
+    {
+        if ($price > 0) 
+            $this ->_price = (double)$price;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this ->_quantity = (int) $quantity;
+    }
+    
+    // -- Getters --
     public function id()
     {
         return $this->_id;
     }
+
     public function name()
     {
         return $this->_name;
     }
-    public function description()
-    {
-        return $this->_description;
-    }
+
     public function catId()
     {
         return $this->_catId;
     }
-    public function quantity()
+
+    public function description()
     {
-        return $this->_quantity;
+        return $this->_description;
     }
+
+    public function image()
+    {
+        return $this->_image;
+    }
+
     public function price()
     {
         return $this->_price;
     }
-    public function image()
+
+    public function quantity()
     {
-        return $this->_image;
+        return $this->_quantity;
     }
 }
