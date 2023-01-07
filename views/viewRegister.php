@@ -13,7 +13,7 @@
 
   <!-- Formulaire de connexion -->
   <div class="custom-form col-sm-6 col-12 p-5">
-    <form action="responseRegister.php" method="POST" class="p-3">
+    <form action="<?=ROOT?>/handlers/registerHandler.php" method="POST" class="p-3">
       <h2 class="text-center">Inscription</h2>
       <div class="form-group mt-2">
         <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisteur" required>

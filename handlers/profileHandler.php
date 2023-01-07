@@ -3,11 +3,34 @@ session_start();
 require_once('../Models/Model.php');
 require_once('../Models/Customers.php');
 require_once('../Models/CustomersManager.php');
+require_once('../Models/Logins.php');
+require_once('../Models/LoginsManager.php');
 
 if (isset($_POST['updateProfile']))
 {
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['add1']) && isset($_POST['add3']) && isset($_POST['zip']))
     {
+        if (isset($_POST['password']))
+        {
+            // create a new logins object with post information
+            $user = new logins([
+                'id' => (int) $_SESSION['customerId'],
+                'customer_id' => $_SESSION['customerId'],
+                'username' => $_SESSION['username'],
+                'password' => $_POST['password'],
+            ]);
+   
+            // create a new loginsmanager object
+            $loginsManager = new loginsManager();
+    
+            // Update the user information in the database
+            $loginsManager->updateLogins($user);
+            
+            $changementMDP = $loginsManager->getLogin($_SESSION['username'], $_POST['password']);
+            $_SESSION['loginObject']=serialize($changementMDP);
+
+        }
+
         // create a new customer object with post information
         $customer = new Customers([
             'id' => (int) $_SESSION['customerId'],

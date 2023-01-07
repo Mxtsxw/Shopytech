@@ -28,7 +28,7 @@ if($varCo==0) //connexion
     if($count!=0) // nom d'utilisateur et mot de passe correctes
     {
     $_SESSION['username'] = $username;
-    header('Location: index.php');
+    header('Location: ./logins?varco=101');
     }
     else if (isset($_POST['erreur'])) //si il y a eu des erreurs
     {
@@ -40,11 +40,11 @@ if($varCo==0) //connexion
         }
         else
         {
-        header('Location: ./logins?erreur=2'); // utilisateur ou mot de passe vide
+        header('Location: ./logins?erreur=2'); // utilisateur ou mot de passe vide (impossible normalement de passer par là)
         }
     }
     }
-    else
+    else // erreur
     {
     header('Location:  ./logins?erreur=1');
     }
@@ -52,12 +52,16 @@ if($varCo==0) //connexion
 else  //inscription
 {
     //génération des id
-    $id = "SELECT mas(id) FROM logins";
+    $id = "SELECT max(id) FROM logins";
     $id=$id +1;
     $customerId=$id;
 
     //ajout de l'utilisateur
-    addUser($id,$customerId,$userName,$password);
+    $log = new Logins(array(
+        'username' => $username,
+        'password' => $password
+    ));
+    $log -> addUser($id,$customerId,$userName,$password);
     header('Location:  ./logins?varco=100');
 }
     

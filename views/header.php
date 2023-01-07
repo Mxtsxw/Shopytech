@@ -61,7 +61,7 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">Profil</a>
+            <a class="dropdown-item" href="./profile">Profil</a>
           </li>
           <li>
             <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>

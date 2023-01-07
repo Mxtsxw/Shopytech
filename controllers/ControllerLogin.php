@@ -13,7 +13,9 @@ class ControllerLogin
         }
         elseif (isset($_SESSION['username']))
         {
-            // Redirection vers la page d'accueil
+            // redirection vers la page de certification de connexion
+            //header('Location: '. ROOT .'/Welcom');
+            //redirection vers la page d'accueil
             header('Location: '. ROOT .'/index.php');
         }
         else

@@ -7,6 +7,8 @@ require_once('../models/Logins.php');
 require_once('../models/LoginsManager.php');
 require_once('../models/Customers.php');
 require_once('../models/CustomersManager.php');
+require_once('../Models/Admin.php');
+require_once('../Models/AdminManager.php');
 
 // Vérification que les variables existent
 if (!(isset($_POST['username']) && isset($_POST['password'])))
@@ -19,6 +21,7 @@ if (!(isset($_POST['username']) && isset($_POST['password'])))
 // Connexion à la base de données
 $loginsManager = new loginsManager();
 $customersManager = new CustomersManager();
+$adminManager = new AdminManager();
 
 
 // Récupération des données du formulaire
@@ -35,9 +38,23 @@ if ($loginsManager->checkLogin($username, $password))
     $_SESSION['customerId'] = $user->customerId();
     $_SESSION['connected'] = true;
     $_SESSION['customerObject'] = serialize($customerObj);
+    $_SESSION['loginObject'] = serialize($user);
 
     // Redirection vers la page d'accueil
-    header('Location: ../');
+    header('Location: ../profile');
+    exit();
+}
+elseif ($adminManager->checkAdmin($username, $password))
+{
+    $admin = $adminManager->getAdmin($username, $password);
+
+    // Création des variables de session
+    $_SESSION['username'] = $admin->username();
+    $_SESSION['connected'] = true;
+    $_SESSION['loginObject'] = serialize($user);
+
+    // Redirection vers la page d'accueil
+    header('Location: ../profile');
     exit();
 }
 else
