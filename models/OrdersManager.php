@@ -30,6 +30,32 @@ class OrdersManager extends Model
     }
 
     /**
+     * Récupère les commandes d'un client via son ID
+     * @param int $id
+     * @return array[Orders]
+     */
+    public function getOrdersByCustomerId($id)
+    {
+        $objects = [];
+
+        $req = $this->getBdd()->prepare('SELECT * FROM orders WHERE customer_id = '. $id . ' ORDER BY id');
+        $req ->execute();
+
+        if ($req->rowCount() == 0) {
+            throw new Exception("Unvalid ID");
+        }
+
+        while($data = $req ->fetch(PDO::FETCH_ASSOC))
+        {
+            $objects[] = new Orders($data);
+        }
+        
+        $req->closeCursor();
+
+        return $objects; 
+    }
+
+    /**
      * Ajouter une commande dans la base de données
      * @param Orders
      * @return int l'ID de la commande ajoutée

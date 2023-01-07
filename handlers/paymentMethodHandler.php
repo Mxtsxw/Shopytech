@@ -88,5 +88,4 @@ if(isset($_POST['paymentMethod']))
     exit();
 }
 
-
 ?>
