@@ -40,11 +40,12 @@ if ($loginsManager->checkLogin($username, $password))
     $_SESSION['customerObject'] = serialize($customerObj);
     $_SESSION['loginObject'] = serialize($user);
 
-    // Redirection vers la page d'accueil
+    // Redirection vers la page de profil
     header('Location: ../profile');
     exit();
 }
-elseif ($adminManager->checkAdmin($username, $password))
+elseif ($adminManager->checkAdmin($username, $password)) 
+//connexion admin
 {
     $admin = $adminManager->getAdmin($username, $password);
 
@@ -52,9 +53,10 @@ elseif ($adminManager->checkAdmin($username, $password))
     $_SESSION['username'] = $admin->username();
     $_SESSION['connected'] = true;
     $_SESSION['loginObject'] = serialize($user);
+    $_SESSION['Admin']= true;
 
-    // Redirection vers la page d'accueil
-    header('Location: ../profile');
+    // Redirection vers la page de gestion pour admins
+    header('Location: ../admin');
     exit();
 }
 else
