@@ -1,5 +1,5 @@
 <?php
-class OrderManager extends Model
+class OrdersManager extends Model
 {
     /**
      * Récupère toutes les commandes
@@ -47,7 +47,7 @@ class OrderManager extends Model
         $req->bindValue(':total', $order->total(), PDO::PARAM_STR);
         $req->execute();
 
-        return $this->getLastInsertedId('orders');
+        return $this->lastInsertedId();
     }
 
     /**
@@ -68,5 +68,14 @@ class OrderManager extends Model
         $req->bindValue(':total', $order->total(), PDO::PARAM_STR);
         $req->bindValue(':id', $order->id(), PDO::PARAM_INT);
         $req->execute();
+    }
+
+    /**
+     * Récupère l'ID de la dernière commande ajoutée
+     * @return int
+     */
+    public function lastInsertedId()
+    {
+        return $this->getLastInsertedId('orders');
     }
 }

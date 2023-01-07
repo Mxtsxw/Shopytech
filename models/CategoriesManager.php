@@ -31,4 +31,13 @@ class CategoriesManager extends Model
         $data = $req ->fetch(PDO::FETCH_ASSOC);
         return new Categories($data);
     }
+
+    /**
+     * Récupère l'ID de la dernière catégorie ajoutée
+     * @return int
+     */
+    public function lastInsertedId()
+    {
+        return $this->getLastInsertedId('categories');
+    }
 }

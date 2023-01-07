@@ -42,18 +42,17 @@ class DeliveryAddressesManager extends Model
     {
         // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('INSERT INTO delivery_addresses (firstname, lastname, add1, add2, city, postcode, phone, email) VALUES (:firstname, :lastname, :add1, :add2, :city, :postcode, :phone, :email)');
-        $req ->execute(array(
-            'firsnname' => $address->firstname(),
-            'lastname' => $address->lastname(),
-            'add1' => $address->add1(),
-            'add2' => $address->add2(),
-            'city' => $address->city(),
-            'postcode' => $address->postcode(),
-            'phone' => $address->phone(),
-            'email' => $address->email(),
-        ));
-
-        return $this->getLastInsertedId('delivery_addresses');
+        $req->bindValue(':firstname', $address->firstname(), PDO::PARAM_STR);
+        $req->bindValue(':lastname', $address->lastname(), PDO::PARAM_STR);
+        $req->bindValue(':add1', $address->add1(), PDO::PARAM_STR);
+        $req->bindValue(':add2', $address->add2(), PDO::PARAM_STR);
+        $req->bindValue(':city', $address->city(), PDO::PARAM_STR);
+        $req->bindValue(':postcode', $address->postcode(), PDO::PARAM_INT);
+        $req->bindValue(':phone', $address->phone(), PDO::PARAM_INT);
+        $req->bindValue(':email', $address->email(), PDO::PARAM_STR);
+        $req->execute();
+        
+        return $this->lastInsertedId();
     }
 
     /**
@@ -76,5 +75,14 @@ class DeliveryAddressesManager extends Model
             'email' => $address->email(),
             'id' => $address->id()
         ));
+    }
+
+    /**
+     * Récupère l'ID de la dernière adresse de livraison ajoutée
+     * @return int
+     */
+    public function lastInsertedId()
+    {
+        return $this->getLastInsertedId('delivery_addresses');
     }
 }

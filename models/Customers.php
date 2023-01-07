@@ -33,9 +33,7 @@ class Customers
     // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
-        if ($id > 0) 
-            $this ->_id = $id;
+        $this ->_id = (int) $id;
     }
 
     public function setForname($forename)

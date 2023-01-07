@@ -10,8 +10,8 @@ class ControllerValidation
      * Route : Validation
      * URL : /validation
      * URL : /validation/detail
-     * URL : /validation/payment
-     * URL : /validation/confirmed
+     * URL : /validation/payment    accessible uniquement si le statut de la commande en cours est à 1
+     * URL : /validation/confirmed  accessible uniquement si le statut de la commande en cours est à 2
      * @param $url
      * @throws Exception
      */
@@ -23,11 +23,15 @@ class ControllerValidation
             throw new Exception('Page introuvable');
         }
 
-        // 2) Vérifie si l'utilisateur est connecté et redirgie vers le panier
+        // 2) Vérifie si le panier est vide et redirige vers la page panier
         else if (!(isset($_SESSION['cart'])) || empty($_SESSION['cart']))
         {
-            header('Location: ' . ROOT .'/cart');
-            exit();
+            // Exception pour la page de confirmation
+            if (count($url) == 2 && $url[1] != "confirmed")
+            {
+                header('Location: ' . ROOT .'/cart');
+                exit();
+            }
         }
 
 
@@ -38,7 +42,7 @@ class ControllerValidation
                     else { header('Location: ' . ROOT .'/validation'); exit(); }
                     break;
                 case "confirmed":
-                    if ($_SESSIONS['status'] == 2) { $this->viewValidationConfirmed(); }
+                    if ($_SESSION['status'] == 2) {$this->viewValidationConfirmed();}
                     else { header('Location: ' . ROOT .'/validation/payment'); exit(); }
                     break;
                 default:
@@ -80,7 +84,7 @@ class ControllerValidation
     private function viewValidationPayment()
     {
         // 1) Paramètre la vue
-        $this->_view = new View('OrderPayment');
+        $this->_view = new View('Payment');
 
         // 2) Initialisation des données envoyées à la vue
         $data = array();

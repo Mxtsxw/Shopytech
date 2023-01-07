@@ -1,37 +1,55 @@
 <?php
 session_start();
 
-// Ajout du produit au panier
+// Vérifie le type d'opération à effectuer 
 if (isset($_POST['add'])) {
+    addItem();
+} else if (isset($_POST['delete'])) {
+    deleteItem();
+} else if (isset($_POST['update'])) {
+    updateItem();
+} else if (isset($_POST['empty'])) {
+    emptyCart();
+}
 
+// Redirige vers la page du panier
+header('Location: ../cart');
+exit();
+
+
+/**
+ * Ajoute un produit au panier
+ */
+function addItem()
+{
     // Vérifie que les variables existent
     if (isset($_POST['productId']) && isset($_POST['productQuantity']))
     {
-        // Check if the product is already in the cart
+        // Vérifie si le produit est déjà dans le panier
         if (isset($_SESSION['cart'][$_POST['productId']])) {
-            // If the product is already in the cart, add the quantity
+            // Si le produit est déjà dans le panier, ajoute la quantité
             $_SESSION['cart'][$_POST['productId']] += $_POST['productQuantity'];
         } else {
-            // If the product is not in the cart, add it
+            // Si le produit n'est pas dans le panier, ajoute le produit
             $_SESSION['cart'][$_POST['productId']] = $_POST['productQuantity'];
         }
     }
 }
 
-// Supprimer le produit du panier
-if (isset($_POST['delete'])) {
+
+/**
+ * Supprime un produit du panier
+ */
+function deleteItem(){
     // Vérifie que les variables existent
     if (isset($_POST['productId']))
     {
-        // Check if the product is already in the cart
+        // Vérifie si le produit est déjà dans le panier
         if (isset($_SESSION['cart'][$_POST['productId']])) {
-            // If the product is already in the cart, add the quantity
+            // Supprime le produit du panier
             unset($_SESSION['cart'][$_POST['productId']]);
         }
     }
 }
 
-// Redirect to the cart page
-header('Location: ../cart');
-exit();
 ?>

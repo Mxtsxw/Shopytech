@@ -32,9 +32,7 @@ class DeliveryAddresses
     // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
-        if ($id > 0) 
-            $this ->_id = $id;
+        $this ->_id = (int) $id;
     }
 
     public function setFirstname($firstname)
@@ -54,7 +52,7 @@ class DeliveryAddresses
 
     public function setAdd2($add2)
     {
-        if(is_string($add2))            // add2 et optionnel
+        if(is_string($add2))            // add2 et facultatif
             $this->_add2 =  $add2;
     }
 
@@ -66,7 +64,7 @@ class DeliveryAddresses
 
     public function setPostcode($postcode)
     {
-        if ($postcode > 0) //ATTENTION très peu de sens ici besoin de plus de sécurité (code postal)
+        if ($postcode > 0) 
             $this ->_postcode = (int) $postcode;
     }
 

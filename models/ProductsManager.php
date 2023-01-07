@@ -124,6 +124,14 @@ class ProductsManager extends Model
         
         $req->closeCursor();
 
+        return $this->lastInsertedId();
+    }
+
+    /**
+     * Récupère l'ID du dernier produit ajouté
+     * @return int 
+     */
+    public function lastInsertedId(){
         return $this->getLastInsertedId('products');
     }
 

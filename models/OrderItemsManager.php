@@ -1,5 +1,5 @@
 <?php 
-class OrdersItemsManager extends Model
+class OrderItemsManager extends Model
 {
     /**
      * Récupère tous les articles des commandes
@@ -46,5 +46,30 @@ class OrdersItemsManager extends Model
 
         $data = $req ->fetchAll(PDO::FETCH_ASSOC);
         return $data;
+    }
+
+    /**
+     * Ajoute un article de commande dans la base de données
+     * @param OrderItems
+     * @return int
+     */
+    public function addOrderItem(OrderItems $orderItem)
+    {
+        $req = $this->getBdd()->prepare('INSERT INTO orderitems (order_id, product_id, quantity) VALUES (:order_id, :product_id, :quantity)');
+        $req->bindValue(':order_id', $orderItem->orderId(), PDO::PARAM_INT);
+        $req->bindValue(':product_id', $orderItem->productId(), PDO::PARAM_INT);
+        $req->bindValue(':quantity', $orderItem->quantity(), PDO::PARAM_INT);
+        $req->execute();
+
+        return $this->lastInsertedId();
+    }
+
+    /**
+     * Récupère l'ID du dernier article de commande ajouté
+     * @return int
+     */
+    public function lastInsertedId()
+    {
+        return $this->getLastInsertedId('orderitems');
     }
 }

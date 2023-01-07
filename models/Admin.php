@@ -26,10 +26,7 @@ class Admin
     // -- Setters --
     public function setId($id)
     {
-        $id = (int) $id;
-
-        if ($id > 0)
-            $this ->_id = $id;
+        $this ->_id = (int) $id;
     }
 
     public function setUsername($username)

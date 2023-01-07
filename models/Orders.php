@@ -33,26 +33,22 @@ class Orders
     // -- Setters --
     public function setId($id)
     {
-        if ($id > 0) 
-            $this ->_id = (int) $id;
+        $this ->_id = (int) $id;
     }
 
     public function setCustomer_id($customerId)
     {
-        if($customerId > 0)
-            $this ->_customerId = (int) $customerId;
+        $this ->_customerId = (int) $customerId;
     }
 
     public function setRegistered($registered)
     {
-        if($registered > 0)
-            $this ->_registered = (int) $registered;
+        $this ->_registered = (int) $registered;
     }
 
     public function setDelivery_add_id($deliveryAddId)
     {
-        if ($deliveryAddId > 0)
-            $this ->_deliveryAddId = (int) $deliveryAddId;
+        $this ->_deliveryAddId = (int) $deliveryAddId;
     }
     
     public function setPayment_type($paymentType)
@@ -67,8 +63,7 @@ class Orders
 
     public function setStatus($status)
     {
-        if ($status > 0)
-            $this ->_status = (int) $status;
+        $this ->_status = (int) $status;
     }
 
     public function setSession($session)
@@ -78,7 +73,7 @@ class Orders
 
     public function setTotal($total)
     {
-        if($total > 0)
+        if($total >= 0)
             $this ->_total =(double) $total;
     }
 

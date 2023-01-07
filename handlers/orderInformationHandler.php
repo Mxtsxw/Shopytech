@@ -18,24 +18,23 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                 // Vérifie que le numéro de téléphone est valide (du côté du serveur)
                 if (preg_match('#^[0-9]{10}$#', $_POST['phone'])) {
                     
-                    // Met en place variable de session status pour le formulaire
+                    // Met a jour le statut de la commande
                     $_SESSION['status'] = 1;
 
                     // Créer un nouvel objet DeliveryAddresses
                     $deliveryAddress = new DeliveryAddresses([
                         'firstname' => $_POST['firstname'],
                         'lastname' => $_POST['lastname'],
-                        'email' => $_POST['email'],
                         'add1' => $_POST['add1'],
                         'add2' => $_POST['add2'],
                         'city' => $_POST['city'],
                         'postcode' => $_POST['zip'],
-                        'phone' => $_POST['phone']
+                        'phone' => $_POST['phone'],
+                        'email' => $_POST['email']
                     ]);
 
-                    // Met en place variable de session pour l'objet DeliveryAddresses
+                    // Stocke l'objet DeliveryAddresses dans la session
                     $_SESSION['deliveryAddress'] = serialize($deliveryAddress);
-
                 }
             }
         }
@@ -48,7 +47,8 @@ else
     header('Location: ../validation');
 }
 
-// Redirection vers la page de validation
+// Redirection à la page de paiement (étape suivante)
 header('Location: ../validation/payment');
+exit();
 ?>
 

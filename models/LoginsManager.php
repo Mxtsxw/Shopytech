@@ -59,4 +59,13 @@ class LoginsManager extends Model
         return true;
     }
 
+    /** 
+     * Récupère l'ID du dernier login ajouté
+     * @return int
+     */
+    public function lastInsertedId()
+    {
+        return $this->getLastInsertedId('logins');
+    }
+
 }

@@ -72,6 +72,15 @@ class CustomersManager extends Model
             'zip' => $customer->postcode(),
         ));
 
+        return $this->lastInsertedId();
+    }
+
+    /**
+     * Récupère l'ID du dernier client ajouté
+     * @return int
+     */
+    public function lastInsertedId($table)
+    {
         return $this->getLastInsertedId('customers');
     }
 }
