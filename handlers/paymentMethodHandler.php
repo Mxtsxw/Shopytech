@@ -7,6 +7,8 @@ require_once("../Models/Orders.php");
 require_once("../Models/OrdersManager.php");
 require_once("../models/OrderItems.php");
 require_once("../models/OrderItemsManager.php");
+require_once("../models/Products.php");
+require_once("../models/ProductsManager.php");
 
 // Si le formulaire est soumis
 if(isset($_POST['paymentMethod']))
@@ -58,17 +60,27 @@ if(isset($_POST['paymentMethod']))
 
         // 4) Ajouter chaque article commandé à la base de données
         $orderItemsManager = new OrderItemsManager();
+        $ProcutsManager = new ProductsManager();
 
         foreach ($_SESSION['cart'] as $key => $value) {
+            // Ajoute l'article commandé à la base de données
             $orderItemsManager->addOrderItem(new OrderItems([
                 'order_id' => $orderId,
                 'product_id' => $key,
                 'quantity' => $value,
             ]));
+
+            // Mets à jour le stock
+            $stock = $ProcutsManager->getProductById($key)->quantity() - $value;
+            $ProcutsManager->updateProductQuantity($key, $stock);
+
+            // Sauvegarde la commande dans la session
+            // ---
         }
 
         $_SESSION['status'] = 2;
         $_SESSION['cart'] = array(); 
+        
     }
 
     // Redirection à la page de remerciement

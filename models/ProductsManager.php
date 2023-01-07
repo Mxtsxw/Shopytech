@@ -128,6 +128,20 @@ class ProductsManager extends Model
     }
 
     /**
+     * Met à jour les stocks du produit dans la base de données
+     * @param int $id : L'ID du produit
+     * @param int $quantity : La quantité à mettre à jour
+     * @return void
+     */
+    public function updateProductQuantity($id, $quantity){
+        $req = $this->getBdd()->prepare('UPDATE products SET quantity = :quantity WHERE id = :id');
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
+    }
+
+    /**
      * Récupère l'ID du dernier produit ajouté
      * @return int 
      */

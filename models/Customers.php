@@ -69,12 +69,12 @@ class Customers
 
     public function setPostcode($postcode)
     {
-        $this ->_postcode = (int) $postcode;
+        $this ->_postcode = (string) $postcode;
     }
 
     public function setPhone($phone)
     {
-        $this ->_phone = $phone;
+        $this ->_phone = (string) $phone;
     }
 
     public function setRegistered($registered)

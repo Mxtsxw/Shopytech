@@ -43,7 +43,7 @@ class ControllerValidation
                     break;
                 case "confirmed":
                     if ($_SESSION['status'] == 2) {$this->viewValidationConfirmed();}
-                    else { header('Location: ' . ROOT .'/validation/payment'); exit(); }
+                    else { header('Location: ' . ROOT .'/validation/payment'); $_SESSION['status']=0; exit(); }
                     break;
                 default:
                     throw new Exception('Page introuvable');

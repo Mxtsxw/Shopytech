@@ -74,7 +74,7 @@ class Orders
     public function setTotal($total)
     {
         if($total >= 0)
-            $this ->_total =(double) $total;
+            $this ->_total = (double) $total;
     }
 
     // -- Getters --
