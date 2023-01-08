@@ -21,9 +21,18 @@
       <div class="form-group mt-2">
         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
       </div>
+      <div class="form-group mt-2">
+        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" required>
+      </div>
 
       <!-- Submit button -->
       <button type="submit" class="btn btn-primary btn-block mt-4" id="submit">Créer un compte</button>
+
+      <!-- Message d'erreur  -->
+      <?php if (isset($_SESSION['error_message'])): ?>
+        <p class='text-danger mt-3 text-center'><?= $_SESSION['error_message'] ?></p>
+        <?php unset($_SESSION['error_message']); ?>
+      <?php endif; ?>
       
       <p class="text-center mt-3">Vous avez déjà un compte ?
         <a href="<?=ROOT?>/login" class="link-info">cliquez ici</a>

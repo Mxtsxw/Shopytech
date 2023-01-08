@@ -15,7 +15,7 @@ class ControllerRegister
     public function __construct($url)
     {
         // 1) Vérifie la validité de l'url
-        if (isset($url) && count($url)>1)
+        if (isset($url) && count($url)>2)
         {
             throw new Exception('Page introuvable');
         }
@@ -27,7 +27,20 @@ class ControllerRegister
         }
 
         // 3) Paramètre la vue
-        $this->_view = new View('Register');
+        if (count($url) == 2)
+        {
+            switch ($url[1]) {
+                case "confirm":
+                    $this->_view = new View('RegisterConfirm');
+                    break;
+                default:
+                    throw new Exception('Page introuvable');
+            }
+        }
+
+        else {
+            $this->_view = new View('Register');
+        }
 
         // 4) Initialisation des données envoyées à la vue
         $data = array();

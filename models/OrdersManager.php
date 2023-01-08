@@ -41,10 +41,6 @@ class OrdersManager extends Model
         $req = $this->getBdd()->prepare('SELECT * FROM orders WHERE customer_id = '. $id . ' ORDER BY id');
         $req ->execute();
 
-        if ($req->rowCount() == 0) {
-            throw new Exception("Unvalid ID");
-        }
-
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
             $objects[] = new Orders($data);

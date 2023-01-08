@@ -44,7 +44,7 @@ if(isset($_POST['paymentMethod']))
         // 3) Créer un objet commande
         $order = new Orders([
             'id' => -1,
-            'customer_id' => isset($_SESSION['customerId']) ?? -1,
+            'customer_id' => isset($_SESSION['customerId']) ? $_SESSION['customerId'] : -1,
             'registered' => isset($_SESSION['username']) ? 1 : 0,
             'delivery_add_id' => $deliveryAddressId,
             'payment_type' => $method,

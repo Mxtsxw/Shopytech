@@ -15,7 +15,9 @@
   <div class="col-md-8 mt-4">
     
     <?php if (!isset($orders) || empty($orders)) : ?>
-      <p>rien a</p>
+      <div class="alert alert-info" role="alert">
+        Vous n'avez aucune commande.
+      </div>
     <?php else: ?>
 
     <div>
