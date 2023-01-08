@@ -11,6 +11,7 @@ require_once('models/OrderItems.php');
 require_once('models/OrderItemsManager.php');
 require_once('models/Products.php');
 require_once('models/ProductsManager.php');
+require_once('static/lib/fpdf/invoicePDF.php');
 
 $customerManager = new CustomersManager();
 $customer = $customerManager->getCustomerById(2);
@@ -21,9 +22,3 @@ $items = $orderItemsManager->getOrderItemsByOrderId(70);
 $productsManager = new ProductsManager();
 
 ?>
-
-<div>
-    <h1>LOG DEBUG</h1>
-
-    <?= var_dump($_SESSION['status']) ?>
-</div>

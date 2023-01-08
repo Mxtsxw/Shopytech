@@ -148,7 +148,7 @@ function addSociete( $nom, $adresse )
 	$this->SetXY( $x1, $y1 + 4 );
 	$this->SetFont('Arial','',10);
 	$length = $this->GetStringWidth( $adresse );
-	//Coordonnées de la société
+	//CoordonnÃ©es de la sociÃ©tÃ©
 	$lignes = $this->sizeOfText( $adresse, $length) ;
 	$this->MultiCell($length, 4, $adresse);
 }
@@ -162,7 +162,7 @@ function fact_dev( $libelle, $num )
     $y2  = $y1 + 2;
     $mid = ($r1 + $r2 ) / 2;
     
-    $texte  = $libelle . " EN " . EURO . " N° : " . $num;    
+    $texte  = $libelle . " EN " . "â‚¬" . " NÂ° : " . $num;    
     $szfont = 12;
     $loop   = 0;
     
@@ -315,13 +315,13 @@ function addNumTVA($tva)
 function addReference($ref)
 {
 	$this->SetFont( "Arial", "", 10);
-	$length = $this->GetStringWidth( "Références : " . $ref );
+	$length = $this->GetStringWidth( "RÃ©fÃ©rences : " . $ref );
 	$r1  = 10;
 	$r2  = $r1 + $length;
 	$y1  = 92;
 	$y2  = $y1+5;
 	$this->SetXY( $r1 , $y1 );
-	$this->Cell($length,4, "Références : " . $ref);
+	$this->Cell($length,4, "RÃ©fÃ©rences : " . $ref);
 }
 
 function addCols( $tab )
@@ -625,7 +625,7 @@ function addTVAs( $params, $tab_tva, $invoice )
 		{
 			$accompteTTC=sprintf ("%.2F", $params["accompte"]);
 			if ( strlen ($params["Remarque"]) == 0 )
-				$this->addRemarque( "Accompte de $accompteTTC Euros exigé à la commande.");
+				$this->addRemarque( "Accompte de $accompteTTC Euros exigÃ© Ã  la commande.");
 			else
 				$this->addRemarque( $params["Remarque"] );
 		}
@@ -637,12 +637,12 @@ function addTVAs( $params, $tab_tva, $invoice )
 			$accompteTTC=sprintf("%.2F", $totalTTC * $percent);
 			$percent100 = $percent * 100;
 			if ( strlen ($params["Remarque"]) == 0 )
-				$this->addRemarque( "Accompte de $percent100 % (soit $accompteTTC Euros) exigé à la commande." );
+				$this->addRemarque( "Accompte de $percent100 % (soit $accompteTTC Euros) exigÃ© Ã  la commande." );
 			else
 				$this->addRemarque( $params["Remarque"] );
 		}
 		else
-			$this->addRemarque( "Drôle d'acompte !!! " . $params["Remarque"]);
+			$this->addRemarque( "DrÃ´le d'acompte !!! " . $params["Remarque"]);
 	}
 	else
 	{
@@ -653,28 +653,30 @@ function addTVAs( $params, $tab_tva, $invoice )
 	$rf  = $this->w - 29;
 	$y1  = $this->h - 40;
 	$this->SetFont( "Arial", "", 8);
-	$this->SetXY( $re, $y1+5 );
-	$this->Cell( 17,4, sprintf("%0.2F", $totalTTC), '', '', 'R');
-	$this->SetXY( $re, $y1+10 );
-	$this->Cell( 17,4, sprintf("%0.2F", $accompteTTC), '', '', 'R');
-	$this->SetXY( $re, $y1+14.8 );
-	$this->Cell( 17,4, sprintf("%0.2F", $totalTTC - $accompteTTC), '', '', 'R');
 	$this->SetXY( $rf, $y1+5 );
 	$this->Cell( 17,4, sprintf("%0.2F", $totalTTC * EURO_VAL), '', '', 'R');
 	$this->SetXY( $rf, $y1+10 );
 	$this->Cell( 17,4, sprintf("%0.2F", $accompteTTC * EURO_VAL), '', '', 'R');
 	$this->SetXY( $rf, $y1+14.8 );
 	$this->Cell( 17,4, sprintf("%0.2F", ($totalTTC - $accompteTTC) * EURO_VAL), '', '', 'R');
+	$this->SetXY( $re, $y1+5 );
+	$this->Cell( 17,4, sprintf("%0.2F", $totalTTC), '', '', 'R');
+	$this->SetXY( $re, $y1+10 );
+	$this->Cell( 17,4, sprintf("%0.2F", $accompteTTC), '', '', 'R');
+
+	$this->SetFont( "Arial", "B", 8);
+	$this->SetXY( $re, $y1+14.8 );
+	$this->Cell( 17,4, sprintf("%0.2F", $totalTTC - $accompteTTC), '', '', 'R');
 }
 
 // add a watermark (temporary estimate, DUPLICATA...)
 // call this method first
 function temporaire( $texte )
 {
-	$this->SetFont('Arial','B',50);
+	$this->SetFont('Arial','B',72);
 	$this->SetTextColor(203,203,203);
 	$this->Rotate(45,55,190);
-	$this->Text(55,190,$texte);
+	$this->Text(90,190,$texte);
 	$this->Rotate(0);
 	$this->SetTextColor(0,0,0);
 }
