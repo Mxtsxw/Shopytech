@@ -16,7 +16,7 @@ class ControllerProfile
     {
 
         // 1) Vérifie la validité de l'url
-        if (isset($url) && count($url)>1)
+        if (isset($url) && count($url)>2)
         {
             throw new Exception('Page introuvable');
         }
@@ -29,7 +29,20 @@ class ControllerProfile
         }
 
         // 3) Paramètre la vue
+        if (count($url)==2)
+        {
+            switch ($url[1]) {
+                case "pwd":
+                    $this->_view = new View("Password");
+                    break;
+                default:
+                    throw new Exception('Page introuvable');
+            }
+        }
+        else 
+        {
         $this->_view = new View('profile');
+        }
 
         // 4) Initialisation des données envoyées à la vue
         $data = array();

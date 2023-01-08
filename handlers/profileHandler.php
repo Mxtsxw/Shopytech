@@ -41,24 +41,46 @@ if (isset($_POST['updateProfile']))
 // Modification du mot de passe
 if (isset($_POST['updatePassword']))
 {
-    if (isset($_POST['password']))
+    if (isset($_POST['current-password']) && isset($_POST['new-password']) && isset($_POST['password-confirm']))
     {
+
+        // create a new loginsmanager object
+        $loginsManager = new loginsManager();
+
+        // Vérification du mot de passe 
+        if (!($loginsManager->checkLogin($_SESSION['username'], $_POST['current-password'])))
+        {
+            $_SESSION['error_message'] = "Mot de passe incorrecte";
+            header('Location: ../profile/pwd');
+            exit();
+        }
+
+        if (!($_POST['new-password'] == $_POST['password-confirm']))
+        {
+            $_SESSION['error_message'] = "Les mots de passe ne correspondent pas";
+            header('Location: ../profile/pwd');
+            exit();
+        }
+
         // create a new logins object with post information
         $user = new logins([
             'id' => unserialize($_SESSION['loginObject'])->id(),
             'customer_id' => $_SESSION['customerId'],
             'username' => $_SESSION['username'],
-            'password' => $_POST['password'],
+            'password' => $_POST['new-password'],
         ]);
 
-        // create a new loginsmanager object
-        $loginsManager = new loginsManager();
+        
 
         // Update the user information in the database
         $loginsManager->updateLogins($user);
         
         // Mise à jour de la session
         $_SESSION['loginObject']= serialize($user);
+
+        $_SESSION['update_message'] = "Votre mot de passe à bien été mis à jour";
+        header('Location: ../profile/pwd');
+        exit();
     }
 }
 

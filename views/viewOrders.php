@@ -10,6 +10,19 @@
       <p class="text-success mt-3 text-center"><?=$_SESSION['update_message']?></p>
       <?php unset($_SESSION['update_message']); ?>
     <?php endif; ?>
+
+    <div class="mt-5">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Comptes
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="<?=ROOT?>/orders">Commandes</a></li>
+          <li class="list-group-item"><a href="<?=ROOT?>/profile">Adresses</a></li>
+          <li class="list-group-item"><a href="<?=ROOT?>/profile/pwd">Modifier le mot de passe</a></li>
+        </ul>
+    </div>
+    </div>
   </div>
 
   <div class="col-md-8 mt-4">

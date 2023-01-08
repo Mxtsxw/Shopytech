@@ -22,8 +22,8 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><a href="<?=ROOT?>/orders">Commandes</a></li>
-          <li class="list-group-item"><a href="">Adresses</a></li>
-          <li class="list-group-item"><a href="">Modifier le mot de passe</a></li>
+          <li class="list-group-item"><a href="<?=ROOT?>/profile">Adresses</a></li>
+          <li class="list-group-item"><a href="<?=ROOT?>/profile/pwd">Modifier le mot de passe</a></li>
         </ul>
     </div>
     </div>

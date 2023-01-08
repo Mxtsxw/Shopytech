@@ -21,7 +21,7 @@ $orderItemsManager = new OrderItemsManager();
 $items = $orderItemsManager->getOrderItemsByOrderId(70);
 $productsManager = new ProductsManager();
 
-var_dump($_SESSION['customerId']);
+var_dump($_SESSION);
 
 ?>
 
