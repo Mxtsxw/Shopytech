@@ -54,7 +54,7 @@
           aria-expanded="false"
         >
           <i class="fas fa-user-alt icon-link"></i>
-          <?= $_SESSION["username"] ?? NULL ?>
+          <?= $_SESSION["username"] ?? NULL; ?>
         </a>
           <ul
           class="dropdown-menu dropdown-menu-end"
