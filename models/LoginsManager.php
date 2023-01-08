@@ -59,6 +59,23 @@ class LoginsManager extends Model
         return true;
     }
 
+    /**
+     * Mise à jour des identifiants d'un utilisateur
+     * @param Logins $user
+     * @return void
+     */
+    public function updateLogins($user) 
+    {
+        // Création de la requête générales pour la table
+        $req = $this->getBdd()->prepare('UPDATE logins SET id = :id, customer_id = :customer_id, username = :username, password = :password WHERE id = :id');
+        $req ->execute(array(
+            'id' => $user->id(),
+            'customer_id' => $user->customerId(),
+            'username' => $user->username(),
+            'password' => $user->password(),
+        ));
+    }
+
     /** 
      * Récupère l'ID du dernier login ajouté
      * @return int
@@ -67,5 +84,4 @@ class LoginsManager extends Model
     {
         return $this->getLastInsertedId('logins');
     }
-
 }

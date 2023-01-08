@@ -8,7 +8,7 @@
     </div>
     <div class="text-center">
         <h1>Nous vous remercions !</h1>
-        <p>La facture de votre commande vous a été envoyé.</p> 
+        <p>La facture de votre commande vous a été envoyé. Vous pouvez également télécharger la facture.</p> 
         <a href="<?=ROOT?>/validation/confirmed?download" type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</a>
         <a href="<?=ROOT?>/" class="btn btn-primary">Retourner à l'accueuil</a>
     </div>

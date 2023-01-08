@@ -22,7 +22,7 @@ class ControllerLogin
         // 2) Vérifie si l'utilisateur est connecté et redirgie vers l'accueil
         if (isset($_SESSION['username']))
         {
-            // Redirection vers la page d'accueil
+            //redirection vers la page d'accueil
             header('Location: '. ROOT .'/index.php');
             exit();
         }

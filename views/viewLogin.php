@@ -3,7 +3,6 @@
 
 <!-- --- --- --- -- -->
 
-
 <div class="mt-5 shadow row w-75 m-auto">
   
   <!-- Illustration -->
@@ -21,9 +20,6 @@
       <div class="form-group mt-2">
         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
       </div>
-
-      <!-- Hidden inputs -->
-      <input type="hidden" name="varCo" value="<?php $varCo?>">
 
       <!-- Submit button -->
       <button type="submit" class="btn btn-primary btn-block mt-4" id="submit">Connexion</button>

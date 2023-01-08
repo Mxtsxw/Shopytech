@@ -3,6 +3,8 @@ session_start();
 require_once('../Models/Model.php');
 require_once('../Models/Customers.php');
 require_once('../Models/CustomersManager.php');
+require_once('../Models/Logins.php');
+require_once('../Models/LoginsManager.php');
 
 if (isset($_POST['updateProfile']))
 {
@@ -35,6 +37,31 @@ if (isset($_POST['updateProfile']))
         $_SESSION['update_message'] = 'Votre profil a été mis à jour !';
     }
 }
+
+// Modification du mot de passe
+if (isset($_POST['updatePassword']))
+{
+    if (isset($_POST['password']))
+    {
+        // create a new logins object with post information
+        $user = new logins([
+            'id' => unserialize($_SESSION['loginObject'])->id(),
+            'customer_id' => $_SESSION['customerId'],
+            'username' => $_SESSION['username'],
+            'password' => $_POST['password'],
+        ]);
+
+        // create a new loginsmanager object
+        $loginsManager = new loginsManager();
+
+        // Update the user information in the database
+        $loginsManager->updateLogins($user);
+        
+        // Mise à jour de la session
+        $_SESSION['loginObject']= serialize($user);
+    }
+}
+        
 
 header('Location: ../profile');
 exit();
