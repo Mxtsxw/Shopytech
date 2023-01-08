@@ -60,9 +60,19 @@
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
-          <li>
-            <a class="dropdown-item" href="<?= ROOT ?>/profile">Profil</a>
-          </li>
+          
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
+              <li>
+                <a class="dropdown-item" href="<?=ROOT?>/admin">Commandes</a>
+              </li>
+              <li>
+                  <a class="dropdown-item" href="<?=ROOT?>/admin">Stocks</a>
+              </li>
+            <?php else : ?>
+              <li>
+                <a class="dropdown-item" href="<?=ROOT?>/profile">Profil</a>
+              </li>
+            <?php endif; ?>
           <li>
             <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>
           </li>

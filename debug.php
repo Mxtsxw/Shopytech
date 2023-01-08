@@ -21,4 +21,19 @@ $orderItemsManager = new OrderItemsManager();
 $items = $orderItemsManager->getOrderItemsByOrderId(70);
 $productsManager = new ProductsManager();
 
+var_dump($_SESSION['customerId']);
+
 ?>
+
+
+<!-- 
+Input mot de passe
+
+<div class="form-group">
+<label for="lastname-input">Mot de passe</label>
+<input type="text" name="password" class="form-control" value="" required/>
+</div>
+
+
+
+ -->

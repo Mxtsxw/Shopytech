@@ -79,7 +79,7 @@ class CustomersManager extends Model
      * Récupère l'ID du dernier client ajouté
      * @return int
      */
-    public function lastInsertedId($table)
+    public function lastInsertedId()
     {
         return $this->getLastInsertedId('customers');
     }

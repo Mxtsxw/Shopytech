@@ -1,11 +1,15 @@
 <div class="row">
+  <?php if(isset($_SESSION['update_message'])): ?>
+    <p class="text-success mt-3 text-center"><?=$_SESSION['update_message']?></p>
+    <?php unset($_SESSION['update_message']); ?>
+  <?php endif; ?>
+
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
         <div class="card-header py-3">
             <h5 class="mb-0">Méthodes de paiement</h5>
         </div>
         <div class="card-body">
-        
             <form action="<?=ROOT?>/handlers/paymentMethodHandler.php" method="POST" class="row">
                 <input type="hidden" name="total" value="<?= $total ?>" >
                 <div class="col-12">
@@ -23,7 +27,6 @@
 
                     </label>
                 </div>
-
                 <div class="col-12">
                     <label>
                         <input type="radio" name="method" value="paypal" class="card-input-element" />
