@@ -28,14 +28,16 @@ function invoice(DeliveryAddresses $deliveryAddress, Orders $order, array $items
     $pdf->fact_dev( "Facture", "XXXX" );
     
     // $pdf->temporaire( "Facture" );
-    $pdf->addDate($order->date());
+    $orderDate = date('d-m-Y', strtotime($order->date()));
+    $dateEcheance = date('d-m-Y', strtotime($orderDate. ' + 10 days'));
+    $pdf->addDate($orderDate);
     $pdf->addClient("CL".$order->customerId());
     $pdf->addPageNumber("1");
     $pdf->addClientAdresse("M. ".$deliveryAddress->firstname(). " " . $deliveryAddress->lastname() . "\n" . $deliveryAddress->add1() ."\n". $deliveryAddress->add2()."\n" . $deliveryAddress->postcode() . " " . $deliveryAddress->city());
     $pdf->addReglement("Chèque à réception de facture");
-    $pdf->addEcheance($order->date());
+    $pdf->addEcheance($dateEcheance);
     $pdf->addNumTVA("FR888777666");
-    $pdf->addReference("Devis ... du ....");
+    $pdf->addReference("Facture de la commande n°".$order->id());
     
     $cols=array( "REFERENCE"    => 23,
                 "DESIGNATION"  => 78,
@@ -62,17 +64,17 @@ function invoice(DeliveryAddresses $deliveryAddress, Orders $order, array $items
     $i = 1;
     foreach($items as $item)
     {
-        $uprice = $productsManager->getProductById($item->productId())->price();
+        $product = $productsManager->getProductById($item->productId());
         $line = array( "REFERENCE"    => "REF".$item->id(),
-                "DESIGNATION"  => "C�ble RS232",
+                "DESIGNATION"  => $product->name(),
                 "QUANTITE"     => $item->quantity(),
-                "P.U. HT"      => $uprice,
-                "MONTANT H.T." => $uprice * $item->quantity(),           
+                "P.U. HT"      => $product->price(),
+                "MONTANT H.T." => $product->price() * $item->quantity(),           
                 "TVA"          => "1" );
         $size = $pdf->addLine( $y, $line );
         $y   += $size + 2;
 
-        $tot_prods[] = array( "px_unit" => $uprice, "qte" => $item->quantity(), "tva" => $i); 
+        $tot_prods[] = array( "px_unit" => $product->price(), "qte" => $item->quantity(), "tva" => $i); 
         $tab_tva[$i] = 5.5; // TAUX TVA A DEFINIR ICI
         $i++;
     }
