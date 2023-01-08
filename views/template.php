@@ -35,5 +35,6 @@
         <script type="text/javascript" src="<?=ROOT?>/static/js/mdb.min.js"></script>
         <!-- Custom scripts -->
         <script type="text/javascript"></script>
+        <script src="<?=ROOT?>/static/js/form_validation.js"></script>
     </body>
 </html>
