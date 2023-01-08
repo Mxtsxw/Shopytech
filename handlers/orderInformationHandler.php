@@ -91,7 +91,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                     if (isset($_POST['create-account'])) {
                         // la case créer compte a été cochée
                         //on va donc créer un compte ici
-                        
+                        $_SESSION['compte_cree']=true;
                         session_start();
                         
                         // Importation des modules nécessaires

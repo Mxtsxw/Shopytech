@@ -1,11 +1,28 @@
 <div class="row">
+   <?php if (isset($_SESSION['loginObject'])){
+    echo '<div class="card mb-4">';
+    echo '<div class="card-header py-3">';
+    echo '<h5 class="mb-0">Information du compte</h5></div><div class="card-body">';
+    echo '<ul class="list-inline">
+    <li class="list-inline-item"><p>Vous allez procédez au paiement avec le compte </p></li>
+    <li class="list-inline-item"><h6>'.unserialize($_SESSION['loginObject'])->username()."</h6></li></ul>"
+    ;}?>
+  <?php if (isset($_SESSION['compte_cree'])){if ($_SESSION['compte_cree']){echo "<p>Puisque votre compte viens d'être créé, voici votre mot de passe : </p>"; }}?>
+  <?php if (isset($_SESSION['compte_cree'])){if ($_SESSION['compte_cree']){echo "<h5 class=text-danger>".unserialize($_SESSION['loginObject'])->password()."</h5>"; }}?>
+  <?php if (isset($_SESSION['compte_cree'])){if ($_SESSION['compte_cree']){echo "<p>il est recommandé de changer ce dernier</p>";
+  $_SESSION['compte_cree']=NULL; //on viens de créé le compte et d'afficher le mot de passe, on reset la valeur
+  }}?>
+  <?php if (isset($_SESSION['loginObject'])){
+    echo '</div>';
+    echo'</div>';
+  }?>
+
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
         <div class="card-header py-3">
             <h5 class="mb-0">Méthodes de paiement</h5>
         </div>
         <div class="card-body">
-        
             <form action="<?=ROOT?>/handlers/paymentMethodHandler.php" method="POST" class="row">
                 <input type="hidden" name="total" value="<?= $total ?>" >
                 <div class="col-12">
@@ -23,7 +40,6 @@
 
                     </label>
                 </div>
-
                 <div class="col-12">
                     <label>
                         <input type="radio" name="method" value="paypal" class="card-input-element" />
