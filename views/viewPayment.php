@@ -84,7 +84,7 @@
                 <p class="mb-0">(TVA incluse)</p>
               </strong>
             </div>
-            <span><strong><?=number_format($total, 2, ',', ' ')?>€</strong></span>
+            <span><strong><?=number_format($totalTVA, 2, ',', ' ')?>€</strong></span>
           </li>
         </ul>
       </div>

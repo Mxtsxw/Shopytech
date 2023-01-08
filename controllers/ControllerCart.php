@@ -28,10 +28,14 @@ class ControllerCart
 
         // 4) Récupère les informations nécessaires
         $items = $this->getCartItems();
+        $total = $this->cartAmount();
+        $totalTVA = $this->cartAmount()*1.05;
 
         // 5) Charge les données
         $data['items'] = $items;
-        $data['total'] = $this->cartAmount();
+        $data['total'] = $total;
+        $data['totalTVA'] = $totalTVA;
+        
             
         // 6) Génère la vue
         $this->_view->generate($data);

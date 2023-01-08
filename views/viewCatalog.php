@@ -36,6 +36,9 @@
                             <?php if($product->quantity() == 0) : ?>
                                 <p class="text-danger">Rupture de stock</p>
                             <?php endif; ?>
+                            <?php if(isset($_SESSION['cart'][$product->id()])) : ?>
+                                <p class="text-success">Dans votre panier</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

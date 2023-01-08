@@ -76,9 +76,11 @@ class ControllerValidation
 
         // 3) Récupère les données pour la vue
         $total = $this->cartAmount();
+        $totalTVA = $this->cartAmount()*1.05;
 
         // 4) Charge les données
         $data['total'] = $total;
+        $data['totalTVA'] = $totalTVA;
 
         // 5) Génère la vue
         $this->_view->generate($data);
@@ -98,9 +100,11 @@ class ControllerValidation
 
         // 3) Récupère les données pour la vue
         $total = $this->cartAmount();
+        $totalTVA = $this->cartAmount()*1.05;
 
         // 4) Charge les données
         $data['total'] = $total;
+        $data['totalTVA'] = $totalTVA;
 
         // 5) Génère la vue
         $this->_view->generate($data);
