@@ -8,6 +8,7 @@ require_once('../Models/LoginsManager.php');
 
 if (isset($_POST['updateProfile']))
 {
+    // Vérifie que tous les champs sont renseignés
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['add1']) && isset($_POST['add3']) && isset($_POST['zip']))
     {
         if (isset($_POST['password']))
@@ -30,8 +31,8 @@ if (isset($_POST['updateProfile']))
             $_SESSION['loginObject']=serialize($changementMDP);
 
         }
-
-        // create a new customer object with post information
+        
+        // Créer un nouvel objet Customers
         $customer = new Customers([
             'id' => (int) $_SESSION['customerId'],
             'forname' => $_POST['firstname'],
@@ -44,16 +45,16 @@ if (isset($_POST['updateProfile']))
             'postcode' => $_POST['zip']
         ]);
 
-        // create a new customer manager object
+        // Créer un nouvel objet CustomersManager
         $customersManager = new CustomersManager();
 
-        // Update the customer information in the database
+        // Met à jour le client dans la base de données
         $customersManager->updateCustomer($customer);
 
-        // Update the session information
+        // Met à jour la session
         $_SESSION['customerObject'] = serialize($customer);
         
-        // Send update message to the page
+        // Met en place un message de confirmation
         $_SESSION['update_message'] = 'Votre profil a été mis à jour !';
     }
 }

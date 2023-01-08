@@ -33,9 +33,7 @@ class Customers
     // -- Setters --
     public function setId($id)
     {
-        $id=(int) $id;
-        if ($id > 0) 
-            $this ->_id = $id;
+        $this ->_id = (int) $id;
     }
 
     public function setForname($forename)
@@ -71,12 +69,12 @@ class Customers
 
     public function setPostcode($postcode)
     {
-        $this ->_postcode = (int) $postcode;
+        $this ->_postcode = (string) $postcode;
     }
 
     public function setPhone($phone)
     {
-        $this ->_phone = $phone;
+        $this ->_phone = (string) $phone;
     }
 
     public function setRegistered($registered)

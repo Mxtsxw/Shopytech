@@ -8,12 +8,8 @@
     </div>
     <div class="text-center">
         <h1>Nous vous remercions !</h1>
-        <p>Cliquez sur le bouton pour recevoir votre facture.</p> 
-        <form action="pdf.php" method="post">
-            <!-- téléchargement de la facture -->
-            <a href="#" type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</a>
-        </form>
-        <br>
+        <p>Cliquez pour télécharger votre facture.</p> 
+        <a href="<?=ROOT?>/validation/confirmed?download" type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</a>
         <a href="<?=ROOT?>/" class="btn btn-primary">Retourner à l'accueuil</a>
     </div>
 </div>

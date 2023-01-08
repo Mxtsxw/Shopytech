@@ -16,18 +16,19 @@ if (!(isset($_POST['username']) && isset($_POST['password'])))
     // Redirection vers la page de connexion avec un message d'erreur
     $_SESSION['error_message'] = "Utilisateur ou mot de passe incorrect";
     header('Location: ../login');
+    exit();
 }
 
-// Connexion à la base de données
+// Instanciation des managers
 $loginsManager = new loginsManager();
 $customersManager = new CustomersManager();
 $adminManager = new AdminManager();
-
 
 // Récupération des données du formulaire
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+// Vérifie si l'utilisateur existe
 if ($loginsManager->checkLogin($username, $password))
 {
     $user = $loginsManager->getLogin($username, $password);
@@ -36,9 +37,9 @@ if ($loginsManager->checkLogin($username, $password))
     // Création des variables de session
     $_SESSION['username'] = $user->username();
     $_SESSION['customerId'] = $user->customerId();
-    $_SESSION['connected'] = true;
     $_SESSION['customerObject'] = serialize($customerObj);
     $_SESSION['loginObject'] = serialize($user);
+    $_SESSION['connected'] = true;
 
     // Redirection vers la page de profil
     header('Location: ../profile');
@@ -64,5 +65,6 @@ else
     // Redirection vers la page de connexion avec un message d'erreur
     $_SESSION['error_message'] = "Utilisateur ou mot de passe incorrect";
     header('Location: ../login');
+    exit();
 }
 

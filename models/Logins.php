@@ -27,8 +27,7 @@ class Logins
     // -- Setters --
     public function setId($id)
     {
-        if ($id > 0) 
-            $this ->_id = (int) $id;
+        $this ->_id = (int) $id;
     }
 
     public function setUsername($username)
@@ -38,8 +37,7 @@ class Logins
 
     public function setCustomer_id($customerId)
     {
-        if ($customerId > 0)
-            $this ->_customerId = (int) $customerId;
+        $this ->_customerId = (int) $customerId;
     }
 
     public function setPassword($password)

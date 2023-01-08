@@ -61,6 +61,7 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
+            
             <?php 
             //si c'est un admin il n'a pas de page de profil mais une page de gestion
             if (isset($_SESSION['admin'])&&$_SESSION['admin']==true)
@@ -73,6 +74,7 @@
               echo '<a class="dropdown-item" href="./profile">Profil</a>';
             }
             ?>
+
           </li>
           <li>
             <a class="dropdown-item" href="<?= ROOT ?>/handlers/logout.php">Déconnexion</a>

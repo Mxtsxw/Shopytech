@@ -29,8 +29,7 @@ class Reviews
     // -- Setters --
     public function setId_product($idProduct)
     {
-        if ($idProduct > 0) 
-            $this ->_idProduct = (int) $idProduct;
+        $this ->_idProduct = (int) $idProduct;
     }
 
     public function setName_user($nameUser)

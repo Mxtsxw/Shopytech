@@ -33,6 +33,9 @@
                             <p class="card-text m-0"><small class="text-muted"><?=number_format($product->price(), 2, ',', ' ');?>€</small></p>
                             <a href="<?=ROOT?>/products?id=<?= $product->id()?>" class="btn btn-primary h-100 stretched-link">Voir le produit
                             </a>
+                            <?php if($product->quantity() == 0) : ?>
+                                <p class="text-danger">Rupture de stock</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

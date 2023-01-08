@@ -1,0 +1,85 @@
+<?php
+class ReviewsManager extends Model
+{
+    /**
+     * Récupère tous les avis
+     * @return array
+     */
+    public function getReviews() 
+    {
+        return $this->getAll('reviews','Reviews'); 
+    }
+
+    /**
+     * Récupère les avis d'un produit via son ID
+     * @param int $id
+     * @return array
+     * @throws Exception
+     */
+    public function getReviewsByProductId($id)
+    {
+        $req = $this->getBdd()->prepare('SELECT * FROM reviews WHERE product_id = '. $id);
+        $req ->execute();
+
+        if ($req->rowCount() == 0) {
+            throw new Exception("Unvalid ID");
+        }
+
+        $data = $req ->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    /** 
+     * Ajoute un avis dans la base de données
+     * @param Reviews $review
+     * @return void
+     */
+    public function addReview(Reviews $review)
+    {
+        $req = $this->getBdd()->prepare('INSERT INTO reviews (id_product, name_user, photo_user, stars, title, description) VALUES (:id_product, :name_user, :photo_user, :stars, :title, :description)');
+        
+        $req->bindValue(':id_product', $review->getIdProduct(), PDO::PARAM_INT);
+        $req->bindValue(':name_user', $review->getNameUser(), PDO::PARAM_STR);
+        $req->bindValue(':photo_user', $review->getPhotoUser(), PDO::PARAM_STR);
+        $req->bindValue(':stars', $review->getStars(), PDO::PARAM_INT);
+        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(':description', $review->getDescription(), PDO::PARAM_STR);
+
+        $req->execute();
+        $req->closeCursor();
+    }
+
+    /**
+     * Supprime un avis de la base de données
+     * @param int $id
+     * @return void
+     */
+    public function deleteReview($id)
+    {
+        $req = $this->getBdd()->prepare('DELETE FROM reviews WHERE title = :title AND name_user = :user AND id_product = :id');
+        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(':user', $review->getNameUser(), PDO::PARAM_STR);
+        $req->bindValue(':id', $review->getIdProduct(), PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
+    }
+
+    /**
+     * Modifie un avis dans la base de données
+     * @param Reviews $review
+     * @return void
+     */
+    public function updateReview(Reviews $review)
+    {
+        $req = $this->getBdd()->prepare('UPDATE reviews SET stars = :stars, title = :title, description = :description WHERE title = :title AND name_user = :user AND id_product = :id');
+        $req->bindValue(':stars', $review->getStars(), PDO::PARAM_INT);
+        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(':description', $review->getDescription(), PDO::PARAM_STR);
+        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(':user', $review->getNameUser(), PDO::PARAM_STR);
+        $req->bindValue(':id', $review->getIdProduct(), PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
+    }
+
+}

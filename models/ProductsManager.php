@@ -2,50 +2,70 @@
 
 class ProductsManager extends Model
 {
-    // Récupère tous les products présent dans la BDD
+    /**
+     * Récupère tous les produits
+     * @return array
+     */
     public function getProducts() 
     {
-        // "products" est le nom de la table, Products est un l'objet qui sera créé
         return $this->getAll('products','Products'); 
     }
 
+    /**
+     * Récupère tous les produits d'une catégorie via son ID
+     * @param int $id
+     * @return array
+     * @throws Exception
+     */
     public function getProductsByCategory($id){
-        $objects = []; // Variable contenant l'ensemble des objets
+        $objects = [];
 
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM PRODUCTS WHERE cat_id='. $id . ' ORDER BY id');
         $req ->execute();
 
-        // Ajout des objets résultant de la requête dans la liste
+        if ($req->rowCount() == 0) {
+            throw new Exception("Unvalid category ID");                // lève une exception
+        }
+
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
             $objects[] = new Products($data);
         }
+
         $req->closeCursor();
 
-        // $objects contient maintenant tout les objets
         return $objects; 
     }
 
+    /**
+     * Récupère un produit par son ID
+     * @param int $id
+     * @return Products
+     * @throws Exception
+     */
     public function getProductById($id){
 
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM PRODUCTS WHERE Id='. $id);
         $req ->execute();
 
         if ($req->rowCount() == 0) {
-            throw new Exception("Unvalid ID");                // lève une exception
+            throw new Exception("Unvalid ID");
         }
 
-        // Retourne le résultat
         $data = $req ->fetch(PDO::FETCH_ASSOC);
+        $req -> closeCursor();
         return new Products($data);
     }
 
+    /**
+     * Récupère un produit par son nom
+     * @param string $name Le nom du produit
+     * @return Products
+     * @throws Exception
+     */
     public function getProductsByName($name){
-        $objects = []; // Variable contenant l'ensemble des objets
+        $objects = [];
 
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM PRODUCTS WHERE name LIKE "%'. $name . '%" ORDER BY id');
         $req ->execute();
 
@@ -53,37 +73,80 @@ class ProductsManager extends Model
             throw new Exception("Unvalid product name");                // lève une exception
         }
 
-        // Ajout des objets résultant de la requête dans la liste
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
             $objects[] = new Products($data);
         }
         $req->closeCursor();
 
-        // $objects contient maintenant tout les objets
         return $objects; 
     }
 
-    // get products by category name
+    /**
+     * Récupère tous les produits d'une catégorie via son nom
+     * @param string $name Le nom de la catégorie
+     * @return array
+     * @throws Exception
+     */
     public function getProductsByCategoryName($name){
-        $objects = []; // Variable contenant l'ensemble des objets
+        $objects = [];
 
-        // Création de la requête générales pour la table
         $req = $this->getBdd()->prepare('SELECT * FROM PRODUCTS WHERE cat_id IN (SELECT id FROM categories WHERE name LIKE "%'. $name . '%") ORDER BY id');
         $req ->execute();
 
         if ($req->rowCount() == 0) {
-            throw new Exception("Unknown category" . " " . $name);                // lève une exception
+            throw new Exception("Unknown category" . " " . $name);
         }
 
-        // Ajout des objets résultant de la requête dans la liste
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
             $objects[] = new Products($data);
         }
         $req->closeCursor();
 
-        // $objects contient maintenant tout les objets
         return $objects; 
     }
+
+    /**
+     * Ajoute un produit dans la base de données
+     * @param Products $product
+     * @return int L'ID du produit ajouté
+     */
+    public function addProduct(Products $product){
+        $req = $this->getBdd()->prepare('INSERT INTO products (cat_id, name, description, image, price, quantity) VALUES (:cat_id, :name, :description, :image, :price, :quantity)');
+        $req->bindValue(':cat_id', $product->getCat_id(), PDO::PARAM_INT);
+        $req->bindValue(':name', $product->getName(), PDO::PARAM_STR);
+        $req->bindValue(':description', $product->getDescription(), PDO::PARAM_STR);
+        $req->bindValue(':image', $product->getImage(), PDO::PARAM_STR);
+        $req->bindValue(':price', $product->getPrice(), PDO::PARAM_STR);
+        $req->bindValue(':quantity', $product->getQuantity(), PDO::PARAM_INT);
+        $req->execute();
+        
+        $req->closeCursor();
+
+        return $this->lastInsertedId();
+    }
+
+    /**
+     * Met à jour les stocks du produit dans la base de données
+     * @param int $id : L'ID du produit
+     * @param int $quantity : La quantité à mettre à jour
+     * @return void
+     */
+    public function updateProductQuantity($id, $quantity){
+        $req = $this->getBdd()->prepare('UPDATE products SET quantity = :quantity WHERE id = :id');
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
+    }
+
+    /**
+     * Récupère l'ID du dernier produit ajouté
+     * @return int 
+     */
+    public function lastInsertedId(){
+        return $this->getLastInsertedId('products');
+    }
+
 }

@@ -1,42 +1,46 @@
 <?php
 require_once('views/view.php');
+
 class ControllerCart
 {
     private $_productsManager;
     private $_view;
 
+    /**
+     * Route : Panier
+     * URL : /cart
+     * @param $url
+     * @throws Exception
+     */
     public function __construct($url)
     {
-        if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
+        // 1) Vérifie la validité de l'url
+        if (isset($url) && count($url)>1)
         {
             throw new Exception('Page introuvable');
         }
-        else
-        {
-            $this->_productsManager = new ProductsManager();
-            $items = array();
-            
-            if (isset($_SESSION['cart'])) 
-            {
-                foreach ($_SESSION['cart'] as $id => $quantity)
-                {
-                    $product = $this->_productsManager->getProductById($id);
-                    array_push($items, new CartItem($product->id(), $quantity, $product));
-                }
-            } else {
-                $_SESSION['cart'] = array();
-            }
 
-            // Paramètre la vue pour les categories
-            $this->_view = new View('Cart');
-            // Envoie à la vue les données [products] pour la génération de la page pour les categories
-            $this->_view->generate(array(
-                'items' => $items,
-                'total' => $this->cartAmount()
-            ));
-        }
+        // 2) Paramètre la vue
+        $this->_view = new View('Cart');
+
+        // 3) Initialisation des données envoyées à la vue
+        $data = array();
+
+        // 4) Récupère les informations nécessaires
+        $items = $this->getCartItems();
+
+        // 5) Charge les données
+        $data['items'] = $items;
+        $data['total'] = $this->cartAmount();
+            
+        // 6) Génère la vue
+        $this->_view->generate($data);
     }
 
+    /**
+     * Récupère le montant total du panier
+     * @return double
+     */
     private function cartAmount()
     {
         $this->_productsManager = new ProductsManager();
@@ -49,5 +53,27 @@ class ControllerCart
         }
         
         return $total;
+    }
+
+    /**
+     * Récupère les articles du panier
+     * @return array[CartItem]
+     */
+    private function getCartItems()
+    {
+        $this->_productsManager = new ProductsManager();
+
+        $items = array();
+        if (isset($_SESSION['cart'])) 
+        {
+            foreach ($_SESSION['cart'] as $id => $quantity)
+            {
+                $product = $this->_productsManager->getProductById($id);
+                array_push($items, new CartItem($product->id(), $quantity, $product));
+            }
+        } else {
+            $_SESSION['cart'] = array();
+        }
+        return $items;
     }
 }
