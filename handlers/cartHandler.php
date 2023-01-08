@@ -34,6 +34,8 @@ function addItem()
             $_SESSION['cart'][$_POST['productId']] = $_POST['productQuantity'];
         }
     }
+
+    $_SESSION['status'] = 0;
 }
 
 
