@@ -5,6 +5,8 @@ class ControllerValidation
 {
     private $_view;
     private $_productsManager;
+    private $_orderItemsManager;
+    private $_deliveryAdressesManager;
 
     /**
      * Route : Validation
@@ -12,11 +14,13 @@ class ControllerValidation
      * URL : /validation/detail
      * URL : /validation/payment    accessible uniquement si le statut de la commande en cours est à 1
      * URL : /validation/confirmed  accessible uniquement si le statut de la commande en cours est à 2
+     * URL : /validation/confirmed?download : URI pour télécharger la facture
      * @param $url
      * @throws Exception
      */
     public function __construct($url)
     {
+
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>2)
         {
@@ -34,6 +38,9 @@ class ControllerValidation
             }
         }
 
+        $this->_productsManager = new ProductsManager();
+        $this->_orderItemsManager = new OrderItemsManager();
+        $this->_deliveryAdressesManager = new DeliveryAddressesManager();
 
         if (count($url) == 2){
             switch ($url[1]) {
@@ -112,13 +119,18 @@ class ControllerValidation
         $data = array();
 
         // 3) Récupère les données pour la vue
-        $total = $this->cartAmount();
+        $deliveryAddress = unserialize($_SESSION['deliveryAddress']);   // Récupère l'objet DeliveryAddresses
+        $oderObject = unserialize($_SESSION['orderObject']);            // Récupère l'objet Orders
+        $itemsList = $this->orderItemsList($oderObject);                // Récupère la liste des articles de la commande        
 
-        // 4) Charge les données
-        $data['total'] = $total;
-
+        // 4) Télécharge la facture
+        if (isset($_REQUEST['download'])) {
+            $this->donwloadFacture($deliveryAddress, $oderObject, $itemsList);
+        }
+        
         // 5) Génère la vue
         $this->_view->generate($data);
+
     }
 
     /** 
@@ -127,8 +139,6 @@ class ControllerValidation
      */
     private function cartAmount()
     {
-        $this->_productsManager = new ProductsManager();
-
         $total = 0;
 
         foreach ($_SESSION['cart'] as $id => $quantity) {
@@ -138,4 +148,34 @@ class ControllerValidation
 
         return $total;
     }
+
+    /**
+     * Retourne la liste des articles de la commande
+     * @param Orders $order
+     * @return array[orderItems]
+     */
+    private function orderItemsList(Orders $order)
+    {
+        $this->_orderItemsManager = new OrderItemsManager();
+
+        $itemsList = $this->_orderItemsManager->getOrderItemsByOrderId($order->id());
+
+        return $itemsList;
+    }
+
+    /**
+     * Fonction génération et téléchargement de la facture (PDF)
+     * @param DeliveryAddresses $deliveiryAddress   :   L'adresse de livraison
+     * @param Orders $order                         :   La commande
+     * @param array[orderItems] $items              :   Les articles de la commande
+     * @return void
+     */
+    public function donwloadFacture(DeliveryAddresses $deliveryAddress, Orders $order, array $items){
+        require_once('./static/lib/fpdf/invoicePDF.php');
+
+        $pdf = invoice($deliveryAddress, $order, $items);
+
+        $pdf->Output('D', 'facture.pdf');
+    }
+
 }

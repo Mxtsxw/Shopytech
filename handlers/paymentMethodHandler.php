@@ -75,7 +75,7 @@ if(isset($_POST['paymentMethod']))
             $ProcutsManager->updateProductQuantity($key, $stock);
 
             // Sauvegarde la commande dans la session
-            // ---
+            $_SESSION['orderObject'] = serialize($ordersManager->getOrderById($orderId));
         }
 
         $_SESSION['status'] = 2;

@@ -9,7 +9,7 @@
     <div class="text-center">
         <h1>Nous vous remercions !</h1>
         <p>La facture de votre commande vous a été envoyé.</p> 
-        <button type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</button>
+        <a href="<?=ROOT?>/validation/confirmed?download" type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</a>
         <a href="<?=ROOT?>/" class="btn btn-primary">Retourner à l'accueuil</a>
     </div>
 </div>

@@ -18,7 +18,7 @@ class OrderItemsManager extends Model
      */
     public function getOrderItemById($id)
     {
-        $req = $this->getBdd()->prepare('SELECT * FROM ordersitems WHERE id = '. $id);
+        $req = $this->getBdd()->prepare('SELECT * FROM orderitems WHERE id = '. $id);
         $req ->execute();
 
         if ($req->rowCount() == 0) {
@@ -32,20 +32,26 @@ class OrderItemsManager extends Model
     /**
      * Récupère tous les articles d'une commande via son ID
      * @param int $id
-     * @return array
+     * @return array[OrdersItems]
      * @throws Exception
      */
     public function getOrderItemsByOrderId($id)
     {
-        $req = $this->getBdd()->prepare('SELECT * FROM ordersitems WHERE order_id = '. $id);
+        $req = $this->getBdd()->prepare('SELECT * FROM orderitems WHERE order_id = '. $id);
         $req ->execute();
 
         if ($req->rowCount() == 0) {
             throw new Exception("Unvalid ID");
         }
 
-        $data = $req ->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+        $items = [];
+
+        while ($data = $req ->fetch(PDO::FETCH_ASSOC))
+        {
+            $items[] = new OrderItems($data);
+        }
+        
+        return $items;
     }
 
     /**
