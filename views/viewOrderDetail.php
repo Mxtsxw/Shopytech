@@ -10,17 +10,17 @@
 
           <div class="col-md-6">
             <label for="input-firstname" class="form-label">Prénom</label>
-            <input type="text" name="firstname" class="form-control" id="input-firstname" value="" required>
+            <input type="text" name="firstname" class="form-control" id="input-firstname" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->forename();}?>" required>
           </div>
 
           <div class="col-md-6">
             <label for="input-lastname" class="form-label">Nom</label>
-            <input type="text" name="lastname" class="form-control" id="input-lastname" value="" required>
+            <input type="text" name="lastname" class="form-control" id="input-lastname" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->surname();}?>" required>
           </div>
 
           <div class="col-md-12">
             <label for="input-email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="input-email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <input type="email" name="email" class="form-control" id="input-email" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->email();}?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             <div class="invalid-feedback">
               Email non valide
             </div>
@@ -28,7 +28,7 @@
 
           <div class="col-md-12">
             <label for="input-add1" class="form-label">Adresse</label>
-            <input type="text" name="add1" class="form-control" id="input-add1" value="" required>
+            <input type="text" name="add1" class="form-control" id="input-add1" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->add1();}?>" required>
             <div class="invalid-feedback">
               Veuillez indiquer une adresse
             </div>
@@ -36,22 +36,22 @@
 
           <div class="col-md-12">
             <label for="input-add2" class="form-label">Complément d'adresse <span class="muted">(facultatif)</span></label>
-            <input type="text"name="add2" class="form-control" id="input-add2" value="">
+            <input type="text"name="add2" class="form-control" id="input-add2" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->add2();}?>">
           </div>
           
           <div class="col-md-6">
             <label for="input-city" class="form-label">Ville</label>
-            <input type="text" name="city" class="form-control" id="input-city" required>
+            <input type="text" name="city" class="form-control" id="input-city" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->add3();}?>" required>
           </div>
           
           <div class="col-md-3">
             <label for="input-zip" class="form-label">Code postal</label>
-            <input type="text" name="zip" class="form-control" id="input-zip" pattern="(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?" required>
+            <input type="text" name="zip" class="form-control" id="input-zip" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->postcode();}?>" pattern="(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?" required>
           </div>
 
           <div class="col-md-3">
             <label for="input-phone" class="form-label">Téléphone</label>
-            <input type="tel" name="phone" class="form-control" id="input-phone" pattern="^[0-9]{10}$" required>
+            <input type="tel" name="phone" class="form-control" id="input-phone" value="<?php if(isset($_SESSION['customerObject'])){ echo unserialize($_SESSION['customerObject'])->phone();}?>" pattern="^[0-9]{10}$" required>
           </div>
           
           <hr class="my-4">
@@ -60,11 +60,15 @@
             <input type="checkbox" name="same-adress" class="form-check-input" id="same-address" wfd-id="id8" checked>
             <label class="form-check-label" for="same-address">Utiliser l'adresse de livraison pour la facture</label>
           </div>
-          
-          <div class="form-check">
-            <input type="checkbox" name="create-account" class="form-check-input" id="create-account" wfd-id="id9">
-            <label class="form-check-label" for="create-account">Créer un compte</label>
-          </div>
+
+          <?php if (!(isset($_SESSION['loginObject'])))
+          //si nous ne sommes pas déjà connecté
+          {
+            echo '<div class="form-check">';
+            echo '<input type="checkbox" name="create-account" class="form-check-input" id="create-account" wfd-id="id9">';
+            echo '<label class="form-check-label" for="create-account">Créer un compte</label>';
+            echo '</div>';
+          }?>
           
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
