@@ -33,8 +33,9 @@
       </div>
     <?php else: ?>
 
-    <div>
+    <div class="d-flex justify-content-between mb-3">
       <h1>Vos commandes</h1>
+        <p class="lead">Commandes : <?= count($orders)?></p>
     </div>
 
 
