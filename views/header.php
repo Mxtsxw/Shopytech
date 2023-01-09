@@ -70,7 +70,7 @@
               </li>
             <?php else : ?>
               <li>
-                <a class="dropdown-item" href="<?=ROOT?>/profile">Profil</a>
+                <a class="dropdown-item" href="<?=ROOT?>/profile">Profile</a>
               </li>
             <?php endif; ?>
           <li>

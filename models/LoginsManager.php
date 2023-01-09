@@ -24,7 +24,7 @@ class LoginsManager extends Model
         $req = $this->getBdd()->prepare('SELECT * FROM logins WHERE username = :username AND password = :password');
         $req ->execute(array(
             'username' => $username,
-            'password' => $password
+            'password' => md5($password)
         ));
 
         $data = $req ->fetch(PDO::FETCH_ASSOC);
@@ -47,8 +47,8 @@ class LoginsManager extends Model
     {
         $req = $this->getBdd()->prepare('SELECT * FROM logins WHERE username = :username AND password = :password');
         $req ->execute(array(
-            'username' => md5($username),
-            'password' => $password
+            'username' => $username,
+            'password' => md5($password)
         ));
 
         $data = $req ->fetch(PDO::FETCH_ASSOC);
@@ -111,7 +111,7 @@ class LoginsManager extends Model
         // liaison des variables à la requête
         $req->bindValue(':customerId', $user->customerId(), PDO::PARAM_INT);
         $req->bindValue(':username', $user->username(), PDO::PARAM_STR);
-        $req->bindValue(':password', $user->password(), PDO::PARAM_STR);
+        $req->bindValue(':password', md5($user->password()), PDO::PARAM_STR);
       
         // exécution de la requête
         $req->execute();
