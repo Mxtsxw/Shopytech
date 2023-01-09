@@ -14,14 +14,11 @@ require_once('models/ProductsManager.php');
 require_once('static/lib/fpdf/invoicePDF.php');
 
 $customerManager = new CustomersManager();
-$customer = $customerManager->getCustomerById(2);
 $orderManager = new OrdersManager();
-$order = $orderManager->getOrderById(70);
 $orderItemsManager = new OrderItemsManager();
-$items = $orderItemsManager->getOrderItemsByOrderId(70);
 $productsManager = new ProductsManager();
 
-echo md5("Hamidou");
+echo $_SESSION['customerId'];
 
 ?>
 

@@ -26,7 +26,7 @@
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mt-4" id="submit">Créer un compte</button>
+      <button type="submit" name="create-account" class="btn btn-primary btn-block mt-4" id="submit">Créer un compte</button>
 
       <!-- Message d'erreur  -->
       <?php if (isset($_SESSION['error_message'])): ?>

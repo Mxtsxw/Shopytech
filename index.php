@@ -1,6 +1,7 @@
 <?php
 session_start();    // Démarre la session
 $_SESSION['status'] ?? $_SESSION['status'] = 0;
+$_SESSION['cart'] ?? $_SESSION['cart'] = array();
 
 require_once('./config.php');
 

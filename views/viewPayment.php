@@ -1,6 +1,6 @@
 <div class="row">
   <?php if(isset($_SESSION['update_message'])): ?>
-    <p class="text-success mt-3 text-center"><?=$_SESSION['update_message']?></p>
+    <div class="alert alert-success mt-4 text-center" role="alert"><?=$_SESSION['update_message']?></div>
     <?php unset($_SESSION['update_message']); ?>
   <?php endif; ?>
 

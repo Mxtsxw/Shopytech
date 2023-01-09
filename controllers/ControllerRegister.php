@@ -23,7 +23,7 @@ class ControllerRegister
         // 2) Vérifie si l'utilisateur est connecté et redirgie vers l'accueil
         if (isset($_SESSION['username']))
         {
-            header('Location: '. ROOT .'/index.php');
+            header('Location: '. ROOT .'/');
         }
 
         // 3) Paramètre la vue
@@ -31,7 +31,15 @@ class ControllerRegister
         {
             switch ($url[1]) {
                 case "confirm":
+                    
                     $this->_view = new View('RegisterConfirm');
+                    break;
+                case "create":
+                    if (!isset($_SESSION['createdCustomer'])) 
+                    {
+                        throw new Exception('Page introuvable');
+                    }
+                    $this->_view = new View('RegisterCreate');
                     break;
                 default:
                     throw new Exception('Page introuvable');

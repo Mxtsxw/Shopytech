@@ -31,7 +31,7 @@ class ControllerValidation
         else if (!(isset($_SESSION['cart'])) || empty($_SESSION['cart']))
         {
             // Exception pour la page de confirmation
-            if (count($url) == 2 && $url[1] != "confirmed")
+            if ((count($url) != 2) || $url[1] != "confirmed")
             {
                 header('Location: ' . ROOT .'/cart');
                 exit();

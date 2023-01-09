@@ -62,12 +62,12 @@
           </div>
 
 
-          <!-- <?php if (!(isset($_SESSION['username']))) : ?>
+          <?php if (!(isset($_SESSION['username']))) : ?>
           <div class="form-check">
             <input type="checkbox" name="create-account" class="form-check-input" id="create-account" wfd-id="id9">
             <label class="form-check-label" for="create-account">Créer un compte</label>
           </div>
-          <?php endif; ?> -->
+          <?php endif; ?>
           
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
