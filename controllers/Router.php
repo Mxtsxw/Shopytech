@@ -52,7 +52,6 @@ class Router
             $errorMSG = $e->getMessage();
             $this->_view = new View('Error');
             $this->_view->generate(array('errorMsg' => $errorMSG));
-            $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
         }
     }
 }

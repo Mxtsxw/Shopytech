@@ -53,12 +53,28 @@
                 aria-expanded="false"
                 aria-controls="order<?=$order->id()?>"
               >
-                <?= $order->date() ?>
+                <div class="d-flex gap-5">
+                  <p><?= date('d/m/Y', strtotime($order->date())) ?></p>
+                  <p> • </p>
+                  <p><?= $order->status() != 10 ? "Payement en attente de validation" : "Commande validée" ?></p>
+                </div>
               </button>
             </h2>
             <div id="order<?=$order->id()?>" class="accordion-collapse collapse" aria-labelledby="headingOrder<?=$order->id()?>" data-mdb-parent="#accordionExample">
-              <div class="accordion-body">
-                Commande en cours
+              
+            <div class="accordion-body">
+                <?php 
+                  $productsManager = new ProductsManager();
+                  $orderItemsManager = new OrderItemsManager();
+                  $orderItems = $orderItemsManager->getOrderItemsByOrderId($order->id());
+                ?>
+                <?php foreach ($orderItems as $orderItem) : ?>
+                  <?php $product = $productsManager->getProductById($orderItem->productId()) ?>
+                  <div class="d-flex justify-content-between">
+                    <p><?= $product->name() ?></p>
+                    <p><?= $orderItem->quantity() ?> x <?= $product->price() ?>€</p>
+                  </div>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>
