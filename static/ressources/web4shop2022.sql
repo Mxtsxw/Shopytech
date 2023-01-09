@@ -137,7 +137,7 @@ CREATE TABLE `logins` (
 
 INSERT INTO `logins` (`id`, `customer_id`, `username`, `password`) VALUES
 (1, '1', 'Hamidou', '93f20c4fa86200f3353450d9d9d2f117'),
-(2, '2', 'Delaroche', '0a5b3913cbc9a9092311630e869b4442');
+(2, '2', 'Delaroche', '5cec72325c9b56d9246d4cd50eb9f207');
 
 -- --------------------------------------------------------
 
