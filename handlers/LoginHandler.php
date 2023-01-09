@@ -37,7 +37,7 @@ if ($adminManager->checkAdmin($username, $password))
     $_SESSION['username'] = $admin->username();
     $_SESSION['connected'] = true;
     $_SESSION['loginObject'] = serialize($user);
-    $_SESSION['Admin']= true;
+    $_SESSION['admin']= true;
 
     // Redirection vers la page de gestion pour admins
     header('Location: ../admin');

@@ -38,6 +38,7 @@ class LoginsManager extends Model
 
     /**
      * Vérifie si un utilisateur existe
+     * La méthode est censée vérifiér le chiffrement du mot de passe
      * @param string $username
      * @param string $password
      * @return bool
@@ -46,7 +47,7 @@ class LoginsManager extends Model
     {
         $req = $this->getBdd()->prepare('SELECT * FROM logins WHERE username = :username AND password = :password');
         $req ->execute(array(
-            'username' => $username,
+            'username' => md5($username),
             'password' => $password
         ));
 
@@ -93,7 +94,7 @@ class LoginsManager extends Model
             'id' => $user->id(),
             'customer_id' => $user->customerId(),
             'username' => $user->username(),
-            'password' => $user->password(),
+            'password' => md5($user->password()),
         ));
     }
 
