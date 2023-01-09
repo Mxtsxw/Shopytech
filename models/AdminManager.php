@@ -20,7 +20,7 @@ class AdminManager extends Model
         $req = $this->getBdd()->prepare('SELECT * FROM admin WHERE username = :username AND password = :password');
         $req ->execute(array(
             'username' => $username,
-            'password' => $password
+            'password' => md5($password)
         ));
 
         // Retourne le résultat
@@ -47,7 +47,7 @@ class AdminManager extends Model
         $req = $this->getBdd()->prepare('SELECT * FROM admin WHERE username = :username AND password = :password');
         $req ->execute(array(
             'username' => $username,
-            'password' => $password
+            'password' => md5($password)
         ));
 
         // Retourne le résultat
