@@ -1,6 +1,6 @@
 <?php
 require('fpdf.php');
-define('EURO', chr(128) );
+define('EURO', '€' );
 define('EURO_VAL', 6.55957 );
 
 // Xavier Nicolay 2004
