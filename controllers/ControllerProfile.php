@@ -22,7 +22,7 @@ class ControllerProfile
         }
 
         // 2) Vérifie si l'utilisateur est connecté et redirgie vers la page de connexion
-        if (!(isset($_SESSION['username'])))
+        if (!(isset($_SESSION['username']) && $_SESSION['customerObject']))
         {
             header('Location: ' . ROOT .'/login');
             exit();

@@ -23,7 +23,7 @@ class ControllerLogin
         if (isset($_SESSION['username']))
         {
             //redirection vers la page d'accueil
-            header('Location: '. ROOT .'/index.php');
+            header('Location: '. ROOT .'/');
             exit();
         }
 
