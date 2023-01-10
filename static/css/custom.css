@@ -23,6 +23,13 @@ img {
     -webkit-box-orient: vertical;
 }
 
+
+.text-wrap-dot{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 /* Custom classes */
 
 .fit-cover{

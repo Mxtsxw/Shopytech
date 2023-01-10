@@ -1,14 +1,14 @@
 <?php
 require_once('views/view.php');
-class ControllerAdmin
+class ControllerCommand
 {
-    private $_productsManager;
     private $_view;
+    private $_ordersManager;
 
     public function __construct($url)
     {
 
-        $this->_productsManager = new ProductsManager();
+        $this->_ordersManager = new OrdersManager();
 
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1) // -- INFO : Source d'erreur à vérifier
@@ -17,30 +17,19 @@ class ControllerAdmin
         }
         
         // 2) Paramètre la vue
-        $this->_view = new View('Admin');
+        $this->_view = new View('Command');
 
         // 3) Initialisation des données envoyées à la vue
         $data = array();
 
         // 4) Récupère les informations nécessaires
-        $products = $this->products();
+        $orders = $this->_ordersManager->getOrders();
 
         // 5) Charge les données
-        $data['products'] = $products;
+        $data['orders'] = $orders;
 
         // 6) Génère la vue
         $this->_view->generate($data);
     }
 
-    /**
-     * Récupère la liste des articles
-     */
-    private function products()
-    {
-        $this->_productsManager = new ProductsManager();
-
-        $products = $this->_productsManager->getProducts();
-
-        return $products;
-    }
 }

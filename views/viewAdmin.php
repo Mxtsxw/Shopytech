@@ -1,14 +1,14 @@
 <?php $this->_t = 'Shopytech - ADMIN'; ?>
 
 
-<h1>Page d'admin en cours de développement</h1>
+<h1>Page des stocks disponibles</h1>
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
         <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Etat</th>
+        <th>Produits</th>
         <th>Quantité</th>
+        <th>Etat</th>
+        <th>ID</th>
         <th>Actions</th>
         </tr>
     </thead>
@@ -18,31 +18,34 @@
       <td>
         <div class="d-flex align-items-center">
           <img
-              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-              alt=""
+              src="<?= ROOT ?>/static/img/<?= $product->image()?>"
+              alt="<?= $product->name()?>"
               style="width: 45px; height: 45px"
               class="rounded-circle"
               />
           <div class="ms-3">
-            <p class="fw-bold mb-1">product</p>
-            <p class="text-muted mb-0">j'adore les petits poissons</p>
+            <p class="fw-bold mb-1"><?php echo $product->name() ;?></p>
+            <p class="text-muted mb-0 text-wrap-dot"><?php echo $product->description();?></p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-normal mb-1">3 pck j'ai envie</p>
-        <p class="text-muted text-danger mb-0">attention need to restock</p>
+        <p class="fw-normal mb-1"><?= $product->quantity()?></p>
+
       </td>
-      <td>
-        <span class="badge badge-success rounded-pill d-inline">En cours de livraison</span>
+      <td><?php 
+        if ($product->quantity()==0){echo '<p class="text-danger mb-0">Plus de stocks</p>';}
+        elseif ($product->quantity()<3){echo '<p class="text-danger mb-0">stocks faibles</p>';}
+        else{echo '<p class="text-success mb-0">OK</p>';}
+        ?>
       </td>
-      <td>Senior</td>
+      <td><?=$product->id()?></td>
       <td>
         <button type="button" class="btn btn-link btn-sm btn-rounded">
           Edit
         </button>
       </td>
     </tr>
-    <?php endforeach?>
+    <?php endforeach; ?>
     </tbody>
 </table>

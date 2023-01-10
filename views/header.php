@@ -63,7 +63,7 @@
           
             <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
               <li>
-                <a class="dropdown-item" href="<?=ROOT?>/admin">Commandes</a>
+                <a class="dropdown-item" href="<?=ROOT?>/command">Commandes</a>
               </li>
               <li>
                   <a class="dropdown-item" href="<?=ROOT?>/admin">Stocks</a>

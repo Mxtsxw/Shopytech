@@ -17,7 +17,7 @@
 
   <div class="form-outline mb-4">
     <input type="password" id="password-confirm-input" name="passwordConfirm" class="form-control" required/>
-    <label class="form-label" for="password-confirm-input">Mot de passe</label>
+    <label class="form-label" for="password-confirm-input">Confirmer mot de passe</label>
   </div>
 
   <?php if (isset($_SESSION['error_message'])): ?>

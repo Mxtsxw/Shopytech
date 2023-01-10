@@ -50,7 +50,7 @@ if (isset($_POST['updatePassword']))
         // Vérification du mot de passe 
         if (!($loginsManager->checkLogin($_SESSION['username'], $_POST['current-password'])))
         {
-            $_SESSION['error_message'] = "Mot de passe incorrecte";
+            $_SESSION['error_message'] = "Mot de passe incorrect";
             header('Location: ../profile/pwd');
             exit();
         }
