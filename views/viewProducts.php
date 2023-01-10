@@ -8,7 +8,7 @@
                 <img class="card-img-top mb-5 mb-md-0 fit-cover h-100" src="<?= ROOT ?>/static/img/<?= $product->image()?>" class="card-img-top" alt="<?= $product->name()?>">
             </div>
             <div class="col-md-6">
-                <div class="small mb-1">Catégorie</div>
+                <div class="small mb-1"><?= $category ?></div>
                 <h1 class="display-5 fw-bolder"><?= $product->name()?></h1>
                 <div class="fs-5 mb-5">
                     <span><?php echo number_format($product->price(), 2, ',', ' ');?>€</span>
