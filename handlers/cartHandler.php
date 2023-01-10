@@ -28,7 +28,7 @@ function addItem()
         // Vérifie si le produit est déjà dans le panier
         if (isset($_SESSION['cart'][$_POST['productId']])) {
             // Si le produit est déjà dans le panier, ajoute la quantité
-            $_SESSION['cart'][$_POST['productId']] += $_POST['productQuantity'];
+            $_SESSION['cart'][$_POST['productId']] = $_POST['productQuantity'];
         } else {
             // Si le produit n'est pas dans le panier, ajoute le produit
             $_SESSION['cart'][$_POST['productId']] = $_POST['productQuantity'];

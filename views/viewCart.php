@@ -22,15 +22,16 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
+                        <a href="<?=ROOT?>/products?id=<?=$item->getProduct()->id()?>">
                         <img
                             src="<?= ROOT ?>/static/img/<?= $item->getProduct()->image() ?>"
                             alt="Image"
                             class="img-fluid rounded-start fit-cover h-100"
-                        />
+                        /></a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $item->getProduct()->name() ?></h5>
+                            <a href="<?=ROOT?>/products?id=<?=$item->getProduct()->id()?>" class="card-title h5 text-dark"><?= $item->getProduct()->name() ?></a>
                             <p class="card-text">
                             <?= $item->getProduct()->description() ?>
                             </p>
