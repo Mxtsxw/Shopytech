@@ -15,26 +15,25 @@
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($products as $product):?>
+    <?php foreach ($orders as $order):?>
         <tr>
-        <td><p>id</p>
+        <td><p><?=$order->id()?></p>
+        </td>
+        <td><p> <?=$order->date()?></p>
+        </td>
+        <td><p><?=$order->customerId()?></p>
+        </td>
+        <td><?=$order->paymentType()?></td>
+        </td>
+        <td><p><?=$order->total()?></p>
+        </td>
+        <td><?php if ($order->status()==2){echo '<p class="text-warning">En cours de validation</p>';}
+        elseif($order->status()==10){echo '<p class="text-success">Validée</p>';}
+        elseif($order->status()==404){echo '<p class="text-danger">refusée</p>';}
+        elseif($order->status()==3){echo '<p class="text-warning">paiement paypal</p>';}?>
         </td>
         <td>
-            <p class="fw-normal mb-1"> order->date()?></p>
-
-        </td>
-        <td><p>customer_id</p>
-        </td>
-        <td>payment_type</td>
-        </td>
-        <td><p>total</p>
-        </td>
-        <td><p>status</p>
-        </td>
-        <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Edit
-            </button>
+            <a href="<?=ROOT?>/pagecommande?id=<?= $order->id()?>" class="btn btn-sm btn-primary btn-rounded"> EDIT</a>
         </td>
     </tr>
     <?php endforeach; ?>

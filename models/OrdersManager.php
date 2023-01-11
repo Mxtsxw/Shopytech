@@ -100,4 +100,18 @@ class OrdersManager extends Model
     {
         return $this->getLastInsertedId('orders');
     }
+
+    /**
+     * Met à jour le status de la commande dans la base de données
+     * @param int $id : L'ID de la commande
+     * @param int $status : Le status à mettre à jour
+     * @return void
+     */
+    public function updateOrderStatus($id, $status){
+        $req = $this->getBdd()->prepare('UPDATE products SET status = :status WHERE id = :id');
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':status', $status, PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
+    }
 }
