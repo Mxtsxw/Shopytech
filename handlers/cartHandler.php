@@ -54,4 +54,14 @@ function deleteItem(){
     }
 }
 
+function emptyCart() 
+{
+    // Vide le panier
+    $_SESSION['cart'] = array();
+}
+
+function updateItem()
+{
+    
+}
 ?>

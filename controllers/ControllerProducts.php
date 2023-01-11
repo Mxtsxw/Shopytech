@@ -5,6 +5,7 @@ class ControllerProducts
 {
     private $_productsManager; 
     private $_categoriesManager;
+    private $_reviewsManager;
     private $_view;
 
     /**
@@ -19,6 +20,7 @@ class ControllerProducts
     {
         $this->_productsManager = new ProductsManager();
         $this->_categoriesManager = new CategoriesManager();
+        $this->_reviewsManager = new ReviewsManager();
 
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1) throw new Exception('Page introuvable');
@@ -33,10 +35,12 @@ class ControllerProducts
         // 4) Récupère les informations nécessaires
         $product = $this->product($_GET['id']);
         $category = ucfirst($this->_categoriesManager->getCategoryById($product->catId())->name());
+        $reviews = $this->reviews($_GET['id']);
 
         // 5) Charge les données
         $data['product'] = $product;
         $data['category'] = $category;
+        $data['reviews'] = $reviews;
         
         // 6) Génère la vue
         $this->_view->generate($data);
@@ -51,5 +55,16 @@ class ControllerProducts
     {
         $product = $this->_productsManager->getProductById($id);
         return $product;
+    }
+
+    /**
+     * Récupère les commentaires d'un article
+     * @param int $id : ID de l'article
+     * @return array
+     */
+    private function reviews($id)
+    {
+        $reviews = $this->_reviewsManager->getReviewsByProductId($id);
+        return $reviews;
     }
 }

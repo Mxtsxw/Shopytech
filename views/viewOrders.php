@@ -24,7 +24,6 @@
     </div>
     </div>
   </div>
-
   <div class="col-md-8 mt-4">
     
     <?php if (!isset($orders) || empty($orders)) : ?>

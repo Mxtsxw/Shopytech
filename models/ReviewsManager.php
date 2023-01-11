@@ -18,15 +18,19 @@ class ReviewsManager extends Model
      */
     public function getReviewsByProductId($id)
     {
-        $req = $this->getBdd()->prepare('SELECT * FROM reviews WHERE product_id = '. $id);
+        $req = $this->getBdd()->prepare('SELECT * FROM reviews WHERE id_product = '. $id);
         $req ->execute();
 
-        if ($req->rowCount() == 0) {
-            throw new Exception("Unvalid ID");
+        $objects = [];
+        
+        while($data = $req ->fetch(PDO::FETCH_ASSOC))
+        {
+            $objects[] = new Reviews($data);
         }
+        
+        $req->closeCursor();
 
-        $data = $req ->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+        return $objects; 
     }
 
     /** 
@@ -54,7 +58,7 @@ class ReviewsManager extends Model
      * @param int $id
      * @return void
      */
-    public function deleteReview($id)
+    public function deleteReview($review)
     {
         $req = $this->getBdd()->prepare('DELETE FROM reviews WHERE title = :title AND name_user = :user AND id_product = :id');
         $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
