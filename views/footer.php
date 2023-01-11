@@ -9,6 +9,7 @@
         class="btn text-white btn-floating m-1"
         style="background-color: #55acee;"
         href="https://twitter.com/audphilippe?t=IYnphgq49fx2NLDw8RAL_A&s=09"
+        target="_blank"
         role="button"
         ><i class="fab fa-twitter"></i
       ></a>
@@ -18,6 +19,7 @@
         class="btn text-white btn-floating m-1"
         style="background-color: #0082ca;"
         href="https://www.linkedin.com/in/philippe-audier-54830b97/"
+        target="_blank"
         role="button"
         ><i class="fab fa-linkedin-in"></i
       ></a>
@@ -27,6 +29,7 @@
         class="btn text-white btn-floating m-1"
         style="background-color: #333333;"
         href="https://github.com/Matsew-uwu/Shopytech/"
+        target="_blank"
         role="button"
         ><i class="fab fa-github"></i
       ></a>
