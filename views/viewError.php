@@ -1,3 +1,5 @@
+<?php $this->_t = 'Page introuvable'; ?>
+
 <div class="d-flex align-items-center justify-content-center">
     <div class="text-center">
         <h1 class="display-1 fw-bold">404</h1>

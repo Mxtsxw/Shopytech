@@ -1,4 +1,4 @@
-<?php $this->_t = 'Shopytech - COMMAND'; ?>
+<?php $this->_t = 'Shopytech Dashboard - Commandes'; ?>
 
 
 <h1>Page des Commandes</h1>

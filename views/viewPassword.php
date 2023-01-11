@@ -1,3 +1,5 @@
+<?php $this->_t = 'Shopytech - Modifier mot de passe'; ?>
+
 <!-- create a row to hold the left side card and the main content -->
 <div class="row">
   <!-- create the left side card to display the user icon and name -->

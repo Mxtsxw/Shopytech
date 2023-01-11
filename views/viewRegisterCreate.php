@@ -1,3 +1,5 @@
+<?php $this->_t = 'Shopytech - Créer un compte'; ?>
+
 <form action="<?=ROOT?>/handlers/RegisterHandler.php" method="POST" class="m-auto mt-4 card p-5" style="width:25rem;">
     <div>
         <h1 class="text-center my-4 h2">

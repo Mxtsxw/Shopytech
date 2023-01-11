@@ -1,5 +1,5 @@
 
-<?php $this->_t = 'Shopytech - Inscription'; ?>
+<?php $this->_t = 'Shopytech - Créer un compte'; ?>
 
 <!-- --- --- --- -- -->
 

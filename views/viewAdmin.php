@@ -1,4 +1,4 @@
-<?php $this->_t = 'Shopytech - ADMIN'; ?>
+<?php $this->_t = 'Shopytech Dashboard'; ?>
 
 
 <h1>Page des stocks disponibles</h1>

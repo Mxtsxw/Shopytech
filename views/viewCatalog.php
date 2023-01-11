@@ -1,4 +1,4 @@
-<?php $this->_t = 'Shopytech - '; ?>
+<?php $this->_t = 'Shopytech - Catalogue'; ?>
 
 <div class="d-flex gap-3">
     

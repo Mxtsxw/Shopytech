@@ -1,3 +1,5 @@
+<?php $this->_t = 'Shopytech - Commandes'; ?>
+
 <div class="row mt-4">
   <div class="col-md-4">
     <div class="card mt-5">

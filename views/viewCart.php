@@ -1,3 +1,5 @@
+<?php $this->_t = 'Shopytech - Panier'; ?>
+
 <div class="d-flex gap-3 justify-content-around">
     <?php if (empty($items)): ?>
     <div class="d-flex align-items-center justify-content-center">

@@ -1,3 +1,5 @@
+<?php $this->_t = 'Shopytech - Confirmation'; ?>
+
 <div class="mt-5">
     <div class="mb-4 text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
