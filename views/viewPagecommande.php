@@ -32,8 +32,17 @@
         </div>
 
         <div class="form-group">
-          <input type="text" name="statusCommand" class="form-control" value="<?= $order->status()?>" required/>
-          <?php if (isset($_SESSION['qprod-error'])){echo '<p class="text-danger">'.$_SESSION['qprod-error'].'</p>';}?>
+          <select name="statusCommand">
+              <option value=<?=$order->status()?>><?php if ($order->status()==2){echo '<p class="text-warning">En cours de validation</p>';}
+        elseif($order->status()==10){echo '<p class="text-success">Validée</p>';}
+        elseif($order->status()==127){echo '<p class="text-danger">refusée</p>';}
+        elseif($order->status()==3){echo '<p class="text-warning">paiement paypal</p>';}?></option>
+              <?php if ($order->status()!=10){echo '<option value=10>Validée</option>';}?>
+              <?php if ($order->status()!=2){echo '<option value=2>En cours</option>';}?>
+              <?php if ($order->status()!=3){echo '<option value=3>Paiment paypal</option>';}?>
+              <?php if ($order->status()!=127){echo '<option value=127>Refusée</option>';}?>
+          </select>
+          <?php if (isset($_SESSION['erreur-modif-status-order'])){echo '<p class="text-danger">'.$_SESSION['erreur-modif-status-order'].'</p>';}?>
         </div>
       </td>
       <td>
@@ -44,21 +53,4 @@
       </form>   
     </tr>
     </tbody>
-</table>
-<br>
-<br>
-<h5>Informations sur les valeurs du status</h5>
-<table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th scope="col">Valeurs</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td><p>10</p></td><td><p class="text-success">Validée</p></td></tr>
-    <tr><td><p>2</p></td><td><p class="text-warning">En cours de validation</p></td></tr>
-    <tr><td><p>3</p></td><td><p class="text-warning">paiement paypal</p></td></tr>  
-    <tr><td><p>404</p></td><td><p class="text-danger">refusée</p></td></tr> 
-  </tbody>
 </table>

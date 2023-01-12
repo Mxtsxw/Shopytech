@@ -13,8 +13,7 @@
       aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Collapsible wrapper -->
+      <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">

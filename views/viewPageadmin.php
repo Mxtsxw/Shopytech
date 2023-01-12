@@ -45,13 +45,13 @@
         </div>
 
         <div class="form-group">
-          <input type="text" name="quantity" class="form-control" value="<?= $product->quantity()?>" required/>
+          <input type="number" min=0 name="quantityProduct" class="form-control" value="<?= $product->quantity()?>" required/>
           <?php if (isset($_SESSION['qprod-error'])){echo '<p class="text-danger">'.$_SESSION['qprod-error'].'</p>';}?>
         </div>
       </td>
       <td>
         <div class="text-end mt-3">
-          <button type="submit" name="updateProfile" class="btn btn-sm btn-primary btn-rounded">Confirmer la modification</button>
+          <button type="submit" name="updatequantity" class="btn btn-sm btn-primary btn-rounded">Confirmer la modification</button>
         </div>
       </td>
       </form>      

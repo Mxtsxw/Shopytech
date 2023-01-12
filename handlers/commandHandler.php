@@ -13,12 +13,13 @@ if (isset($_POST['statusCommand'])&&isset($_POST['idOrder']))
     if(isset($_SESSION['erreur-modif-status-order'])){$_SESSION['erreur-modif-status-order']=NULL;}
 
     // Update the product information in the database
+    echo $_POST['idOrder'];
     if ($_POST['statusCommand']==10) {$ordermanager->updateOrderStatus($_POST['idOrder'],10);} // validée
     elseif ($_POST['statusCommand']==2) {$ordermanager->updateOrderStatus($_POST['idOrder'],2);} // en cours
     elseif ($_POST['statusCommand']==3) {$ordermanager->updateOrderStatus($_POST['idOrder'],3);} //paypal
-    elseif ($_POST['statusCommand']==404) {$ordermanager->updateOrderStatus($_POST['idOrder'],404);} //refusée
+    elseif ($_POST['statusCommand']==127) {$ordermanager->updateOrderStatus($_POST['idOrder'],127);} //refusée
     else{$_SESSION['erreur-modif-status-order']="Valeur inconnue";
-        header('Location: ../pagecommande?='.$POST['idOrder']);
+        header('Location: ../pagecommande?id='.$_POST['idOrder']);
         exit();}
 }
 

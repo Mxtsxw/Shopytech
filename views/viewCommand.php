@@ -29,7 +29,7 @@
         </td>
         <td><?php if ($order->status()==2){echo '<p class="text-warning">En cours de validation</p>';}
         elseif($order->status()==10){echo '<p class="text-success">Validée</p>';}
-        elseif($order->status()==404){echo '<p class="text-danger">refusée</p>';}
+        elseif($order->status()==127){echo '<p class="text-danger">refusée</p>';}
         elseif($order->status()==3){echo '<p class="text-warning">paiement paypal</p>';}?>
         </td>
         <td>
