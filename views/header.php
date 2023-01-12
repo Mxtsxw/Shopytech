@@ -37,7 +37,7 @@
     <!-- Collapsible wrapper -->
 
     <!-- Right elements -->
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center position-absolute end-0">
       <!-- Icon -->
       <a class="link-secondary me-3" href="<?= ROOT ?>/cart">
         <i class="fas fa-shopping-cart icon-link"></i>
