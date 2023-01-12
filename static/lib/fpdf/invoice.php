@@ -524,7 +524,7 @@ function addTVAs( $params, $tab_tva, $invoice )
 				if ($params["remise"] > 0 )
 				{
 					if ( is_int( $params["remise"] ) )
-						$l_remise = $param["remise"];
+						$l_remise = $params["remise"];
 					else
 						$l_remise = sprintf ("%0.2F", $params["remise"]);
 					$this->Cell( 14.5,4, $l_remise, '', '', 'R' );
