@@ -39,6 +39,11 @@ Shopytech/
 ├─ index.php
 ```
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/85303770/212147657-829e2247-a571-47d0-a85a-8db647d17b3a.png)
+
+
+
 > Réalisé dans le cardre du module **ISI-WEB à Polytech Lyon - filière Informatique**
 
 > 📌 Fait par **Matthieu & Clément**
