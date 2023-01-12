@@ -33,7 +33,8 @@
         <p class="fw-normal mb-1"><?= $product->quantity()?></p>
 
       </td>
-      <td><?php 
+      <td>
+        <?php 
         if ($product->quantity()==0){echo '<p class="text-danger mb-0">Plus de stocks</p>';}
         elseif ($product->quantity()<3){echo '<p class="text-danger mb-0">stocks faibles</p>';}
         else{echo '<p class="text-success mb-0">OK</p>';}
@@ -41,9 +42,8 @@
       </td>
       <td><?=$product->id()?></td>
       <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
+        <a href="<?=ROOT?>/pageadmin?id=<?= $product->id()?>" type="button" class="btn btn-sm btn-primary btn-rounded">EDIT</a>
+
       </td>
     </tr>
     <?php endforeach; ?>
