@@ -60,7 +60,7 @@
 
           <div class="col-md-3">
             <label for="input-phone" class="form-label">Téléphone</label>
-            <input type="tel" name="phone" class="form-control" id="input-phone" value="<?= isset($_SESSION['customerObject']) ? unserialize($_SESSION['customerObject'])->phone() : "" ?>" pattern="^[0-9]{10}$" required>
+            <input type="tel" name="phone" class="form-control" id="input-phone" value="<?= isset($_SESSION['customerObject']) ? unserialize($_SESSION['customerObject'])->phone() : "" ?>" pattern="^(0|\+33)[1-9]( *[0-9]{2}){4}$" required>
           </div>
           
           <hr class="my-4">

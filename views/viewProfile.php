@@ -59,7 +59,7 @@
 
           <div class="form-group">
             <label for="phone-input">Phone</label>
-            <input type="tel" name="phone" class="form-control" id="phone-input" value="<?= $customer->phone()?>" pattern="^[0-9]{10}$" required/>
+            <input type="tel" name="phone" class="form-control" id="phone-input" value="<?= $customer->phone()?>" pattern="^(0|\+33)[1-9]( *[0-9]{2}){4}$" required/>
           </div>
 
           <hr class="my-4">
