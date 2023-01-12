@@ -16,13 +16,13 @@
     <form action="<?=ROOT?>/handlers/registerHandler.php" method="POST" class="p-3">
       <h2 class="text-center">Inscription</h2>
       <div class="form-group mt-2">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisteur" required>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisteur" pattern="^[^<>%$]*$" required>
       </div>
       <div class="form-group mt-2">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" pattern="^[^<>%$]*$" required>
       </div>
       <div class="form-group mt-2">
-        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" required>
+        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" pattern="^[^<>%$]*$" required>
       </div>
 
       <!-- Submit button -->

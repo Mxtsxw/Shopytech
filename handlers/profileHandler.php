@@ -88,45 +88,67 @@ if (isset($_POST['confirmCustomerInfo']))
 {
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['add1']) && isset($_POST['add3']) && isset($_POST['zip']))
     {
-        // Créer un nouvel objet Customers
-        $customer = new Customers([
-            'id' => -1,
-            'forname' => $_POST['firstname'],
-            'surname' => $_POST['lastname'],
-            'email' => $_POST['email'],
-            'phone' => $_POST['phone'],
-            'add1' => $_POST['add1'],
-            'add2' => isset($_POST['add2']) ? $_POST['add2'] : NULL,
-            'add3' => $_POST['add3'],
-            'postcode' => $_POST['zip']
-        ]);
+        // Vérifie que les variables ne sont pas vides
+        if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['add1']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['phone'])) {
+        
+            if(filter_var($_POST['firstname'], FILTER_SANITIZE_STRING) == $_POST['firstname'] && filter_var($_POST['lastname'], FILTER_SANITIZE_STRING) == $_POST['lastname'])
+            {
+                // Vérifie que l'email est valide (du côté du serveur)
+                if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 
-        // Créer un nouvel objet CustomersManager
-        $customersManager = new CustomersManager();
-        $loginsManager = new LoginsManager();
+                    // Vérifie que le code postal est valide (du côté du serveur)
+                    if (preg_match('#^[0-9]{5}$#', $_POST['zip'])) {
 
-        // Met à jour le client dans la base de données
-        $customersManager->updateCustomer($customer);
+                        // Vérifie que le numéro de téléphone est valide (du côté du serveur)
+                        if (preg_match('#^[0-9]{10}$#', $_POST['phone'])) {
+                            
+                            // Créer un nouvel objet Customers
+                            $customer = new Customers([
+                                'id' => -1,
+                                'forname' => $_POST['firstname'],
+                                'surname' => $_POST['lastname'],
+                                'email' => $_POST['email'],
+                                'phone' => $_POST['phone'],
+                                'add1' => $_POST['add1'],
+                                'add2' => isset($_POST['add2']) ? $_POST['add2'] : NULL,
+                                'add3' => $_POST['add3'],
+                                'postcode' => $_POST['zip']
+                            ]);
 
-        // Mise à jour de la BD
-        $customerId = $customersManager->addCustomer($customer);
+                            // Créer un nouvel objet CustomersManager
+                            $customersManager = new CustomersManager();
+                            $loginsManager = new LoginsManager();
 
-        $user = unserialize($_SESSION['createdLogins']);
-        $user->setCustomer_id($customerId);
-        $userId = $loginsManager->addUser($user);
+                            // Met à jour le client dans la base de données
+                            $customersManager->updateCustomer($customer);
 
-        // Supprime les variables de session pour la création
-        unset($_SESSION['createdLogins']);
-        unset($_SESSION['created_username']);
+                            // Mise à jour de la BD
+                            $customerId = $customersManager->addCustomer($customer);
 
-        // Mets à jour les variables de session
-        $_SESSION['username'] = $user->username();
-        $_SESSION['customerId'] = $customerId;
-        $_SESSION['customerObject'] = serialize($customersManager->getCustomerbyId($customerId));
-        $_SESSION['loginObject'] = serialize($user);
-        $_SESSION['connected'] = true;
+                            $user = unserialize($_SESSION['createdLogins']);
+                            $user->setCustomer_id($customerId);
+                            $userId = $loginsManager->addUser($user);
 
-        $_SESSION['update_message'] = "Votre compté à été créé avec succès";
+                            // Supprime les variables de session pour la création
+                            unset($_SESSION['createdLogins']);
+                            unset($_SESSION['created_username']);
+
+                            // Mets à jour les variables de session
+                            $_SESSION['username'] = $user->username();
+                            $_SESSION['customerId'] = $customerId;
+                            $_SESSION['customerObject'] = serialize($customersManager->getCustomerbyId($customerId));
+                            $_SESSION['loginObject'] = serialize($user);
+                            $_SESSION['connected'] = true;
+
+                            $_SESSION['update_message'] = "Votre compté à été créé avec succès";
+
+                            header('Location: ../profile');
+                            exit();
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -25,8 +25,8 @@ $customersManager = new CustomersManager();
 $adminManager = new AdminManager();
 
 // Récupération des données du formulaire
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+$password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
 // Connexion administrateur
 if ($adminManager->checkAdmin($username, $password)) 

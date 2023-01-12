@@ -7,6 +7,11 @@
         <h5 class="mb-0">Détail de la commande</h5>
     </div>
       <div class="card-body">
+        <!-- Message d'erreur  -->
+        <?php if (isset($_SESSION['error_message'])): ?>
+          <p class='text-danger mt-3 text-center'><?= $_SESSION['error_message'] ?></p>
+          <?php unset($_SESSION['error_message']); ?>
+        <?php endif; ?>
         
         <form class="row g-3 needs-validation" action="<?=ROOT?>/handlers/orderInformationHandler.php" method="POST" novalidate>
 

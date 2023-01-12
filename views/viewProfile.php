@@ -39,12 +39,12 @@
         <form action="<?=ROOT?>/handlers/profileHandler.php" method="POST" class="needs-validation" novalidate>
           <div class="form-group">
             <label for="firstname-input">Prénom</label>
-            <input type="text" name="firstname" class="form-control" id="firstname-input" value="<?= $customer->forename()?>" required/>
+            <input type="text" name="firstname" class="form-control" id="firstname-input" value="<?= $customer->forename()?>" pattern="^[^<>%$]*$" required/>
           </div>
 
           <div class="form-group">
             <label for="lastname-input">Nom</label>
-            <input type="text" name="lastname" class="form-control" id="lastname-input" value="<?= $customer->surname()?>" required/>
+            <input type="text" name="lastname" class="form-control" id="lastname-input" value="<?= $customer->surname()?>" pattern="^[^<>%$]*$" required/>
           </div>
 
           <div class="form-group">
@@ -65,17 +65,17 @@
           <h2 class="h4 text-center">Adresse</h2>
           <div class="form-group">
             <label for="add1-input">Adresse</label>
-            <input type="text" name="add1" class="form-control" id="add1-input" value="<?= $customer->add1()?>" required/>
+            <input type="text" name="add1" class="form-control" id="add1-input" value="<?= $customer->add1()?>" pattern="^[^<>%$]*$" required/>
           </div>
 
           <div class="form-group">
             <label for="add2-input">Adresse complémentaire (optionnel)</label>
-            <input type="text" name="add2" class="form-control" id="add2-input" value="<?= $customer->add2()?>" />
+            <input type="text" name="add2" class="form-control" id="add2-input" value="<?= $customer->add2()?>" pattern="^[^<>%$]*$" />
           </div>
 
           <div class="form-group">
             <label for="add3-input">Ville</label>
-            <input type="text" name="add3" class="form-control" id="add3-input" value="<?= $customer->add3()?>" required/>
+            <input type="text" name="add3" class="form-control" id="add3-input" value="<?= $customer->add3()?>" pattern="^[^<>%$]*$" required/>
           </div>
 
           <div class="form-group">

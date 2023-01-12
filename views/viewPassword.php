@@ -39,17 +39,17 @@
 
         <div class="form-group">
             <label for="current-password-input">Mot de passe actuel</label>
-            <input type="password" name="current-password" class="form-control" id="current-password-input" value="" required/>
+            <input type="password" name="current-password" class="form-control" id="current-password-input" value="" pattern="^[^<>%$]*$" required/>
         </div>
 
         <div class="form-group">
             <label for="new-password-input">Nouveau mot de passe</label>
-            <input type="password" name="new-password" class="form-control" id="new-password-input" value="" required/>
+            <input type="password" name="new-password" class="form-control" id="new-password-input" value="" pattern="^[^<>%$]*$" required/>
         </div>
 
         <div class="form-group">
             <label for="password-confirm-input">Confirmer le mot de passe</label>
-            <input type="password" name="password-confirm" class="form-control" id="password-confirm-input" value="" required/>
+            <input type="password" name="password-confirm" class="form-control" id="password-confirm-input" value="" pattern="^[^<>%$]*$" required/>
         </div>
 
         <!-- Message d'erreur  -->
