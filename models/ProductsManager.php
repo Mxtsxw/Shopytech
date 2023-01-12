@@ -60,7 +60,7 @@ class ProductsManager extends Model
     /**
      * Récupère un produit par son nom
      * @param string $name Le nom du produit
-     * @return Products
+     * @return array[Products]
      * @throws Exception
      */
     public function getProductsByName($name){
@@ -114,12 +114,12 @@ class ProductsManager extends Model
      */
     public function addProduct(Products $product){
         $req = $this->getBdd()->prepare('INSERT INTO products (cat_id, name, description, image, price, quantity) VALUES (:cat_id, :name, :description, :image, :price, :quantity)');
-        $req->bindValue(':cat_id', $product->getCat_id(), PDO::PARAM_INT);
-        $req->bindValue(':name', $product->getName(), PDO::PARAM_STR);
-        $req->bindValue(':description', $product->getDescription(), PDO::PARAM_STR);
-        $req->bindValue(':image', $product->getImage(), PDO::PARAM_STR);
-        $req->bindValue(':price', $product->getPrice(), PDO::PARAM_STR);
-        $req->bindValue(':quantity', $product->getQuantity(), PDO::PARAM_INT);
+        $req->bindValue(':cat_id', $product->catId(), PDO::PARAM_INT);
+        $req->bindValue(':name', $product->name(), PDO::PARAM_STR);
+        $req->bindValue(':description', $product->description(), PDO::PARAM_STR);
+        $req->bindValue(':image', $product->image(), PDO::PARAM_STR);
+        $req->bindValue(':price', $product->price(), PDO::PARAM_STR);
+        $req->bindValue(':quantity', $product->quantity(), PDO::PARAM_INT);
         $req->execute();
         
         $req->closeCursor();
@@ -133,7 +133,7 @@ class ProductsManager extends Model
      * @param int $quantity : La quantité à mettre à jour
      * @return void
      */
-    public function updateProductQuantity($id, $quantity){
+    public function updateProductQuantity(int $id, int $quantity){
         $req = $this->getBdd()->prepare('UPDATE products SET quantity = :quantity WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':quantity', $quantity, PDO::PARAM_INT);

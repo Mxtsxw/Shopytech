@@ -9,12 +9,13 @@ class ControllerOrders
     /**
      * Route : Orders
      * URL : /orders
-     * URL : /orders
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
     {
+        $this->_ordersManager = new OrdersManager();
+
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1)
         {
@@ -49,12 +50,11 @@ class ControllerOrders
 
     /**
      * Récupère les commandes du client
-     * @param Customer $customer
+     * @param Customers $customer
      * @return array[Orders]
      */
     private function getOrders(Customers $customer)
     {
-        $this->_ordersManager = new OrdersManager();
         $orders = $this->_ordersManager->getOrdersByCustomerId($customer->id());
         return $orders;
     }

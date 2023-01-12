@@ -87,5 +87,4 @@ if(isset($_POST['paymentMethod']))
     header('Location: ../validation/confirmed');
     exit();
 }
-
 ?>

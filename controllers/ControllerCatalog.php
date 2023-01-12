@@ -3,19 +3,21 @@ require_once('views/view.php');
 
 class ControllerCatalog
 {
+    private $_view;
     private $_productsManager; 
     private $_categoriesManager;
-    private $_view;
 
     /**
      * Route : Catalogue
      * URL : /catalog
      * URL Query String - category<id>: La catégorie à afficher
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
     {
+        $this->_productsManager = new ProductsManager();
+        $this->_categoriesManager = new CategoriesManager();
 
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1) 
@@ -60,41 +62,32 @@ class ControllerCatalog
     
     /**
      * Récupère la liste des articles
-     * @return array[Product]
+     * @return array[Products]
      */
     private function products()
     {
-        $this->_productsManager = new ProductsManager();
-
         $products = $this->_productsManager->getProducts();
-
         return $products;
     }
 
     /**
      * Récupère la liste des articles d'une catégorie via son nom
      * @param $name : Nom de la catégorie
-     * @return array[Product]
+     * @return array[Products]
      */
     private function productsByCategoryName($name)
     {
-        $this->_productsManager = new ProductsManager();
-
         $products = $this->_productsManager->getProductsByCategoryName($name);
-
         return $products;
     }
 
     /**
      * Récupère la liste des catégories
-     * @return array[Category]
+     * @return array[Categories]
      */
     private function categories()
     {
-        $this->_categoriesManager = new CategoriesManager();
-
         $categories = $this->_categoriesManager->getCategories();
-
         return $categories;
     }
 }

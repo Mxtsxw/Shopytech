@@ -3,17 +3,17 @@ require_once('views/view.php');
 
 class ControllerProducts
 {
+    private $_view;
     private $_productsManager; 
     private $_categoriesManager;
     private $_reviewsManager;
-    private $_view;
 
     /**
      * Route : Produits
      * URL : /product?id=<id>
      * L'ID de produit doit être passé en Query String 
      * URL Query String : id
-     * @param string $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
@@ -49,7 +49,7 @@ class ControllerProducts
     /**
      * Récupère un article
      * @param int $id : ID de l'article
-     * @return Product
+     * @return Products
      */
     private function product($id)
     {
@@ -60,7 +60,7 @@ class ControllerProducts
     /**
      * Récupère les commentaires d'un article
      * @param int $id : ID de l'article
-     * @return array
+     * @return array[Reviews]
      */
     private function reviews($id)
     {

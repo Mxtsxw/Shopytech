@@ -3,15 +3,15 @@ require_once('views/view.php');
 
 class ControllerPageadmin
 {
-    private $_productsManager;
     private $_view;
+    private $_productsManager;
 
     /**
      * Route : Produits
      * URL : /Pageadmin?id=<id>
      * L'ID de produit doit être passé en Query String 
      * URL Query String : id
-     * @param string $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
@@ -19,7 +19,9 @@ class ControllerPageadmin
         $this->_productsManager = new ProductsManager();
 
         // 1) Vérifie la validité de l'url
-        if (isset($url) && count($url)>1) throw new Exception('Page introuvable');
+        if (isset($url) && count($url)>1) {
+            throw new Exception('Page introuvable');
+        }
         if (!(isset($_GET['id']))) throw new Exception('Order ID not specified');
 
         // 2) Paramètre la vue
@@ -39,9 +41,9 @@ class ControllerPageadmin
     }
     
     /**
-     * Récupère une commande
+     * Récupère un produit
      * @param int $id : ID de la commande
-     * @return order
+     * @return Products
      */
     private function product($id)
     {

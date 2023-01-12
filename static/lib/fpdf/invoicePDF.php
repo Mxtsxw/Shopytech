@@ -105,7 +105,7 @@ function invoice(DeliveryAddresses $deliveryAddress, Orders $order, array $items
 
 /**
  * Génère un PDF de test
- * @return FPDF
+ * @return void
  */
 function defaultPDF()
 {

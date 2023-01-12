@@ -1,5 +1,6 @@
 <?php
 require_once('views/view.php');
+
 class ControllerLogin
 {
     private $_view;
@@ -8,7 +9,7 @@ class ControllerLogin
      * Route : Connexion
      * URL : /login
      * Accessible uniquement aux utilisateurs non connectés
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)

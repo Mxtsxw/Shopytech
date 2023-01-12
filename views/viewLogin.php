@@ -12,7 +12,7 @@
 
   <!-- Formulaire de connexion -->
   <div class="custom-form col-sm-6 col-12 p-5">
-    <form action="<?=ROOT?>/handlers/loginHandler.php" method="POST" class="p-3">
+    <form action="<?=ROOT?>/handlers/Login.php" method="POST" class="p-3">
       <h2 class="text-center">Connexion</h2>
       <div class="form-group mt-2">
         <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisteur" required>

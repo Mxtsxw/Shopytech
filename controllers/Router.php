@@ -55,13 +55,3 @@ class Router
         }
     }
 }
-
-# Liste des routes
-# - /Accueil    →   Page d'accueil
-# - /Products   →   Page d'achat d'un produit
-# - /Login      →   Page de connexion
-# - /Register   →   Page d'inscription
-# - /Admin      →   Tableau de bord administrateur
-# - /Cart       →   Panier
-# - /Category   →   Page affichage des produits par catégorie
-# - /Admin      →   Tableau de bord administrateur

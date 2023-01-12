@@ -1,5 +1,6 @@
 <?php
 require_once('views/view.php');
+
 class ControllerCommand
 {
     private $_view;
@@ -7,7 +8,6 @@ class ControllerCommand
 
     public function __construct($url)
     {
-
         $this->_ordersManager = new OrdersManager();
 
         // 1) Vérifie la validité de l'url
@@ -31,5 +31,4 @@ class ControllerCommand
         // 6) Génère la vue
         $this->_view->generate($data);
     }
-
 }

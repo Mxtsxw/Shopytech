@@ -3,17 +3,18 @@ require_once('views/view.php');
 
 class ControllerAdmin
 {
-    private $_productsManager;
     private $_view;
+    private $_productsManager;
 
     /**
      * Route : Accueil
      * URL : '/' | '/accueil' | 'index.php' 
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
     {
+        $this->_productsManager = new ProductsManager();
 
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1)
@@ -39,13 +40,11 @@ class ControllerAdmin
     
     /**
      * Récupère la liste des articles
+     * @return array[Products]
      */
     private function products()
     {
-        $this->_productsManager = new ProductsManager();
-
         $products = $this->_productsManager->getProducts();
-
         return $products;
     }
 }

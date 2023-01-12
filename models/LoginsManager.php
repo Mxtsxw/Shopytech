@@ -101,7 +101,7 @@ class LoginsManager extends Model
     /**
      * Ajoute un Login dans la base de données
      * @param Logins $user
-     * @return void
+     * @return int ID du login ajouté	
      */
     function addUser(Logins $user) {
       

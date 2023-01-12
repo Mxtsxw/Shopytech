@@ -3,17 +3,19 @@ require_once('views/view.php');
 
 class ControllerCart
 {
-    private $_productsManager;
     private $_view;
+    private $_productsManager;
 
     /**
      * Route : Panier
      * URL : /cart
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
     {
+        $this->_productsManager = new ProductsManager();
+
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>1)
         {
@@ -43,19 +45,15 @@ class ControllerCart
 
     /**
      * Récupère le montant total du panier
-     * @return double
+     * @return double : montant total
      */
     private function cartAmount()
     {
-        $this->_productsManager = new ProductsManager();
-
         $total = 0;
-
         foreach ($_SESSION['cart'] as $id => $quantity) {
             $product = $this->_productsManager->getProductById($id);
             $total += $product->price() * $quantity;
         }
-        
         return $total;
     }
 
@@ -65,8 +63,6 @@ class ControllerCart
      */
     private function getCartItems()
     {
-        $this->_productsManager = new ProductsManager();
-
         $items = array();
         if (isset($_SESSION['cart'])) 
         {

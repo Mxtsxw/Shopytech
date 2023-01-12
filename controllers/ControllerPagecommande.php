@@ -11,7 +11,7 @@ class ControllerPagecommande
      * URL : /pagecommand?id=<id>
      * L'ID de l'order doit être passé en Query String 
      * URL Query String : id
-     * @param string $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
@@ -41,7 +41,7 @@ class ControllerPagecommande
     /**
      * Récupère une commande
      * @param int $id : ID de la commande
-     * @return order
+     * @return Orders
      */
     private function order($id)
     {

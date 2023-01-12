@@ -76,12 +76,12 @@ class ReviewsManager extends Model
     public function updateReview(Reviews $review)
     {
         $req = $this->getBdd()->prepare('UPDATE reviews SET stars = :stars, title = :title, description = :description WHERE title = :title AND name_user = :user AND id_product = :id');
-        $req->bindValue(':stars', $review->getStars(), PDO::PARAM_INT);
-        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
-        $req->bindValue(':description', $review->getDescription(), PDO::PARAM_STR);
-        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
-        $req->bindValue(':user', $review->getNameUser(), PDO::PARAM_STR);
-        $req->bindValue(':id', $review->getIdProduct(), PDO::PARAM_INT);
+        $req->bindValue(':stars', $review->stars(), PDO::PARAM_INT);
+        $req->bindValue(':title', $review->title(), PDO::PARAM_STR);
+        $req->bindValue(':description', $review->description(), PDO::PARAM_STR);
+        $req->bindValue(':title', $review->title(), PDO::PARAM_STR);
+        $req->bindValue(':user', $review->nameUser(), PDO::PARAM_STR);
+        $req->bindValue(':id', $review->idProduct(), PDO::PARAM_INT);
         $req->execute();
         $req->closeCursor();
     }

@@ -3,13 +3,12 @@ require_once('views/view.php');
 
 class ControllerProfile
 {
-    private $_customerManager;
     private $_view;
 
     /**
      * Route : Profile
      * URL : /profile
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)

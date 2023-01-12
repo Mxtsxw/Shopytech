@@ -15,11 +15,14 @@ class ControllerValidation
      * URL : /validation/payment    accessible uniquement si le statut de la commande en cours est à 1
      * URL : /validation/confirmed  accessible uniquement si le statut de la commande en cours est à 2
      * URL : /validation/confirmed?download : URI pour télécharger la facture
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)
     {
+        $this->_productsManager = new ProductsManager();
+        $this->_orderItemsManager = new OrderItemsManager();
+        $this->_deliveryAdressesManager = new DeliveryAddressesManager();
 
         // 1) Vérifie la validité de l'url
         if (isset($url) && count($url)>2)
@@ -37,10 +40,6 @@ class ControllerValidation
                 exit();
             }
         }
-
-        $this->_productsManager = new ProductsManager();
-        $this->_orderItemsManager = new OrderItemsManager();
-        $this->_deliveryAdressesManager = new DeliveryAddressesManager();
 
         if (count($url) == 2){
             switch ($url[1]) {
@@ -139,7 +138,7 @@ class ControllerValidation
 
     /** 
      * Retourne le montant total du panier
-     * @return int
+     * @return double
      */
     private function cartAmount()
     {
@@ -181,5 +180,4 @@ class ControllerValidation
 
         $pdf->Output('D', 'facture.pdf');
     }
-
 }

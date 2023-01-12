@@ -51,7 +51,7 @@
       </td>
       <td>
         <div class="text-end mt-3">
-          <button type="submit" name="updatequantity" class="btn btn-sm btn-primary btn-rounded">Confirmer la modification</button>
+          <button type="submit" name="updateQuantity" class="btn btn-sm btn-primary btn-rounded">Confirmer la modification</button>
         </div>
       </td>
       </form>      

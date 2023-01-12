@@ -9,7 +9,7 @@ class ControllerRegister
      * Route : Register
      * URL : /register
      * Accessible uniquement si l'utilisateur n'est pas connecté
-     * @param $url
+     * @param array $url
      * @throws Exception
      */
     public function __construct($url)

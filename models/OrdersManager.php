@@ -107,7 +107,7 @@ class OrdersManager extends Model
      * @param int $status : Le status à mettre à jour
      * @return void
      */
-    public function updateOrderStatus($id, $status){
+    public function updateOrderStatus(int $id, int $status){
         $req = $this->getBdd()->prepare('UPDATE orders SET status = :status WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':status', $status, PDO::PARAM_INT);

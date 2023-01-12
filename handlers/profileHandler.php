@@ -6,6 +6,7 @@ require_once('../Models/CustomersManager.php');
 require_once('../Models/Logins.php');
 require_once('../Models/LoginsManager.php');
 
+// Modification des informations
 if (isset($_POST['updateProfile']))
 {
     // Vérifie que tous les champs sont renseignés
@@ -70,8 +71,6 @@ if (isset($_POST['updatePassword']))
             'password' => $_POST['new-password'],
         ]);
 
-        
-
         // Update the user information in the database
         $loginsManager->updateLogins($user);
         
@@ -84,6 +83,7 @@ if (isset($_POST['updatePassword']))
     }
 }
 
+// Confirmation des informations clients lors d'une création de compte commande
 if (isset($_POST['confirmCustomerInfo']))
 {
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['add1']) && isset($_POST['add3']) && isset($_POST['zip']))
