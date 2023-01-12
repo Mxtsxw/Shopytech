@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - Profile'; ?>
 
+<div class="container my-4">
+  
 <!-- create a row to hold the left side card and the main content -->
 <div class="row">
   <!-- create the left side card to display the user icon and name -->
@@ -90,4 +92,6 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>

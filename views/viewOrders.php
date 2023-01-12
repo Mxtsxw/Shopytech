@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - Commandes'; ?>
 
+<div class="container my-4">
+  
 <div class="row mt-4">
   <div class="col-md-4">
     <div class="card mt-5">
@@ -90,4 +92,5 @@
 
     <?php endif; ?>
   </div>
+</div>
 </div>

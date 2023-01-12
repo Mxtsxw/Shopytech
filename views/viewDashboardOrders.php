@@ -1,6 +1,7 @@
 <?php $this->_t = 'Shopytech Dashboard - Commandes'; ?>
 
-
+<div class="container my-4">
+    
 <div class="mt-3 mb-5 text-center bg-light p-4">
   <h1 class="mb-3">Tableau de bord</h1>
   <h4 class="mb-3">Liste des commandes</h4>
@@ -52,3 +53,4 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+</div>

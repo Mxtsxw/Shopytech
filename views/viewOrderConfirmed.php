@@ -1,5 +1,6 @@
 <?php $this->_t = 'Shopytech - Confirmation'; ?>
 
+<div class="container my-4">
 <div class="mt-5">
     <div class="mb-4 text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
@@ -14,4 +15,5 @@
         <a href="<?=ROOT?>/validation/confirmed?download" type="submit" name="pdf" class="btn btn-primary">Télécharger la facture</a>
         <a href="<?=ROOT?>/" class="btn btn-primary">Retourner à l'accueuil</a>
     </div>
+</div>
 </div>

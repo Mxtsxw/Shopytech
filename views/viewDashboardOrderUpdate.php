@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - Pagecommande'.$order->id();  ?>
 
+<div class="container my-4">
+  
 <h1>Commande numéro <?=$order->id()?></h1>
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
@@ -58,3 +60,5 @@
     </tr>
     </tbody>
 </table>
+
+</div>

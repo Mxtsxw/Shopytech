@@ -1,6 +1,7 @@
 <?php $this->_t = 'Shopytech Dashboard - ' . $product->name(); ?>
 
-
+<div class="container my-4">
+  
 <h1>Page des stocks du produit <?=$product->name()?></h1>
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
@@ -66,3 +67,5 @@
     </tr>
     </tbody>
 </table>
+
+</div>

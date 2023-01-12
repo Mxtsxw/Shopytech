@@ -1,6 +1,8 @@
 <?php $this->_t = 'Shopytech - Modifier mot de passe'; ?>
 
-<!-- create a row to hold the left side card and the main content -->
+
+<div class="container my-4">
+  <!-- create a row to hold the left side card and the main content -->
 <div class="row">
   <!-- create the left side card to display the user icon and name -->
   <div class="col-md-4">
@@ -61,10 +63,10 @@
         <div class="text-end mt-3">
             <button type="submit" name="updatePassword" class="btn btn-primary text-right">Modifier le mot de passe</button>
         </div>
-
-        
         </form>
       </div>
     </div>
   </div>
+</div>
+
 </div>

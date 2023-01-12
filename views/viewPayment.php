@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - Confirmation'; ?>
 
+<div class="container my-4">
+  
 <div class="row">
   <?php if(isset($_SESSION['update_message'])): ?>
     <div class="alert alert-success mt-4 text-center" role="alert"><?=$_SESSION['update_message']?></div>
@@ -95,3 +97,5 @@
 </div>
 
 <!-- ------------ -->
+
+</div>

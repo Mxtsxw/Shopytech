@@ -24,7 +24,7 @@
             <?php require("header.php"); ?>
         </header>
         <!-- GENERATED CONTENT -->
-        <main class="container my-4 flex-grow-1">
+        <main class="mb-4 p-0 flex-grow-1">
             <?=$content?>
         </main>
         

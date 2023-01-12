@@ -1,5 +1,7 @@
 <?php $this->_t = 'Page introuvable'; ?>
 
+<div class="container my-4">
+    
 <div class="d-flex align-items-center justify-content-center">
     <div class="text-center">
         <h1 class="display-1 fw-bold">404</h1>
@@ -13,4 +15,6 @@
         </p>
         <a href="<?= ROOT ?>" class="btn btn-primary">Retourner à l'accueil</a>
     </div>
+</div>
+
 </div>

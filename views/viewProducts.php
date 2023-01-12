@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - ' . $product->name(); ?>
 
+<div class="container my-4">
+    
 <!-- Product section-->
 <section class="">
     <div class="container px-4 px-lg-5">
@@ -80,3 +82,4 @@
 
     </div>
 </section>
+</div>

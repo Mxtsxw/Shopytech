@@ -1,5 +1,7 @@
 <?php $this->_t = 'Shopytech - Confirmation'; ?>
 
+<div class="container my-4">
+  
 <div class="row">
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
@@ -130,4 +132,5 @@
   </div>
 </div>
 
+</div>
 <!-- ------------ -->

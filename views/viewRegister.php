@@ -3,7 +3,8 @@
 
 <!-- --- --- --- -- -->
 
-
+<div class="container my-4">
+  
 <div class="mt-5 shadow row w-75 m-auto">
   
   <!-- Illustration -->
@@ -39,4 +40,6 @@
       </p>
     </form>
   </div>
+</div>
+
 </div>
