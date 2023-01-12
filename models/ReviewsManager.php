@@ -42,12 +42,12 @@ class ReviewsManager extends Model
     {
         $req = $this->getBdd()->prepare('INSERT INTO reviews (id_product, name_user, photo_user, stars, title, description) VALUES (:id_product, :name_user, :photo_user, :stars, :title, :description)');
         
-        $req->bindValue(':id_product', $review->getIdProduct(), PDO::PARAM_INT);
-        $req->bindValue(':name_user', $review->getNameUser(), PDO::PARAM_STR);
-        $req->bindValue(':photo_user', $review->getPhotoUser(), PDO::PARAM_STR);
-        $req->bindValue(':stars', $review->getStars(), PDO::PARAM_INT);
-        $req->bindValue(':title', $review->getTitle(), PDO::PARAM_STR);
-        $req->bindValue(':description', $review->getDescription(), PDO::PARAM_STR);
+        $req->bindValue(':id_product', $review->idProduct(), PDO::PARAM_INT);
+        $req->bindValue(':name_user', $review->nameUser(), PDO::PARAM_STR);
+        $req->bindValue(':photo_user', $review->photoUser(), PDO::PARAM_STR);
+        $req->bindValue(':stars', $review->stars(), PDO::PARAM_INT);
+        $req->bindValue(':title', $review->title(), PDO::PARAM_STR);
+        $req->bindValue(':description', $review->description(), PDO::PARAM_STR);
 
         $req->execute();
         $req->closeCursor();
