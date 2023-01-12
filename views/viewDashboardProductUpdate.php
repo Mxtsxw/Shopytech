@@ -1,19 +1,21 @@
-<?php $this->_t = 'Shopytech - PageStocks' . $product->id(); ?>
+<?php $this->_t = 'Shopytech Dashboard - ' . $product->name(); ?>
 
 
 <h1>Page des stocks du produit <?=$product->name()?></h1>
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
         <tr>
-        <th>Produits</th>
-        <th>Etat</th>
-        <th>ID</th>
-        <th>Quantité</th>
-        <th>Actions</th>
+          <th>ID</th>
+          <th>Produits</th>
+          <th class="text-center">État</th>
+          <th class="text-center">Quantité</th>
+          <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
     <tr>
+    <td><?=$product->id()?></td>
+
       <td>
         <div class="d-flex align-items-center">
         
@@ -29,24 +31,30 @@
           </div>
         </div>
       </td>
-      <td><?php 
-        if ($product->quantity()==0){echo '<p class="text-danger mb-0">Plus de stocks</p>';}
-        elseif ($product->quantity()<3){echo '<p class="text-danger mb-0">stocks faibles</p>';}
-        else{echo '<p class="text-success mb-0">OK</p>';}
-        ?>
+      <td class="text-center">
+        <?php if ($product->quantity()==0): ?>
+        <p class="text-danger mb-0">Plus de stocks</p>
+        <?php elseif ($product->quantity()<3): ?>
+        <p class="text-warning mb-0">stocks faibles</p>
+        <?php else: ?>
+        <p class="text-success mb-0">OK</p>
+        <?php endif; ?>
       </td>
-      <td><?=$product->id()?></td>
     
       
-      <form action="<?=ROOT?>/handlers/adminHandler.php" method="POST" class="needs-validation" novalidate>
-      <td>
+      <form action="<?=ROOT?>/handlers/AdminProductsHandler.php" method="POST" class="needs-validation" novalidate>
+      <td class="text-center">
         <div class="form-group">
           <input type="hidden" name="idProduct" class="form-control" value="<?= $product->id()?>" required/>
         </div>
 
         <div class="form-group">
           <input type="number" min=0 name="quantityProduct" class="form-control" value="<?= $product->quantity()?>" required/>
-          <?php if (isset($_SESSION['qprod-error'])){echo '<p class="text-danger">'.$_SESSION['qprod-error'].'</p>';}?>
+          <!-- Message d'erreur  -->
+          <?php if (isset($_SESSION['error_message'])): ?>
+            <p class='text-danger mt-3'><?= $_SESSION['error_message'] ?></p>
+            <?php unset($_SESSION['error_message']); ?>
+          <?php endif; ?>
         </div>
       </td>
       <td>

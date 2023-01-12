@@ -40,7 +40,7 @@ if ($adminManager->checkAdmin($username, $password))
     $_SESSION['admin']= true;
 
     // Redirection vers la page de gestion pour admins
-    header('Location: ../admin');
+    header('Location: ../dashboard');
     exit();
 }
 

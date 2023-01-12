@@ -26,6 +26,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#footer">Contact</a>
         </li>
+        <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?=ROOT?>/dashboard">Tableau de bord</a>
+          </li>
+        <?php endif; ?>
       </ul>
       <!-- Left links -->
     </div> 
@@ -62,10 +67,10 @@
           
             <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
               <li>
-                <a class="dropdown-item" href="<?=ROOT?>/command">Commandes</a>
+                <a class="dropdown-item" href="<?=ROOT?>/dashboard/orders">Commandes</a>
               </li>
               <li>
-                  <a class="dropdown-item" href="<?=ROOT?>/admin">Stocks</a>
+                  <a class="dropdown-item" href="<?=ROOT?>/dashboard/products">Stocks</a>
               </li>
             <?php else : ?>
               <li>

@@ -18,8 +18,6 @@ $orderManager = new OrdersManager();
 $orderItemsManager = new OrderItemsManager();
 $productsManager = new ProductsManager();
 
-echo $_SESSION['customerId'];
-
 ?>
 
 
