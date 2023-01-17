@@ -60,10 +60,15 @@
                 <div class="d-flex gap-5">
                   <p><?= date('d/m/Y', strtotime($order->date())) ?></p>
                   <p> • </p>
-                  <?php if ($order->status()==2){echo '<p class="text-warning">En cours de validation</p>';}
-        elseif($order->status()==10){echo '<p class="text-success">Validée</p>';}
-        elseif($order->status()==127){echo '<p class="text-danger">refusée</p>';}
-        elseif($order->status()==3){echo '<p class="text-warning">paiement paypal</p>';}?>
+                  <?php if ($order->status()==2): ?>
+                  <p class="text-warning">Chèque en attente de réception</p>
+                  <?php elseif($order->status()==10): ?>
+                  <p class="text-success">Validée</p>
+                  <?php elseif($order->status()==3): ?>
+                  <p class="text-warning">Paiement Paypal</p>
+                  <?php elseif($order->status()==-1): ?>
+                  <p class="text-danger">Refusée</p>
+                  <?php endif; ?>
                 </div>
               </button>
             </h2>
