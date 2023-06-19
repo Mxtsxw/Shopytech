@@ -9,7 +9,7 @@ Le design est principalement réalisé à l'aide de la bibliothèque [MDBootstra
 
 ## Installation 
 
-Pour lancer le site, il faut vous munir d'un serveur PHP et d'une base de données Mysql.
+Pour lancer le site, il faut vous munir d'un serveur web interprétant le PHP et d'une base de données Mysql. Nous vous recommendons d'utiliser l'outil XAMPP et ses alternatives.
 Vous devrez ensuite initialiser votre base de données en lançant le script d'insertion disponible [ici](https://github.com/Matsew-uwu/Shopytech/blob/main/static/ressources/web4shop2022.sql).
 
 ## Architecture
